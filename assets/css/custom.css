@@ -1,0 +1,31 @@
+.bg-blue{
+    background-color: #5d87ff !important;
+}
+.color-white{
+    color:white !important;
+}
+.pointer{
+    cursor: pointer !important;
+}
+
+.modal-body{
+    max-height: 705px !important;
+    overflow: auto;
+}
+
+.fit-width{
+    width: 33%;
+}
+
+@media (max-width:576px){
+    .modal-body{
+        max-height: 435px !important;
+        overflow: auto;
+    }
+    .fit-width{
+        width: 100%;
+    }
+}
+
+
+
