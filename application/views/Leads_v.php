@@ -45,7 +45,7 @@
                                         echo '<span class="badge bg-primary rounded-3 fw-semibold text-center">New</span>';
                                         break;
                                     case LEAD_STATUS_ASSIGNED:
-                                        echo '<span class="badge bg-success rounded-3 fw-semibold text-center">Assigned</span>';
+                                        echo '<span class="badge bg-success rounded-3 fw-semibold text-center">FTD</span>';
                                         break;
                                     case LEAD_STATUS_DELETED:
                                         echo '<span class="badge bg-danger rounded-3 fw-semibold text-center">Deleted</span>';
