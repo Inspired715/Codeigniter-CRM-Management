@@ -16,7 +16,31 @@
 .fit-width{
     width: 33%;
 }
-
+.integration{
+    height: calc(100vh - 250px); 
+    width: 100%;
+    overflow: auto;
+}
+.card-section{
+    padding: 15px 15px 8px 15px;
+    border-radius: 10px;
+    background: #e1e4e5;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-around;
+    cursor: pointer;
+}
+.integration-title{
+    color: black;
+    font-weight: bold;
+}
+.integration-token{
+    font-size: 15px;
+}
+.integration-avatar{
+    width: 50px;
+    border-radius: 50%;
+}
 @media (max-width:576px){
     .modal-body{
         max-height: 435px !important;

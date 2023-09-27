@@ -57,6 +57,14 @@
                                 <span class="hide-menu">Leads</span>
                             </a>
                         </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="<?php echo base_url('integration')?>" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-aperture"></i>
+                                </span>
+                                <span class="hide-menu">Integration</span>
+                            </a>
+                        </li>
                     </ul>
                 </nav>
             </div>
