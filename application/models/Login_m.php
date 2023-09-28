@@ -6,7 +6,7 @@
 	// Login User
     public function checkAuth($uname, $password)
     {
-        $sql = "SELECT * FROM users WHERE user_name = ? AND status = 1 AND role = 1 and password= ? limit 1";
+        $sql = "SELECT * FROM users WHERE user_name = ? AND status = 1 and password= ? limit 1";
 
         $query = $this->db->query($sql, array($uname, md5($password)));
 
@@ -14,6 +14,9 @@
 
         if(count($user) != 1)
             return 403;
+
+        $_SESSION['uname'] = $user[0]->user_name;
+        $_SESSION['role'] = $user[0]->role;
 
         return 200;
     }

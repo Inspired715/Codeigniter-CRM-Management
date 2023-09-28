@@ -60,6 +60,7 @@ $route['token'] = 'Token_c';
 $route['createToken'] = 'Token_c/createToken';
 $route['getLeadDetail'] = 'Leads_c/getLeadDetail';
 $route['integration'] = 'Integration_c';
+$route['notification'] = 'Notification_c';
 
 $route['api/lead'] = 'Api/api_lead';
 $route['api/lead/(:any)'] = 'Api/filter_by_date/$1';

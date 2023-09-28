@@ -33,6 +33,7 @@
                 </div>
                 <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
                     <ul id="sidebarnav">
+                        <?php if($_SESSION['role'] == 1) {?>
                         <li class="nav-small-cap">
                             <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                             <span class="hide-menu">Home</span>
@@ -45,6 +46,7 @@
                                 <span class="hide-menu">Token</span>
                             </a>
                         </li>
+                        <?php }?>
                         <li class="nav-small-cap">
                             <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                             <span class="hide-menu">FEATURES</span>
@@ -57,6 +59,15 @@
                                 <span class="hide-menu">Leads</span>
                             </a>
                         </li>
+                        <?php if($_SESSION['role'] == 1) {?>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="<?php echo base_url('notification')?>" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-aperture"></i>
+                                </span>
+                                <span class="hide-menu">Notification</span>
+                            </a>
+                        </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="<?php echo base_url('integration')?>" aria-expanded="false">
                                 <span>
@@ -65,6 +76,7 @@
                                 <span class="hide-menu">Integration</span>
                             </a>
                         </li>
+                        <?php }?>
                     </ul>
                 </nav>
             </div>

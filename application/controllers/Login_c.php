@@ -17,9 +17,7 @@ class Login_c extends CI_Controller {
 	   $password = isset($_POST['password']) ? $_POST['password'] : NULL;
 
 	   $res = $this->Login_m->checkAuth($uname, $password);
-	   
-	   if($res == 200)
-			$_SESSION['uname'] = $uname;
+			
 	   echo $res;
    }
 

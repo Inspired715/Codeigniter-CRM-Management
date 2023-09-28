@@ -89,3 +89,6 @@ defined('LEAD_STATUS_NOT_INTERESTED')   OR define('LEAD_STATUS_NOT_INTERESTED', 
 defined('LEAD_STATUS_FOLLOW_UP')        OR define('LEAD_STATUS_FOLLOW_UP', 2);
 defined('LEAD_STATUS_FTD')              OR define('LEAD_STATUS_FTD', 3);
 defined('LEAD_STATUS_WRONG_NUMBER')     OR define('LEAD_STATUS_WRONG_NUMBER', 4);
+defined('LEAD_STATUS_UNQUALIFIED')      OR define('LEAD_STATUS_UNQUALIFIED', 5);
+defined('LEAD_STATUS_NEW')              OR define('LEAD_STATUS_NEW', 6);
+defined('LEAD_STATUS_MONEY')            OR define('LEAD_STATUS_MONEY', 7);
