@@ -85,7 +85,7 @@ class Api extends CI_Controller {
 
             $leads['first_name']        = $_POST["first_name"];
             $leads['last_name']         = $_POST["last_name"];
-            $leads['status']            = LEAD_STATUS_NEW;
+            $leads['status']            = LEAD_STATUS_NOT_INTERESTED;
             $leads['title']             = $_POST["title"];
             $leads['web_site']          = $_POST["web_site"];
             $leads['phone_number']      = $_POST["phone_number"];
@@ -111,7 +111,7 @@ class Api extends CI_Controller {
             if(count($sub_leads) > 0)
                 $this->Leads_m->insertSubLeads($sub_leads);
 
-            echo json_encode(array('status' => 200, 'message' => "Successfully imported."));
+            echo json_encode(array('status' => 200, 'message' => "Successfully imported.", 'lead_id' => $lead_id));
 	   	}else if($method === 'GET'){
             $result = $this->Leads_m->getLeadWithSub();
             $temp = [];
@@ -124,7 +124,25 @@ class Api extends CI_Controller {
                 $sub['id'] = $leads[0]->id;
                 $sub['first_name'] = $leads[0]->first_name;
                 $sub['last_name'] = $leads[0]->last_name;
-                $sub['status'] = $leads[0]->status;
+                $sub['status_id'] = $leads[0]->status;
+                $sub['ftd_date'] = $leads[0]->ftd_date;
+                switch($leads[0]->status){
+                    case LEAD_STATUS_NOT_INTERESTED:
+                        $sub['status'] = "NOT INTERESTED";
+                        break;
+                    case LEAD_STATUS_FOLLOW_UP:
+                        $sub['status'] = "FOLLOW UP";
+                        break;
+                    case LEAD_STATUS_FTD:
+                        $sub['status'] = "FTD";
+                        break;
+                    case LEAD_STATUS_WRONG_NUMBER:
+                        $sub['status'] = "WRONG NUMBER";
+                        break;
+                    default:
+                        $sub['status'] = "NOT INTERESTED";
+                }
+                
                 $sub['title'] = $leads[0]->title;
                 $sub['web_site'] = $leads[0]->web_site;
                 $sub['phone_number'] = $leads[0]->phone_number;

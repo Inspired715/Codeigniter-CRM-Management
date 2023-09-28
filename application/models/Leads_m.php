@@ -56,7 +56,7 @@
     public function getLeadWithSub($from='', $to=''){
         $query = null;
         if($from != ''){
-            $sql = "select l.*, sl.sub_name, sl.sub_value, l.created_date from leads l left join sub_leads sl on l.id=sl.lead_id where l.created_date >= ? and l.created_date <= ?";
+            $sql = "select l.*, sl.sub_name, sl.sub_value from leads l left join sub_leads sl on l.id=sl.lead_id where l.created_date >= ? and l.created_date <= ?";
             $query = $this->db->query($sql, array($from, $to));
         }else{
             $sql = "select l.*, sl.sub_name, sl.sub_value from leads l left join sub_leads sl on l.id=sl.lead_id";
