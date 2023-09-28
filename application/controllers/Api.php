@@ -212,7 +212,23 @@ class Api extends CI_Controller {
                 $sub['country'] = $leads[0]->country;
                 $sub['email'] = $leads[0]->email;
                 $sub['created_date'] = $leads[0]->created_date;
-
+                $sub['ftd_date'] = $leads[0]->ftd_date;
+                switch($leads[0]->status){
+                    case LEAD_STATUS_NOT_INTERESTED:
+                        $sub['status'] = "NOT INTERESTED";
+                        break;
+                    case LEAD_STATUS_FOLLOW_UP:
+                        $sub['status'] = "FOLLOW UP";
+                        break;
+                    case LEAD_STATUS_FTD:
+                        $sub['status'] = "FTD";
+                        break;
+                    case LEAD_STATUS_WRONG_NUMBER:
+                        $sub['status'] = "WRONG NUMBER";
+                        break;
+                    default:
+                        $sub['status'] = "NOT INTERESTED";
+                }
                 foreach($leads as $lead){
                     $sub[$lead->sub_name] = $lead->sub_value;
                 }
