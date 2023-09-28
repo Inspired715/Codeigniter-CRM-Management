@@ -44,17 +44,20 @@
                             <td class="border-bottom-0">
                                 <div class="text-center">
                                 <?php switch($lead->status){
-                                    case LEAD_STATUS_NEW:
-                                        echo '<span class="badge bg-primary rounded-3 fw-semibold text-center">New</span>';
+                                    case LEAD_STATUS_NOT_INTERESTED:
+                                        echo '<span class="badge bg-primary rounded-3 fw-semibold text-center">Not interested</span>';
                                         break;
-                                    case LEAD_STATUS_ASSIGNED:
-                                        echo '<span class="badge bg-success rounded-3 fw-semibold text-center">FTD</span>';
+                                    case LEAD_STATUS_FOLLOW_UP:
+                                        echo '<span class="badge bg-success rounded-3 fw-semibold text-center">Follow up</span>';
                                         break;
-                                    case LEAD_STATUS_DELETED:
-                                        echo '<span class="badge bg-danger rounded-3 fw-semibold text-center">Deleted</span>';
+                                    case LEAD_STATUS_FTD:
+                                        echo '<span class="badge bg-danger rounded-3 fw-semibold text-center">Ftd</span>';
+                                        break;
+                                    case LEAD_STATUS_WRONG_NUMBER:
+                                        echo '<span class="badge bg-dark rounded-3 fw-semibold text-center">Wrong number</span>';
                                         break;
                                     default:
-                                        echo '<span class="badge bg-primary rounded-3 fw-semibold text-center">New</span>';
+                                        echo '<span class="badge bg-primary rounded-3 fw-semibold text-center">Not interested</span>';
                                 }?>
                                 </div>
                             </td>

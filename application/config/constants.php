@@ -85,6 +85,7 @@ defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automat
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
 defined('PRIMARY_KEY')                  OR define('PRIMARY_KEY', 'Ashrafkevinnakamoto');
-defined('LEAD_STATUS_NEW')              OR define('LEAD_STATUS_NEW', 1);
-defined('LEAD_STATUS_ASSIGNED')         OR define('LEAD_STATUS_ASSIGNED', 2);
-defined('LEAD_STATUS_DELETED')          OR define('LEAD_STATUS_DELETED', 3);
+defined('LEAD_STATUS_NOT_INTERESTED')              OR define('LEAD_STATUS_NOT_INTERESTED', 1);
+defined('LEAD_STATUS_FOLLOW_UP')         OR define('LEAD_STATUS_FOLLOW_UP', 2);
+defined('LEAD_STATUS_FTD')          OR define('LEAD_STATUS_FTD', 3);
+defined('LEAD_STATUS_WRONG_NUMBER')          OR define('LEAD_STATUS_WRONG_NUMBER', 4);
