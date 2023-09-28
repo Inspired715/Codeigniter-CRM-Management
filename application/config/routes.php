@@ -59,6 +59,7 @@ $route['logout'] = 'Login_c/logout';
 $route['token'] = 'Token_c';
 $route['createToken'] = 'Token_c/createToken';
 $route['getLeadDetail'] = 'Leads_c/getLeadDetail';
+$route['refreshLeadTable'] = 'Leads_c/refreshLeadTable';
 $route['integration'] = 'Integration_c';
 $route['notification'] = 'Notification_c';
 

@@ -3,13 +3,20 @@
 
 	class Leads_m extends CI_Model {
 		
-    public function getTableData(){
+    public function getTableData($status = 0, $created = 0){
         $sql = ""; $query = NULL;
         if($_SESSION['publisher'] != 0){
             $sql = "SELECT l.id, l.first_name, l.last_name, l.status, l.phone_number, l.email, p.full_name as created_by, l.created_date FROM leads l left join publisher p on l.created_by=p.id where l.created_by=?";
             $query = $this->db->query($sql, array($_SESSION['publisher']));
         }else{
-            $sql = "SELECT l.id, l.first_name, l.last_name, l.status, l.phone_number, l.email, p.full_name as created_by, l.created_date FROM leads l left join publisher p on l.created_by=p.id";
+            $sql = "SELECT l.id, l.first_name, l.last_name, l.status, l.phone_number, l.email, p.full_name as created_by, l.created_date FROM leads l left join publisher p on l.created_by=p.id where 1=1 ";
+            if($status != 0){
+                $sql .= " and l.status=".$status;
+            }
+            if($created != 0){
+                $sql .= " and l.created_by=".$created;
+            }
+
             $query = $this->db->query($sql);
         }
 

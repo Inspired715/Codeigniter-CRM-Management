@@ -24,4 +24,14 @@ class Leads_c extends MY_Controller {
 
 	   	echo json_encode(array('status' => 200, 'data' => $res));
    }
+
+   public function refreshLeadTable(){
+		$status = isset($_POST['status']) ? $_POST['status'] : 0;
+
+		$createdBy = isset($_POST['createdBy']) ? $_POST['createdBy'] : 0;
+
+		$leads = $this->Leads_m->getTableData($status, $createdBy);
+
+		echo json_encode(array('status' => 200, 'data' => $leads));
+   }
 }
