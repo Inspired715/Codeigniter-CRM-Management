@@ -8,6 +8,7 @@ class Api extends CI_Controller {
 
 		$this->load->model("Token_m");
         $this->load->model("Leads_m");
+        $this->load->model("Notification_m");
 	}
     public function api_lead($dates=''){
 		$method = $_SERVER['REQUEST_METHOD'];
@@ -237,6 +238,58 @@ class Api extends CI_Controller {
             }
 
             echo json_encode(array('status' => 200, 'data' => $finalLeads));
+        }else{
+            echo json_encode(array('status' => 405, 'message' => "GET method is available"));
+        }
+    }
+
+    public function update(){
+        $method = $_SERVER['REQUEST_METHOD'];
+
+        if(!isset($_SERVER["HTTP_X_API_KEY"])){
+            echo json_encode(array('status' => 400, 'message' => "x-api-key field is not existed on header."));
+            return;
+        }
+
+        $publisher_id = $this->Token_m->checkToken($_SERVER["HTTP_X_API_KEY"]);
+        if($publisher_id == 0){
+            echo json_encode(array('status' => 401, 'message' => "Authentification error."));
+            return;
+        }
+
+		if ($method === 'POST') {
+            if(!isset($_POST["seamotech_id"])){
+                echo json_encode(array('status' => 400, 'message' => "seamotech_id field is not existed on body and this is required field."));
+                return;
+            }
+            if($_POST["seamotech_id"] == ''){
+                echo json_encode(array('status' => 400, 'message' => "seamotech_id is required field."));
+                return;
+            }
+            if(!isset($_POST["status"])){
+                echo json_encode(array('status' => 400, 'message' => "status field is not existed on body and this is required field."));
+                return;
+            }
+            if($_POST["status"] == ''){
+                echo json_encode(array('status' => 400, 'message' => "status is required field."));
+                return;
+            }
+            if(!isset($_POST["ftd_date"])){
+                echo json_encode(array('status' => 400, 'message' => "ftd_date field is not existed on body and this is required field."));
+                return;
+            }
+
+            $sub['lead_id'] = $_POST["seamotech_id"];
+            $sub['status'] = $_POST["status"];
+            $sub['ftd_date'] = $_POST["ftd_date"];
+
+            $res = $this->Notification_m->insertNotification($sub);
+			if(!$res){
+                echo json_encode(array('status' => 500, 'message' => "Server Error."));
+                return;
+            }
+
+            echo json_encode(array('status' => 200, 'message' => "Successfully updated."));
         }else{
             echo json_encode(array('status' => 405, 'message' => "GET method is available"));
         }
