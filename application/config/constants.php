@@ -83,9 +83,9 @@ defined('EXIT_USER_INPUT')     OR define('EXIT_USER_INPUT', 7); // invalid user 
 defined('EXIT_DATABASE')       OR define('EXIT_DATABASE', 8); // database error
 defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
-
+defined('LIMIT')                        OR define('LIMIT', 2000);
 defined('PRIMARY_KEY')                  OR define('PRIMARY_KEY', 'Ashrafkevinnakamoto');
-defined('LEAD_STATUS_NOT_INTERESTED')              OR define('LEAD_STATUS_NOT_INTERESTED', 1);
-defined('LEAD_STATUS_FOLLOW_UP')         OR define('LEAD_STATUS_FOLLOW_UP', 2);
-defined('LEAD_STATUS_FTD')          OR define('LEAD_STATUS_FTD', 3);
-defined('LEAD_STATUS_WRONG_NUMBER')          OR define('LEAD_STATUS_WRONG_NUMBER', 4);
+defined('LEAD_STATUS_NOT_INTERESTED')   OR define('LEAD_STATUS_NOT_INTERESTED', 1);
+defined('LEAD_STATUS_FOLLOW_UP')        OR define('LEAD_STATUS_FOLLOW_UP', 2);
+defined('LEAD_STATUS_FTD')              OR define('LEAD_STATUS_FTD', 3);
+defined('LEAD_STATUS_WRONG_NUMBER')     OR define('LEAD_STATUS_WRONG_NUMBER', 4);

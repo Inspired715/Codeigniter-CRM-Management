@@ -96,7 +96,7 @@ class Api extends CI_Controller {
             $leads['state']             = $_POST["state"];
             $leads['country']           = $_POST["country"];
             $leads['email']             = $_POST["email"];
-            
+            $leads['ftd_date']          = NULL;
             $lead_id = $this->Leads_m->insertLeads($leads);
 
             $keys = ['first_name', 'last_name', 'title', 'web_site','phone_number', 'status', 'created_by', 'modifyed_by', 'address', 'city', 'state', 'country', 'email'];
