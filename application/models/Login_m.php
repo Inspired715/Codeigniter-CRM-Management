@@ -17,7 +17,7 @@
 
         $_SESSION['uname'] = $user[0]->user_name;
         $_SESSION['role'] = $user[0]->role;
-
+        $_SESSION['publisher'] = $user[0]->publisher_id;
         return 200;
     }
 }
