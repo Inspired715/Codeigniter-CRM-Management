@@ -85,25 +85,25 @@ $(document).ready(function () {
                         html += '<td class="border-bottom-0"><h6 class="fw-semibold mb-0">'+ item.last_name +'</h6></td>';
                         html += '<td class="border-bottom-0"><div class="text-center">';
                         switch(item.status){
-                            case 1:
+                            case "1":
                                 html += '<span class="badge bg-primary rounded-3 fw-semibold text-center">Not interested</span>';
                                 break;
-                            case 2:
+                            case "2":
                                 html += '<span class="badge bg-success rounded-3 fw-semibold text-center">Follow up</span>';
                                 break;
-                            case 3:
+                            case "3":
                                 html += '<span class="badge bg-danger rounded-3 fw-semibold text-center">Ftd</span>';
                                 break;
-                            case 4:
+                            case "4":
                                 html += '<span class="badge bg-info rounded-3 fw-semibold text-center">Wrong number</span>';
                                 break;
-                            case 5:
+                            case "5":
                                 html += '<span class="badge bg-warning rounded-3 fw-semibold text-center">Unqualified</span>';
                                 break;
-                            case 6:
+                            case "6":
                                 html += '<span class="badge bg-secondary rounded-3 fw-semibold text-center">New</span>';
                                 break;
-                            case 7:
+                            case "7":
                                 html += '<span class="badge bg-light rounded-3 fw-semibold text-center">Money</span>';
                                 break;
                             default:
