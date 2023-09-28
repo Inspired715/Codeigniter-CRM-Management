@@ -4,7 +4,7 @@
 	class Leads_m extends CI_Model {
 		
     public function getTableData(){
-        $sql = "SELECT l.id, l.first_name, l.last_name, l.status, l.phone_number, l.email, p.full_name as created_by FROM leads l left join publisher p on l.created_by=p.id";
+        $sql = "SELECT l.id, l.first_name, l.last_name, l.status, l.phone_number, l.email, p.full_name as created_by, l.created_date FROM leads l left join publisher p on l.created_by=p.id";
 
         $query = $this->db->query($sql);
 
@@ -53,10 +53,15 @@
             return true;
     }
 
-    public function getLeadWithSub(){
-        $sql = "select l.*, sl.sub_name, sl.sub_value from leads l left join sub_leads sl on l.id=sl.lead_id";
-
-        $query = $this->db->query($sql);
+    public function getLeadWithSub($from='', $to=''){
+        $query = null;
+        if($from != ''){
+            $sql = "select l.*, sl.sub_name, sl.sub_value, l.created_date from leads l left join sub_leads sl on l.id=sl.lead_id where l.created_date >= ? and l.created_date <= ?";
+            $query = $this->db->query($sql, array($from, $to));
+        }else{
+            $sql = "select l.*, sl.sub_name, sl.sub_value from leads l left join sub_leads sl on l.id=sl.lead_id";
+            $query = $this->db->query($sql);
+        }
 
         $leads = $query->result();
 

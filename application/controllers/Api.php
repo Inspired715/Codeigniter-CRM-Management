@@ -9,7 +9,7 @@ class Api extends CI_Controller {
 		$this->load->model("Token_m");
         $this->load->model("Leads_m");
 	}
-    public function api_lead(){
+    public function api_lead($dates=''){
 		$method = $_SERVER['REQUEST_METHOD'];
 
         if(!isset($_SERVER["HTTP_X_API_KEY"])){
@@ -135,7 +135,8 @@ class Api extends CI_Controller {
                 $sub['state'] = $leads[0]->state;
                 $sub['country'] = $leads[0]->country;
                 $sub['email'] = $leads[0]->email;
-                
+                $sub['created_date'] = $leads[0]->created_date;
+
                 foreach($leads as $lead){
                     $sub[$lead->sub_name] = $lead->sub_value;
                 }
@@ -146,4 +147,64 @@ class Api extends CI_Controller {
             echo json_encode(array('status' => 200, 'data' => $finalLeads));
 		}
    }
+
+   public function filter_by_date($dates){
+        $method = $_SERVER['REQUEST_METHOD'];
+
+        if(!isset($_SERVER["HTTP_X_API_KEY"])){
+            echo json_encode(array('status' => 400, 'message' => "x-api-key field is not existed on header."));
+            return;
+        }
+
+        $publisher_id = $this->Token_m->checkToken($_SERVER["HTTP_X_API_KEY"]);
+        if($publisher_id == 0){
+            echo json_encode(array('status' => 401, 'message' => "Authentification error."));
+            return;
+        }
+
+        if($method === 'GET'){
+            $filter = preg_split("/-/", $dates);
+            if(count($filter) != 2){
+                echo json_encode(array('status' => 400, 'message' => 'Please follow this from-to style as the parameters(y.m.d). ex:2023.08.31-2023.09.28'));
+                return;
+            }
+
+            $from = $filter[0]; $to = $filter[1];
+
+            $result = $this->Leads_m->getLeadWithSub($from, $to);
+            $temp = [];
+            foreach($result as $item){
+                $temp[$item->id][] = $item;
+            }
+
+            $finalLeads = [];
+            foreach($temp as $leads){
+                $sub['id'] = $leads[0]->id;
+                $sub['first_name'] = $leads[0]->first_name;
+                $sub['last_name'] = $leads[0]->last_name;
+                $sub['status'] = $leads[0]->status;
+                $sub['title'] = $leads[0]->title;
+                $sub['web_site'] = $leads[0]->web_site;
+                $sub['phone_number'] = $leads[0]->phone_number;
+                $sub['created_by'] = $leads[0]->created_by;
+                $sub['modifyed_by'] = $leads[0]->modifyed_by;
+                $sub['address'] = $leads[0]->address;
+                $sub['city'] = $leads[0]->city;
+                $sub['state'] = $leads[0]->state;
+                $sub['country'] = $leads[0]->country;
+                $sub['email'] = $leads[0]->email;
+                $sub['created_date'] = $leads[0]->created_date;
+
+                foreach($leads as $lead){
+                    $sub[$lead->sub_name] = $lead->sub_value;
+                }
+
+                $finalLeads[] = $sub;
+            }
+
+            echo json_encode(array('status' => 200, 'data' => $finalLeads));
+        }else{
+            echo json_encode(array('status' => 405, 'message' => "GET method is available"));
+        }
+    }
 }

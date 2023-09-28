@@ -25,6 +25,9 @@
                                 <h6 class="fw-semibold mb-0 text-center color-white">Created by</h6>
                             </th>
                             <th class="border-bottom-0 bg-blue">
+                                <h6 class="fw-semibold mb-0 text-center color-white">Created date</h6>
+                            </th>
+                            <th class="border-bottom-0 bg-blue">
                                 <h6 class="fw-semibold mb-0 text-center color-white">Action</h6>
                             </th>
                         </tr>
@@ -63,6 +66,9 @@
                             </td>
                             <td class="border-bottom-0">
                                 <h6 class="fw-semibold mb-0"><?php echo $lead->created_by?></h6>
+                            </td>
+                            <td class="border-bottom-0">
+                                <h6 class="fw-semibold mb-0 text-center"><?php echo $lead->created_date?></h6>
                             </td>
                             <td class="border-bottom-0">
                                 <div class="text-center">
