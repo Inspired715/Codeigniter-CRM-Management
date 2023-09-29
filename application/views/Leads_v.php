@@ -2,7 +2,6 @@
     <div class="card w-100">
         <div class="card-body p-4">
             <h5 class="card-title fw-semibold mb-4">Leads</h5>
-            <?php if($_SESSION['role'] == 1){?>
             <div class="row">
                 <div class="col-lg-3">
                     <div class="mb-4">
@@ -19,6 +18,7 @@
                         </select>
                     </div>
                 </div>
+                <?php if($_SESSION['role'] == 1){?>
                 <div class="col-lg-3">
                     <div class="mb-4">
                         <label class="form-label fw-semibold">Created by</label>
@@ -30,11 +30,11 @@
                         </select>
                     </div>
                 </div>
+                <?php }?>
                 <div class="col-lg-3" style="display:flex;align-items:center">
                     <i class="ti ti-search" style="font-size:30px;cursor:pointer" id="search_btn"></i>
                 </div>
             </div>
-            <?php }?>
             <div class="table-responsive">
                 <table class="table text-nowrap mb-0 align-middle">
                     <thead class="text-dark fs-4">

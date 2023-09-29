@@ -64,5 +64,5 @@ $route['integration'] = 'Integration_c';
 $route['notification'] = 'Notification_c';
 
 $route['api/lead'] = 'Api/api_lead';
-$route['api/lead/(:any)'] = 'Api/filter_by_date/$1';
-$route['api/update'] = 'Api/update';
+$route['api/lead/get_leads'] = 'Api/GetLeads';
+/*$route['api/update'] = 'Api/update';*/

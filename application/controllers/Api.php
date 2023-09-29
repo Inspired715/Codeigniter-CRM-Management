@@ -118,61 +118,13 @@ class Api extends CI_Controller {
                 $this->Leads_m->insertSubLeads($sub_leads);
 
             echo json_encode(array('status' => 200, 'message' => "Successfully imported.", 'lead_id' => $lead_id));
-	   	}else if($method === 'GET'){
-            $result = $this->Leads_m->getLeadWithSub();
-            $temp = [];
-            foreach($result as $item){
-                $temp[$item->id][] = $item;
-            }
-
-            $finalLeads = [];
-            foreach($temp as $leads){
-                $sub['id'] = $leads[0]->id;
-                $sub['first_name'] = $leads[0]->first_name;
-                $sub['last_name'] = $leads[0]->last_name;
-                $sub['status_id'] = $leads[0]->status;
-                $sub['ftd_date'] = $leads[0]->ftd_date;
-                switch($leads[0]->status){
-                    case LEAD_STATUS_NOT_INTERESTED:
-                        $sub['status'] = "NOT INTERESTED";
-                        break;
-                    case LEAD_STATUS_FOLLOW_UP:
-                        $sub['status'] = "FOLLOW UP";
-                        break;
-                    case LEAD_STATUS_FTD:
-                        $sub['status'] = "FTD";
-                        break;
-                    case LEAD_STATUS_WRONG_NUMBER:
-                        $sub['status'] = "WRONG NUMBER";
-                        break;
-                    default:
-                        $sub['status'] = "NOT INTERESTED";
-                }
-                
-                $sub['title'] = $leads[0]->title;
-                $sub['web_site'] = $leads[0]->web_site;
-                $sub['phone_number'] = $leads[0]->phone_number;
-                $sub['created_by'] = $leads[0]->created_by;
-                $sub['modifyed_by'] = $leads[0]->modifyed_by;
-                $sub['address'] = $leads[0]->address;
-                $sub['city'] = $leads[0]->city;
-                $sub['state'] = $leads[0]->state;
-                $sub['country'] = $leads[0]->country;
-                $sub['email'] = $leads[0]->email;
-                $sub['created_date'] = $leads[0]->created_date;
-
-                foreach($leads as $lead){
-                    $sub[$lead->sub_name] = $lead->sub_value;
-                }
-
-                $finalLeads[] = $sub;
-            }
-
-            echo json_encode(array('status' => 200, 'data' => $finalLeads));
+	   	}else {
+            echo json_encode(array('status' => 405, 'message' => "GET method is available"));
 		}
    }
 
-   public function filter_by_date($dates){
+   public function GetLeads(){
+
         $method = $_SERVER['REQUEST_METHOD'];
 
         if(!isset($_SERVER["HTTP_X_API_KEY"])){
@@ -190,14 +142,9 @@ class Api extends CI_Controller {
         $publisher_id = $res['publisher_id'];
         $offset = $res['offset'];
 
-        if($method === 'GET'){
-            $filter = preg_split("/-/", $dates);
-            if(count($filter) != 2){
-                echo json_encode(array('status' => 400, 'message' => 'Please follow this from-to style as the parameters(y.m.d). ex:2023.08.31-2023.09.28'));
-                return;
-            }
-
-            $from = $filter[0]; $to = $filter[1];
+        if($method === 'POST'){
+            $from = isset($_POST["from"])?$_POST["from"]:'';
+            $to = isset($_POST["to"])?$_POST["to"]:'';
 
             $result = $this->Leads_m->getLeadWithSub($from, $to);
             $temp = [];
@@ -252,59 +199,59 @@ class Api extends CI_Controller {
         }
     }
 
-    public function update(){
-        $method = $_SERVER['REQUEST_METHOD'];
+    // public function update(){
+    //     $method = $_SERVER['REQUEST_METHOD'];
 
-        if(!isset($_SERVER["HTTP_X_API_KEY"])){
-            echo json_encode(array('status' => 400, 'message' => "x-api-key field is not existed on header."));
-            return;
-        }
+    //     if(!isset($_SERVER["HTTP_X_API_KEY"])){
+    //         echo json_encode(array('status' => 400, 'message' => "x-api-key field is not existed on header."));
+    //         return;
+    //     }
 
-        $res = $this->Token_m->checkToken($_SERVER["HTTP_X_API_KEY"]);
+    //     $res = $this->Token_m->checkToken($_SERVER["HTTP_X_API_KEY"]);
 
-        if($res == 0){
-            echo json_encode(array('status' => 401, 'message' => "Authentification error."));
-            return;
-        }
+    //     if($res == 0){
+    //         echo json_encode(array('status' => 401, 'message' => "Authentification error."));
+    //         return;
+    //     }
 
-        $publisher_id = $res['publisher_id'];
-        $offset = $res['offset'];
+    //     $publisher_id = $res['publisher_id'];
+    //     $offset = $res['offset'];
 
-		if ($method === 'POST') {
-            if(!isset($_POST["seamotech_id"])){
-                echo json_encode(array('status' => 400, 'message' => "seamotech_id field is not existed on body and this is required field."));
-                return;
-            }
-            if($_POST["seamotech_id"] == ''){
-                echo json_encode(array('status' => 400, 'message' => "seamotech_id is required field."));
-                return;
-            }
-            if(!isset($_POST["status"])){
-                echo json_encode(array('status' => 400, 'message' => "status field is not existed on body and this is required field."));
-                return;
-            }
-            if($_POST["status"] == ''){
-                echo json_encode(array('status' => 400, 'message' => "status is required field."));
-                return;
-            }
-            if(!isset($_POST["ftd_date"])){
-                echo json_encode(array('status' => 400, 'message' => "ftd_date field is not existed on body and this is required field."));
-                return;
-            }
+	// 	if ($method === 'POST') {
+    //         if(!isset($_POST["seamotech_id"])){
+    //             echo json_encode(array('status' => 400, 'message' => "seamotech_id field is not existed on body and this is required field."));
+    //             return;
+    //         }
+    //         if($_POST["seamotech_id"] == ''){
+    //             echo json_encode(array('status' => 400, 'message' => "seamotech_id is required field."));
+    //             return;
+    //         }
+    //         if(!isset($_POST["status"])){
+    //             echo json_encode(array('status' => 400, 'message' => "status field is not existed on body and this is required field."));
+    //             return;
+    //         }
+    //         if($_POST["status"] == ''){
+    //             echo json_encode(array('status' => 400, 'message' => "status is required field."));
+    //             return;
+    //         }
+    //         if(!isset($_POST["ftd_date"])){
+    //             echo json_encode(array('status' => 400, 'message' => "ftd_date field is not existed on body and this is required field."));
+    //             return;
+    //         }
 
-            $sub['lead_id'] = $_POST["seamotech_id"];
-            $sub['status'] = $_POST["status"];
-            $sub['ftd_date'] = $_POST["ftd_date"];
+    //         $sub['lead_id'] = $_POST["seamotech_id"];
+    //         $sub['status'] = $_POST["status"];
+    //         $sub['ftd_date'] = $_POST["ftd_date"];
 
-            $res = $this->Notification_m->insertNotification($sub);
-			if(!$res){
-                echo json_encode(array('status' => 500, 'message' => "Server Error."));
-                return;
-            }
+    //         $res = $this->Notification_m->insertNotification($sub);
+	// 		if(!$res){
+    //             echo json_encode(array('status' => 500, 'message' => "Server Error."));
+    //             return;
+    //         }
 
-            echo json_encode(array('status' => 200, 'message' => "Successfully updated."));
-        }else{
-            echo json_encode(array('status' => 405, 'message' => "GET method is available"));
-        }
-    }
+    //         echo json_encode(array('status' => 200, 'message' => "Successfully updated."));
+    //     }else{
+    //         echo json_encode(array('status' => 405, 'message' => "GET method is available"));
+    //     }
+    // }
 }
