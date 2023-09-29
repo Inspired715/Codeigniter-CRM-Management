@@ -99,7 +99,7 @@ $(document).ready(function () {
                                 html += '<span class="badge bg-danger rounded-3 fw-semibold text-center">Ftd</span>';
                                 break;
                             case "4":
-                                html += '<span class="badge bg-info rounded-3 fw-semibold text-center">Wrong number</span>';
+                                html += '<span class="badge bg-dark rounded-3 fw-semibold text-center">Wrong number</span>';
                                 break;
                             case "5":
                                 html += '<span class="badge bg-warning rounded-3 fw-semibold text-center">Unqualified</span>';
@@ -108,7 +108,7 @@ $(document).ready(function () {
                                 html += '<span class="badge bg-secondary rounded-3 fw-semibold text-center">New</span>';
                                 break;
                             case "7":
-                                html += '<span class="badge bg-light rounded-3 fw-semibold text-center">Money</span>';
+                                html += '<span class="badge bg-info rounded-3 fw-semibold text-center">Money</span>';
                                 break;
                             default:
                                 html += '<span class="badge bg-primary rounded-3 fw-semibold text-center">Not interested</span>';

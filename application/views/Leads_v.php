@@ -87,16 +87,16 @@
                                         echo '<span class="badge bg-danger rounded-3 fw-semibold text-center">Ftd</span>';
                                         break;
                                     case LEAD_STATUS_WRONG_NUMBER:
-                                        echo '<span class="badge bg-info rounded-3 fw-semibold text-center">Wrong number</span>';
+                                        echo '<span class="badge bg-dark rounded-3 fw-semibold text-center">Wrong number</span>';
                                         break;
                                     case LEAD_STATUS_UNQUALIFIED:
-                                        echo '<span class="badge bg-warning rounded-3 fw-semibold text-center">Wrong number</span>';
+                                        echo '<span class="badge bg-warning rounded-3 fw-semibold text-center">Unqualified</span>';
                                         break;
                                     case LEAD_STATUS_NEW:
-                                        echo '<span class="badge bg-secondary rounded-3 fw-semibold text-center">Wrong number</span>';
+                                        echo '<span class="badge bg-secondary rounded-3 fw-semibold text-center">New</span>';
                                         break;
                                     case LEAD_STATUS_MONEY:
-                                        echo '<span class="badge bg-dark rounded-3 fw-semibold text-center">Wrong number</span>';
+                                        echo '<span class="badge bg-info rounded-3 fw-semibold text-center">Money</span>';
                                         break;
                                     default:
                                         echo '<span class="badge bg-primary rounded-3 fw-semibold text-center">Not interested</span>';

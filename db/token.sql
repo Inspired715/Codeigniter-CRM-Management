@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : localhost
+ Source Server         : 23.227.199.175
  Source Server Type    : MySQL
  Source Server Version : 100424
- Source Host           : localhost:3306
+ Source Host           : 23.227.199.175:3306
  Source Schema         : token
 
  Target Server Type    : MySQL
  Target Server Version : 100424
  File Encoding         : 65001
 
- Date: 27/09/2023 04:16:07
+ Date: 29/09/2023 10:43:52
 */
 
 SET NAMES utf8mb4;
@@ -36,16 +36,49 @@ CREATE TABLE `leads`  (
   `state` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `country` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `created_date` date NOT NULL DEFAULT current_timestamp,
+  `ftd_date` date NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 21 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of leads
 -- ----------------------------
-INSERT INTO `leads` VALUES (1, 'Dylan', 'Rivera', 1, 'Full Stack Developer', 'https://koenajourna..com', '1123456046', '1', NULL, '775 Rd', 'JacksonTownship', 'NJ', 'US', 'mailto:dylanrivera test@mail.com');
-INSERT INTO `leads` VALUES (2, 'Track', 'Box', 2, 'Testing title', 'https://koenajourna..com', '1123457898', '2', NULL, '775 Rd', 'JacksonTownship', 'NJ', 'US', 'mailto:dylanrivera test@mail.com');
-INSERT INTO `leads` VALUES (3, 'Jacob', 'Dane', 3, 'Gentle man', 'https://koenajourna..com', '5701546975', '1', NULL, '8878 River', 'Jackson', 'OK', 'US', 'mailto:dylanrivera test@mail.com');
-INSERT INTO `leads` VALUES (13, 'Track', 'Box', 1, 'Testing title', 'https://koenajourna..com', '4859632514', '3', NULL, '775 Rd', 'JacksonTownship', 'NJ', 'US', 'mailto:dylanrivera test@mail.com');
+INSERT INTO `leads` VALUES (15, 'kevin', 'Pineda', 1, '', '', '2012556987', '6', NULL, '', '', 'NJ', 'US', '', '2023-09-28', NULL);
+INSERT INTO `leads` VALUES (16, 'Ashraf', 'team', 1, '', '', '2012556988', '6', NULL, '', '', 'NJ', 'US', '', '2023-09-28', NULL);
+INSERT INTO `leads` VALUES (17, 'ADIR', 'TEST', 4, 'CRM lead', 'source', '1212345675', '5', NULL, 'NJ', 'NJ', 'NJ', 'US', 'ADIR_TEST@gmail.com', '2023-09-28', NULL);
+INSERT INTO `leads` VALUES (18, 'ADIR', 'TEST', 3, 'CRM lead', 'source', '1212345611', '5', NULL, 'NJ', 'NJ', 'NJ', 'US', 'ADIR_TEST@gmail.com', '2023-09-28', '2023-09-28');
+INSERT INTO `leads` VALUES (19, 'ADIR', 'TEST', 1, 'CRM lead', 'source', '1212345610', '5', NULL, 'NJ', 'NJ', 'NJ', 'US', 'ADIR_TEST@gmail.com', '2023-09-29', NULL);
+INSERT INTO `leads` VALUES (20, 'Skylar', 'Casey', 3, 'CRM lead', 'TRACKBOX_Source', '1212345678', '5', NULL, 'NJ', 'NJ', 'NJ', 'GB', 'skylarcasey_test@gmail.com', '2023-09-29', '2023-09-29');
+
+-- ----------------------------
+-- Table structure for limits
+-- ----------------------------
+DROP TABLE IF EXISTS `limits`;
+CREATE TABLE `limits`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `publisher_id` int(11) NULL DEFAULT NULL,
+  `offset` int(255) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Table structure for notification
+-- ----------------------------
+DROP TABLE IF EXISTS `notification`;
+CREATE TABLE `notification`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `lead_id` int(11) NULL DEFAULT NULL,
+  `status` int(11) NULL DEFAULT NULL,
+  `ftd_date` datetime(0) NULL DEFAULT NULL,
+  `updated` int(11) NULL DEFAULT 0,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of notification
+-- ----------------------------
+INSERT INTO `notification` VALUES (2, 15, 3, '0000-00-00 00:00:00', 0);
 
 -- ----------------------------
 -- Table structure for publisher
@@ -57,16 +90,15 @@ CREATE TABLE `publisher`  (
   `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `phone_number` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `token` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `created_date` datetime(0) NULL DEFAULT sysdate,
+  `created_date` datetime(0) NULL DEFAULT current_timestamp(0),
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of publisher
 -- ----------------------------
-INSERT INTO `publisher` VALUES (1, 'Parias', 'parias@gmail.com', '2132620113', '7334890f1994608a537eb9d94601224eca1ac4e904f33bde2dd6e8d3da5575dc', '2023-09-27 01:43:10');
-INSERT INTO `publisher` VALUES (2, 'Kevin', 'kevin@gmail.com', '2012557969', 'b8f9b427e24309dae08e208c0f349dcf665135d797481856229e1ed09d3bf79d', '2023-09-27 01:50:39');
-INSERT INTO `publisher` VALUES (3, 'Test', 'amdin@aminl.com', '25689748484', '0b0be6541640ae11f3142ba67dac077484081f215afc1141f33629dda0ac354f', '2023-09-27 03:37:22');
+INSERT INTO `publisher` VALUES (5, 'ZGB SL', 'maciej@zgbservices.com', '34690166897', '1023dae71bf18cbd8b93856947b75a0f26bc96bb0be49b29cf922c292a623980', '2023-09-27 06:47:46');
+INSERT INTO `publisher` VALUES (6, 'Kevin', 'mp5840836@gmail.com', '2012557619', 'b4df67f651cf35c623d039a35790d43f38ebd29be983cefc8822de2fd3b9c42a', '2023-09-28 00:20:45');
 
 -- ----------------------------
 -- Table structure for sub_leads
@@ -78,7 +110,7 @@ CREATE TABLE `sub_leads`  (
   `sub_value` varchar(512) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `lead_id` int(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 48 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 76 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sub_leads
@@ -129,6 +161,34 @@ INSERT INTO `sub_leads` VALUES (44, 'redirect', '2', 13);
 INSERT INTO `sub_leads` VALUES (45, 'prefix', '55', 13);
 INSERT INTO `sub_leads` VALUES (46, 'currency', 'usd', 13);
 INSERT INTO `sub_leads` VALUES (47, 'sub', '29dbbfa2a6aab3333d0a503', 13);
+INSERT INTO `sub_leads` VALUES (48, 'MPC_1', 'camp', 14);
+INSERT INTO `sub_leads` VALUES (49, 'MPC_2', '', 14);
+INSERT INTO `sub_leads` VALUES (50, 'MPC_4', 'TRACKOX_Source', 14);
+INSERT INTO `sub_leads` VALUES (51, 'MPC_3', '', 14);
+INSERT INTO `sub_leads` VALUES (52, 'MPC_5', 'null', 14);
+INSERT INTO `sub_leads` VALUES (53, 'rd', '2', 14);
+INSERT INTO `sub_leads` VALUES (54, 'so', 'AFF_2958116', 14);
+INSERT INTO `sub_leads` VALUES (55, 'co', 'BR', 14);
+INSERT INTO `sub_leads` VALUES (56, 'code', 'BR', 14);
+INSERT INTO `sub_leads` VALUES (57, 'group', '101', 14);
+INSERT INTO `sub_leads` VALUES (58, 'campaign', '1', 14);
+INSERT INTO `sub_leads` VALUES (59, 'camp', 'null', 14);
+INSERT INTO `sub_leads` VALUES (60, 'username', 'mailto:dylanrivera test@mail.com', 14);
+INSERT INTO `sub_leads` VALUES (61, 'redirect', '2', 14);
+INSERT INTO `sub_leads` VALUES (62, 'prefix', '55', 14);
+INSERT INTO `sub_leads` VALUES (63, 'currency', 'usd', 14);
+INSERT INTO `sub_leads` VALUES (64, 'sub', '29dbbfa2a6aab3333d0a503', 14);
+INSERT INTO `sub_leads` VALUES (65, 'MPC_1', 'test mpc', 15);
+INSERT INTO `sub_leads` VALUES (66, 'MPC_1', 'test mpc', 16);
+INSERT INTO `sub_leads` VALUES (67, 'From', 'Kevin', 16);
+INSERT INTO `sub_leads` VALUES (68, 'Prefix', '44', 17);
+INSERT INTO `sub_leads` VALUES (69, 'Redirect', '2', 17);
+INSERT INTO `sub_leads` VALUES (70, 'Prefix', '44', 18);
+INSERT INTO `sub_leads` VALUES (71, 'Redirect', '2', 18);
+INSERT INTO `sub_leads` VALUES (72, 'Prefix', '44', 19);
+INSERT INTO `sub_leads` VALUES (73, 'Redirect', '2', 19);
+INSERT INTO `sub_leads` VALUES (74, 'Perfix', '44', 20);
+INSERT INTO `sub_leads` VALUES (75, 'Redirect', '2', 20);
 
 -- ----------------------------
 -- Table structure for users
@@ -142,12 +202,14 @@ CREATE TABLE `users`  (
   `status` int(255) NULL DEFAULT NULL,
   `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `role` int(255) NULL DEFAULT NULL,
+  `publisher_id` int(11) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES (1, 'admin', 'Kevin', 'Pineda', 1, '202cb962ac59075b964b07152d234b70', 1);
+INSERT INTO `users` VALUES (1, 'admin', 'Kevin', 'Pineda', 1, '1a61442ae6e5c3d9b1f32742f6e06ba8', 1, 0);
+INSERT INTO `users` VALUES (2, 'ZGB', 'ZGB', 'SL', 1, '28265a520bd1cb2856f1688865c72e75', 2, 5);
 
 SET FOREIGN_KEY_CHECKS = 1;
