@@ -85,9 +85,7 @@ analyse performance with our award-winning CRM platform</h6>
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-8 aos-init" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
-                            <h2 class="text-center mb-0 fs-9 fw-bolder">Production Ready &amp; Developer Friendly
-                                Bootstrap Admin
-                                Template</h2>
+                            <h2 class="text-center mb-0 fs-9 fw-bolder"> Build a positive impact on your business. Check out what we have to offer.</h2>
                         </div>
                     </div>
                     <div class="domo-contect position-relative">
@@ -99,7 +97,7 @@ analyse performance with our award-winning CRM platform</h6>
                                         <img src="<?php echo base_url('assets/img/demo.png')?>" alt=""
                                             class="img-fluid">
                                     </div>
-                                    <h6 class="mb-0 text-center fs-3">New</h6>
+                                    <h6 class="mb-0 text-center fs-3">Publishing 30 Countries</h6>
                                 </div>
                                 <div class="col-sm-6 col-lg-4 mb-8">
                                     <div
@@ -107,7 +105,7 @@ analyse performance with our award-winning CRM platform</h6>
                                         <img src="<?php echo base_url('assets/img/demo2.png')?>" alt=""
                                             class="img-fluid">
                                     </div>
-                                    <h6 class="mb-0 text-center fs-3">Not Interested</h6>
+                                    <h6 class="mb-0 text-center fs-3">Advertising 7 languages</h6>
                                 </div>
                                 <div class="col-sm-6 col-lg-4 mb-8">
                                     <div
@@ -115,7 +113,7 @@ analyse performance with our award-winning CRM platform</h6>
                                         <img src="<?php echo base_url('assets/img/demo3.png')?>" alt=""
                                             class="img-fluid">
                                     </div>
-                                    <h6 class="mb-0 text-center fs-3">Follow up</h6>
+                                    <h6 class="mb-0 text-center fs-3">Serving 90M Daily Impression</h6>
                                 </div>
                                 <div class="col-sm-6 col-lg-4 mb-8">
                                     <div
@@ -123,7 +121,7 @@ analyse performance with our award-winning CRM platform</h6>
                                         <img src="<?php echo base_url('assets/img/demo4.png')?>" alt=""
                                             class="img-fluid">
                                     </div>
-                                    <h6 class="mb-0 text-center fs-3">FTD</h6>
+                                    <h6 class="mb-0 text-center fs-3">Collabaration 150 Publishers</h6>
                                 </div>
                                 <div class="col-sm-6 col-lg-4 mb-8">
                                     <div
@@ -131,15 +129,7 @@ analyse performance with our award-winning CRM platform</h6>
                                         <img src="<?php echo base_url('assets/img/demo5.png')?>" alt=""
                                             class="img-fluid">
                                     </div>
-                                    <h6 class="mb-0 text-center fs-3">Unqualified</h6>
-                                </div>
-                                <div class="col-sm-6 col-lg-4 mb-8">
-                                    <div
-                                        class="border d-block rounded-1 mb-2 position-relative lp-demos-box overflow-hidden">
-                                        <img src="<?php echo base_url('assets/img/demo6.png')?>" alt=""
-                                            class="img-fluid">
-                                    </div>
-                                    <h6 class="mb-0 text-center fs-3">Wrong number</h6>
+                                    <h6 class="mb-0 text-center fs-3">Tracking 105M Events Daily</h6>
                                 </div>
                             </div>
                         </div>
