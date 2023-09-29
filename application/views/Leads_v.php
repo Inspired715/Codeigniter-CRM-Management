@@ -96,7 +96,7 @@
                                         echo '<span class="badge bg-secondary rounded-3 fw-semibold text-center">Wrong number</span>';
                                         break;
                                     case LEAD_STATUS_MONEY:
-                                        echo '<span class="badge bg-light rounded-3 fw-semibold text-center">Wrong number</span>';
+                                        echo '<span class="badge bg-dark rounded-3 fw-semibold text-center">Wrong number</span>';
                                         break;
                                     default:
                                         echo '<span class="badge bg-primary rounded-3 fw-semibold text-center">Not interested</span>';

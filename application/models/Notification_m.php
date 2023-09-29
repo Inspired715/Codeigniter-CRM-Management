@@ -10,7 +10,7 @@
     }
 
     public function getNotification(){
-        $sql = "SELECT l.first_name, l.last_name, n.status, n.updated, n.ftd_date from notification n left join leads l on n.lead_id=l.id";
+        $sql = "SELECT concat(l.first_name, ' ', l.last_name) as full_name, n.status, n.updated, n.ftd_date from notification n left join leads l on n.lead_id=l.id";
         
         $query = $this->db->query($sql);
 

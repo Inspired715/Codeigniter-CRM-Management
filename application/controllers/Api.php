@@ -18,7 +18,11 @@ class Api extends CI_Controller {
             return;
         }
 
-        $publisher_id = $this->Token_m->checkToken($_SERVER["HTTP_X_API_KEY"]);
+        $res = $this->Token_m->checkToken($_SERVER["HTTP_X_API_KEY"]);
+
+        $publisher_id = $res['publisher_id'];
+        $offset = $res['offset'];
+        
         if($publisher_id == 0){
             echo json_encode(array('status' => 401, 'message' => "Authentification error."));
             return;
@@ -98,6 +102,7 @@ class Api extends CI_Controller {
             $leads['country']           = $_POST["country"];
             $leads['email']             = $_POST["email"];
             $leads['ftd_date']          = NULL;
+        
             $lead_id = $this->Leads_m->insertLeads($leads);
 
             $keys = ['first_name', 'last_name', 'title', 'web_site','phone_number', 'status', 'created_by', 'modifyed_by', 'address', 'city', 'state', 'country', 'email'];
@@ -175,7 +180,10 @@ class Api extends CI_Controller {
             return;
         }
 
-        $publisher_id = $this->Token_m->checkToken($_SERVER["HTTP_X_API_KEY"]);
+        $res = $this->Token_m->checkToken($_SERVER["HTTP_X_API_KEY"]);
+        $publisher_id = $res['publisher_id'];
+        $offset = $res['offset'];
+
         if($publisher_id == 0){
             echo json_encode(array('status' => 401, 'message' => "Authentification error."));
             return;
@@ -251,7 +259,10 @@ class Api extends CI_Controller {
             return;
         }
 
-        $publisher_id = $this->Token_m->checkToken($_SERVER["HTTP_X_API_KEY"]);
+        $res = $this->Token_m->checkToken($_SERVER["HTTP_X_API_KEY"]);
+        $publisher_id = $res['publisher_id'];
+        $offset = $res['offset'];
+
         if($publisher_id == 0){
             echo json_encode(array('status' => 401, 'message' => "Authentification error."));
             return;

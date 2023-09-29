@@ -25,11 +25,15 @@ class Token_c extends MY_Controller {
 			echo json_encode(array('status' => 400, 'message' => "Please input all fields."));
 			return;
 		}else{
-			$enable = $this->Token_m->checkToken($pNumber);
+			$enable = $this->Token_m->validToken($pNumber);
 			if($enable == 0){
 				$plain = $email.PRIMARY_KEY.$fullName.$pNumber;
 				$key = hash('sha256', $plain);
-				$this->Token_m->insertToken($fullName, $email, $pNumber, $key);
+				
+				$publisher_id = $this->Token_m->insertToken($fullName, $email, $pNumber, $key);
+
+				$this->Token_m->insertOffset($publisher_id);
+				
 				echo json_encode(array('status' => 200, 'message' => "Generated successfully."));
 			}else{
 				echo json_encode(array('status' => 405, 'message' => "Duplicated phone number."));

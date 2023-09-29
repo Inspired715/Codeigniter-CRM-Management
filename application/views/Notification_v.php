@@ -24,7 +24,7 @@
                         <?php foreach($params as $notification){ ?>
                         <tr>
                             <td class="border-bottom-0">
-                                <h6 class="fw-semibold mb-0"><?php echo $notification->first_name?></h6>
+                                <h6 class="fw-semibold mb-0"><?php echo $notification->full_name?></h6>
                             </td>
                             <td class="border-bottom-0">
                                 <div class="text-center">
@@ -50,13 +50,13 @@
                             <div class="text-center">
                                 <?php switch($notification->updated){
                                     case 0:
-                                        echo '<span class="badge bg-primary rounded-3 fw-semibold text-center">New</span>';
+                                        echo '<span class="badge bg-primary rounded-3 fw-semibold text-center">Processing</span>';
                                         break;
                                     case 1:
                                         echo '<span class="badge bg-success rounded-3 fw-semibold text-center">Updated</span>';
                                         break;
                                     default:
-                                        echo '<span class="badge bg-primary rounded-3 fw-semibold text-center">New</span>';
+                                        echo '<span class="badge bg-primary rounded-3 fw-semibold text-center">Processing</span>';
                                 }?>
                                 </div>
                             </td>
