@@ -46,6 +46,10 @@ $(document).ready(function () {
                         <div class="mb-3 fit-width">
                             <label class="form-label">Country</label>
                             <input type="type" class="form-control" value="${res.data[0].country?res.data[0].country:''}">
+                        </div>
+                        <div class="mb-3 fit-width">
+                            <label class="form-label">FTD date</label>
+                            <input type="type" class="form-control" value="${res.data[0].country?res.data[0].ftd_date:''}">
                         </div>`;
 
                     res.data.forEach((item) => {

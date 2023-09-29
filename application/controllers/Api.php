@@ -20,14 +20,14 @@ class Api extends CI_Controller {
 
         $res = $this->Token_m->checkToken($_SERVER["HTTP_X_API_KEY"]);
 
-        $publisher_id = $res['publisher_id'];
-        $offset = $res['offset'];
-        
-        if($publisher_id == 0){
+        if($res == 0){
             echo json_encode(array('status' => 401, 'message' => "Authentification error."));
             return;
         }
 
+        $publisher_id = $res['publisher_id'];
+        $offset = $res['offset'];
+        
 		if ($method === 'POST') {
             if(!isset($_POST["phone_number"])){
                 echo json_encode(array('status' => 400, 'message' => "phone_number field is not existed on body and this is required field."));
@@ -181,13 +181,14 @@ class Api extends CI_Controller {
         }
 
         $res = $this->Token_m->checkToken($_SERVER["HTTP_X_API_KEY"]);
-        $publisher_id = $res['publisher_id'];
-        $offset = $res['offset'];
 
-        if($publisher_id == 0){
+        if($res == 0){
             echo json_encode(array('status' => 401, 'message' => "Authentification error."));
             return;
         }
+
+        $publisher_id = $res['publisher_id'];
+        $offset = $res['offset'];
 
         if($method === 'GET'){
             $filter = preg_split("/-/", $dates);
@@ -260,13 +261,14 @@ class Api extends CI_Controller {
         }
 
         $res = $this->Token_m->checkToken($_SERVER["HTTP_X_API_KEY"]);
-        $publisher_id = $res['publisher_id'];
-        $offset = $res['offset'];
 
-        if($publisher_id == 0){
+        if($res == 0){
             echo json_encode(array('status' => 401, 'message' => "Authentification error."));
             return;
         }
+
+        $publisher_id = $res['publisher_id'];
+        $offset = $res['offset'];
 
 		if ($method === 'POST') {
             if(!isset($_POST["seamotech_id"])){

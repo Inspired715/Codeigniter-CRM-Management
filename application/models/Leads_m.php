@@ -26,7 +26,7 @@
     }
 
     public function getLeadDetail($lid){
-        $sql = "SELECT l.first_name, l.last_name, l.title, l.web_site, l.address, l.city, l.state, l.email, l.country, s.* FROM sub_leads s Left Join leads l on s.lead_id=l.id WHERE s.lead_id=?";
+        $sql = "SELECT l.first_name, l.last_name, l.title, l.web_site, l.address, l.city, l.state, l.email, l.country, l.ftd_date, s.* FROM sub_leads s Left Join leads l on s.lead_id=l.id WHERE s.lead_id=?";
 
         $query = $this->db->query($sql, array($lid));
 
