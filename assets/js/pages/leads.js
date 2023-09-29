@@ -1,6 +1,49 @@
 "use strict";
 
 $(document).ready(function () {
+    loadData();
+
+    function drawChart(series){
+        var chart_pie_simple = null;
+
+        var options_simple = {
+            series: series,
+            chart: {
+              width: 380,
+              type: "pie",
+            },
+            colors: ["#13DEB9", "black", "#ffae1f", "#fa896b", "#39b69a", "#6610f2", "#FFAE1F"],
+            labels: ["Not interested", "New", "Follow up", "FTD", "Wrong number", "Unqualified", "Money"],
+            responsive: [{
+              breakpoint: 600,
+              options: {
+                chart: {
+                  width: 300,
+                },
+                legend: {
+                  position: "bottom",
+                },
+              },
+            }, ],
+            legend: {
+              labels: {
+                colors: ["#a1aab2"],
+              },
+            },
+          };
+        
+          if(chart_pie_simple == null){
+            chart_pie_simple = new ApexCharts(
+                document.querySelector("#chart-pie-simple"),
+                options_simple
+              );
+          }
+
+          chart_pie_simple.render();
+
+          window.dispatchEvent(new Event('resize'))
+    }
+
     function onDetail(lead_id){
         $.ajax({
             url: BASE_URL + "getLeadDetail",
@@ -71,7 +114,7 @@ $(document).ready(function () {
 
     window.onDetail = onDetail
 
-    $('#search_btn').click(function(){
+    function loadData(){
         $.ajax({
             url: BASE_URL + "refreshLeadTable",
             method: "POST",
@@ -83,6 +126,8 @@ $(document).ready(function () {
                 let res = JSON.parse(response);
                 if(res.status == 200){
                     let html = "";
+                    let notCnt=0,newCnt=0,followCnt=0,ftdCnt=0,wrongCnt=0,unqCnt=0,moneyCnt=0;
+                    
                     res.data.forEach((item) => {
                         html += '<tr>';
                         html += '<td class="border-bottom-0"><h6 class="fw-semibold mb-0">'+ item.first_name +'</h6></td>';
@@ -91,27 +136,35 @@ $(document).ready(function () {
                         switch(item.status){
                             case "1":
                                 html += '<span class="badge bg-primary rounded-3 fw-semibold text-center">Not interested</span>';
+                                notCnt ++;
                                 break;
                             case "2":
                                 html += '<span class="badge bg-success rounded-3 fw-semibold text-center">Follow up</span>';
+                                followCnt++;
                                 break;
                             case "3":
                                 html += '<span class="badge bg-danger rounded-3 fw-semibold text-center">Ftd</span>';
+                                ftdCnt++;
                                 break;
                             case "4":
                                 html += '<span class="badge bg-dark rounded-3 fw-semibold text-center">Wrong number</span>';
+                                wrongCnt++;
                                 break;
                             case "5":
                                 html += '<span class="badge bg-warning rounded-3 fw-semibold text-center">Unqualified</span>';
+                                unqCnt++;
                                 break;
                             case "6":
                                 html += '<span class="badge bg-secondary rounded-3 fw-semibold text-center">New</span>';
+                                newCnt++;
                                 break;
                             case "7":
                                 html += '<span class="badge bg-info rounded-3 fw-semibold text-center">Money</span>';
+                                moneyCnt++;
                                 break;
                             default:
                                 html += '<span class="badge bg-primary rounded-3 fw-semibold text-center">Not interested</span>';
+                                notCnt++;
                         }
 
                         html += '<td class="border-bottom-0"><h6 class="mb-0 fw-semibold text-center">'+ item.phone_number +'</h6></td>';
@@ -123,10 +176,15 @@ $(document).ready(function () {
                     })
 
                     $('#lead_table').html(html);
+                    drawChart(new Array(notCnt, newCnt, followCnt, ftdCnt, wrongCnt, unqCnt, moneyCnt))
                 }else{
                     Toast.danger('Error!');
                 }
             }
         })
+    }
+
+    $('#search_btn').click(function(){
+        loadData();
     });
 });

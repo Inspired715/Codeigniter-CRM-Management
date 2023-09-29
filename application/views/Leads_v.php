@@ -66,66 +66,14 @@
                         </tr>
                     </thead>
                     <tbody id="lead_table">
-                        <?php foreach($params as $lead){ ?>
-                        <tr>
-                            <td class="border-bottom-0">
-                                <h6 class="fw-semibold mb-0"><?php echo $lead->first_name?></h6>
-                            </td>
-                            <td class="border-bottom-0">
-                                <h6 class="fw-semibold mb-0"><?php echo $lead->last_name?></h6>
-                            </td>
-                            <td class="border-bottom-0">
-                                <div class="text-center">
-                                <?php switch($lead->status){
-                                    case LEAD_STATUS_NOT_INTERESTED:
-                                        echo '<span class="badge bg-primary rounded-3 fw-semibold text-center">Not interested</span>';
-                                        break;
-                                    case LEAD_STATUS_FOLLOW_UP:
-                                        echo '<span class="badge bg-success rounded-3 fw-semibold text-center">Follow up</span>';
-                                        break;
-                                    case LEAD_STATUS_FTD:
-                                        echo '<span class="badge bg-danger rounded-3 fw-semibold text-center">Ftd</span>';
-                                        break;
-                                    case LEAD_STATUS_WRONG_NUMBER:
-                                        echo '<span class="badge bg-dark rounded-3 fw-semibold text-center">Wrong number</span>';
-                                        break;
-                                    case LEAD_STATUS_UNQUALIFIED:
-                                        echo '<span class="badge bg-warning rounded-3 fw-semibold text-center">Unqualified</span>';
-                                        break;
-                                    case LEAD_STATUS_NEW:
-                                        echo '<span class="badge bg-secondary rounded-3 fw-semibold text-center">New</span>';
-                                        break;
-                                    case LEAD_STATUS_MONEY:
-                                        echo '<span class="badge bg-info rounded-3 fw-semibold text-center">Money</span>';
-                                        break;
-                                    default:
-                                        echo '<span class="badge bg-primary rounded-3 fw-semibold text-center">Not interested</span>';
-                                }?>
-                                </div>
-                            </td>
-                            <td class="border-bottom-0">
-                                <h6 class="mb-0 fw-semibold text-center"><?php echo $lead->phone_number?></h6>
-                            </td>
-                            <td class="border-bottom-0">
-                                <h6 class="fw-semibold mb-0"><?php echo $lead->email?></h6>
-                            </td>
-                            <td class="border-bottom-0">
-                                <h6 class="fw-semibold mb-0"><?php echo $lead->created_by?></h6>
-                            </td>
-                            <td class="border-bottom-0">
-                                <h6 class="fw-semibold mb-0 text-center"><?php echo $lead->created_date?></h6>
-                            </td>
-                            <td class="border-bottom-0">
-                                <div class="text-center">
-                                    <span class="badge bg-secondary rounded-3 fw-semibold more pointer" onclick="onDetail('<?php echo $lead->id?>')">More</span>
-                                </div>
-                            </td>
-                        </tr>
-                        <?php }?>
+                        
                     </tbody>
                 </table>
             </div>
         </div>
+    </div>
+    <div class="card w-100 p-3">
+        <div id="chart-pie-simple"></div>
     </div>
 </div>
 <script src="assets/js/pages/leads.js"></script>

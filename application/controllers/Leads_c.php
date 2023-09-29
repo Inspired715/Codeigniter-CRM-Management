@@ -11,9 +11,7 @@ class Leads_c extends MY_Controller {
 
    public function index(){
 
-		$leads = $this->Leads_m->getTableData();
-
-	   	$this->load_view('Leads_v.php', $leads, "Leads");
+	   	$this->load_view('Leads_v.php', null, "Leads");
    }
 
    public function getLeadDetail(){

@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="<?php echo base_url('assets/css/custom.css')?>" />
     <script src="<?php echo base_url('assets/js/jquery.min.js')?>"></script>
     <script src="<?php echo base_url('assets/js/sh_toaster.js')?>"></script>
+    <script src="<?php echo base_url('assets/js/apexcharts.min.js')?>"></script>
     <script>
         var BASE_URL = '<?php echo base_url()?>';
     </script>
