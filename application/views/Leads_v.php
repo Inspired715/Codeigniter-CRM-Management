@@ -32,7 +32,7 @@
                 </div>
                 <?php }?>
                 <div class="col-lg-3" style="display:flex;align-items:center">
-                    <i class="ti ti-search" style="font-size:30px;cursor:pointer" id="search_btn"></i>
+                    <i class="ti ti-search" style="font-size:30px;cursor:pointer;color:white" id="search_btn"></i>
                 </div>
             </div>
             <div class="table-responsive">

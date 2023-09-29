@@ -53,7 +53,7 @@ analyse performance with our award-winning CRM platform</h6>
                             </div>
                         </div>
                         <div class="col-xl-6 d-none d-xl-block">
-                            <div class="hero-img-slide position-relative bg-light-primary p-4 rounded">
+                            <div class="hero-img-slide position-relative bg-dark-primary rounded">
                                 <div class="d-flex flex-row">
                                     <div class="">
                                         <div class="banner-img-1 slideup">
@@ -146,7 +146,7 @@ analyse performance with our award-winning CRM platform</h6>
                     </div>
                 </div>
             </section>
-            <section class="bg-light">
+            <section class="bg-dark">
                 <div class="container-fluid">
                     <div class="row justify-content-center">
                         <div class="col-lg-8 col-xxl-6">
