@@ -60,9 +60,6 @@ $route['token'] = 'Token_c';
 $route['createToken'] = 'Token_c/createToken';
 $route['getLeadDetail'] = 'Leads_c/getLeadDetail';
 $route['refreshLeadTable'] = 'Leads_c/refreshLeadTable';
-$route['integration'] = 'Integration_c';
-$route['notification'] = 'Notification_c';
 
 $route['api/lead'] = 'Api/api_lead';
 $route['api/lead/get_leads'] = 'Api/GetLeads';
-/*$route['api/update'] = 'Api/update';*/
