@@ -7,13 +7,13 @@
         $sql = ""; $query = NULL;
         if($_SESSION['publisher'] != 1){
             if($status != 0){
-                $sql = "SELECT c.campaign, l.id, l.first_name, l.last_name, l.status, l.phone_number, l.email, p.full_name as created_by, l.created_date FROM leads l left join publisher p on l.created_by=p.id left join campaign c on l.modifyed_by=c.id where l.status=".$status." and l.created_by=? and l.created_date >=? and l.created_date <= ?";
+                $sql = "SELECT ifnull(c.campaign, '') as campaign, l.id, l.first_name, l.last_name, l.status, l.phone_number, l.email, p.full_name as created_by, l.created_date FROM leads l left join publisher p on l.created_by=p.id left join campaign c on l.modifyed_by=c.id where l.status=".$status." and l.created_by=? and l.created_date >=? and l.created_date <= ?";
             }else{
-                $sql = "SELECT c.campaign, l.id, l.first_name, l.last_name, l.status, l.phone_number, l.email, p.full_name as created_by, l.created_date FROM leads l left join publisher p on l.created_by=p.id left join campaign c on l.modifyed_by=c.id where l.created_by=?  and l.created_date >= ? and l.created_date <= ?";
+                $sql = "SELECT ifnull(c.campaign, '') as campaign, l.id, l.first_name, l.last_name, l.status, l.phone_number, l.email, p.full_name as created_by, l.created_date FROM leads l left join publisher p on l.created_by=p.id left join campaign c on l.modifyed_by=c.id where l.created_by=?  and l.created_date >= ? and l.created_date <= ?";
             }
             $query = $this->db->query($sql, array($_SESSION['publisher'], $from, $to));
         }else{
-            $sql = "SELECT c.campaign, l.id, l.first_name, l.last_name, l.status, l.phone_number, l.email, p.full_name as created_by, l.created_date FROM leads l left join publisher p on l.created_by=p.id left join campaign c on l.modifyed_by=c.id where l.created_date >=? and l.created_date <= ? ";
+            $sql = "SELECT ifnull(c.campaign, '') as campaign, l.id, l.first_name, l.last_name, l.status, l.phone_number, l.email, p.full_name as created_by, l.created_date FROM leads l left join publisher p on l.created_by=p.id left join campaign c on l.modifyed_by=c.id where l.created_date >=? and l.created_date <= ? ";
             if($status != 0){
                 $sql .= " and l.status=".$status;
             }

@@ -92,7 +92,7 @@ $(document).ready(function () {
                         </div>
                         <div class="mb-3 fit-width">
                             <label class="form-label">FTD date</label>
-                            <input type="type" class="form-control" value="${res.data[0].country?res.data[0].ftd_date:''}">
+                            <input type="type" class="form-control" value="${res.data[0].ftd_date?res.data[0].ftd_date:''}">
                         </div>`;
 
                     res.data.forEach((item) => {
