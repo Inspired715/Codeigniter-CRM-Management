@@ -120,7 +120,9 @@ $(document).ready(function () {
             method: "POST",
             data: {
               status: $('#filter_status').val(),
-              createdBy: $('#filter_created').val()
+              createdBy: $('#filter_created').val(),
+              from_date: $('#from_date').val(),
+              to_date: $('#to_date').val()
             },
             success: function (response) {
                 let res = JSON.parse(response);
@@ -170,6 +172,9 @@ $(document).ready(function () {
                         html += '<td class="border-bottom-0"><h6 class="mb-0 fw-semibold text-center">'+ item.phone_number +'</h6></td>';
                         html += '<td class="border-bottom-0"><h6 class="fw-semibold mb-0">' + item.email + '</h6></td>';
                         html += '<td class="border-bottom-0"><h6 class="fw-semibold mb-0">' + item.created_by + '</h6></td>';
+                        if(view == 1){
+                            html += '<td class="border-bottom-0"><h6 class="fw-semibold mb-0">' + item.campaign + '</h6></td>';
+                        }
                         html += '<td class="border-bottom-0"><h6 class="fw-semibold mb-0 text-center">' + item.created_date + '</h6></td>';
                         html += '<td class="border-bottom-0"><div class="text-center"><span class="badge bg-secondary rounded-3 fw-semibold more pointer" onclick="onDetail('+item.id+')">More</span></div></td>';
                         html += "</tr>";

@@ -12,4 +12,12 @@
 
         return $query->result();
     }
+
+    public function getCampaign(){
+        $sql = "select * from campaign";
+        $query = $this->db->query($sql);
+        $leads = $query->result();
+
+        return $leads;
+    }
 }

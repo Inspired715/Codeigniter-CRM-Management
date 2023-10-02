@@ -50,4 +50,22 @@ $(document).ready(function () {
             }
         })
     }
+
+    $('#update_btn').click(function(){
+        $.ajax({
+            url: BASE_URL + "updateFrom",
+            method: "POST",
+            data: {
+                campaign:$('#update_from').val()
+            },
+            success: function (response) {
+                let res = JSON.parse(response);
+                if(res.status == 200){
+                    Toast.success(res.message);
+                }else{
+                    Toast.danger(res.message);
+                }
+            }
+        })
+    });
 });

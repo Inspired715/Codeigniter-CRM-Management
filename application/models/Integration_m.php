@@ -11,14 +11,6 @@
         return $leads;
     }
 
-    public function getCampaign(){
-        $sql = "select * from campaign";
-        $query = $this->db->query($sql);
-        $leads = $query->result();
-
-        return $leads;
-    }
-
     public function getLeadById($id){
         $sql = "select * from leads where id=?";
         $query = $this->db->query($sql, array($id));

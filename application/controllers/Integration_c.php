@@ -7,10 +7,11 @@ class Integration_c extends MY_Controller {
 		parent::__construct();
 
 		$this->load->model("Integration_m");
+		$this->load->model("Common_m");
 	}
 
    public function index(){
-		$campaign = $this->Integration_m->getCampaign();
+		$campaign = $this->Common_m->getCampaign();
 	   	$this->load_view('Integration_v.php', $campaign, "Integration");
    }
 
@@ -59,4 +60,43 @@ class Integration_c extends MY_Controller {
 		}
    }
 
+
+   public function updateFrom(){
+		$campaign = isset($_POST['campaign'])?$_POST['campaign']:'';
+
+		if($campaign == ''){
+			echo json_encode(array('status' => 400, 'message' => "Please select campaigns correctly."));
+			return;
+		}
+		$url = ""; $header = []; $data = "";
+		switch($campaign){
+			case 1:
+				$url = "http://pruebas.mercurysystem.com.co/ext_api/leads_magic_status_full.php";
+				$headers = ['Content-Type: application/x-www-form-urlencoded'];
+				$data = "token=".urlencode('*#=+UIOYUqwe_23q');
+				break;
+			default:
+				
+		}
+		
+		$result = $this->exec_curl($url, $header, $data);
+		$result = json_decode($result);
+
+		forEach($result as $item){
+			if($item->seamotech_id != ""){
+				$this->db->set('status', $item->status);
+				if($item->status == LEAD_STATUS_FTD)
+					$this->db->set('ftd_date', $item->ftd_date);
+				$this->db->where('id', $item->seamotech_id);
+				$this->db->update('leads');	
+			}
+		}
+
+		echo json_encode(array('status' => 200, 'message' => "Success"));
+		// $msg = json_decode($result);
+		// if(count($lead) == 0){
+		// 	echo json_encode(array('status' => 400, 'message' => "Error."));
+		// 	return;
+		// }
+   }
 }

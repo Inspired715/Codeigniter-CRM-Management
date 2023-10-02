@@ -10,7 +10,6 @@ class Leads_c extends MY_Controller {
 	}
 
    public function index(){
-
 	   	$this->load_view('Leads_v.php', null, "Leads");
    }
 
@@ -28,7 +27,10 @@ class Leads_c extends MY_Controller {
 
 		$createdBy = isset($_POST['createdBy']) ? $_POST['createdBy'] : 0;
 
-		$leads = $this->Leads_m->getTableData($status, $createdBy);
+		$from = isset($_POST['from_date']) ? $_POST['from_date'] : '';
+		$to = isset($_POST['to_date']) ? $_POST['to_date'] : '';
+
+		$leads = $this->Leads_m->getTableData($from, $to, $status, $createdBy);
 
 		echo json_encode(array('status' => 200, 'data' => $leads));
    }

@@ -5,6 +5,7 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="mb-4">
+                        <label class="form-label fw-semibold">Export to</label>
                         <select class="form-select" id="filter_campaign">
                             <option selected="" value="-1">None</option>
                             <?php foreach($params as $item){?>
@@ -13,10 +14,21 @@
                         </select>
                     </div>
                 </div>    
+                <div class="col-lg-3" style="display:flex;align-items:center">
+                    <button class="btn btn-primary" id="export_all_btn" style="margin-top:5px;">All export</button>
+                </div>
                 <div class="col-lg-3">
                     <div class="mb-4">
-                        <button class="btn btn-primary" style="height:39px" id="export_all_btn">All export</button>
+                        <label class="form-label fw-semibold">Update from</label>
+                        <select class="form-select" id="update_from">
+                            <?php foreach($params as $item){?>
+                                <option value="<?php echo $item->id?>"><?php echo $item->campaign?></option>
+                            <?php }?>
+                        </select>
                     </div>
+                </div>
+                <div class="col-lg-3" style="display:flex;align-items:center">
+                    <i class="ti ti-reload" style="font-size:30px;cursor:pointer;color:white" id="update_btn"></i>
                 </div>
             </div>
             <div class="table-responsive">

@@ -3,17 +3,17 @@
 
 	class Leads_m extends CI_Model {
 		
-    public function getTableData($status = 0, $created = 0){
+    public function getTableData($from, $to, $status = 0, $created = 0){
         $sql = ""; $query = NULL;
-        if($_SESSION['publisher'] != 0){
+        if($_SESSION['publisher'] != 1){
             if($status != 0){
-                $sql = "SELECT l.id, l.first_name, l.last_name, l.status, l.phone_number, l.email, p.full_name as created_by, l.created_date FROM leads l left join publisher p on l.created_by=p.id where l.status=".$status." and l.created_by=?";
+                $sql = "SELECT c.campaign, l.id, l.first_name, l.last_name, l.status, l.phone_number, l.email, p.full_name as created_by, l.created_date FROM leads l left join publisher p on l.created_by=p.id left join campaign c on l.modifyed_by=c.id where l.status=".$status." and l.created_by=? and l.created_date >=? and l.created_date <= ?";
             }else{
-                $sql = "SELECT l.id, l.first_name, l.last_name, l.status, l.phone_number, l.email, p.full_name as created_by, l.created_date FROM leads l left join publisher p on l.created_by=p.id where l.created_by=?";
+                $sql = "SELECT c.campaign, l.id, l.first_name, l.last_name, l.status, l.phone_number, l.email, p.full_name as created_by, l.created_date FROM leads l left join publisher p on l.created_by=p.id left join campaign c on l.modifyed_by=c.id where l.created_by=?  and l.created_date >= ? and l.created_date <= ?";
             }
-            $query = $this->db->query($sql, array($_SESSION['publisher']));
+            $query = $this->db->query($sql, array($_SESSION['publisher'], $from, $to));
         }else{
-            $sql = "SELECT l.id, l.first_name, l.last_name, l.status, l.phone_number, l.email, p.full_name as created_by, l.created_date FROM leads l left join publisher p on l.created_by=p.id where 1=1 ";
+            $sql = "SELECT c.campaign, l.id, l.first_name, l.last_name, l.status, l.phone_number, l.email, p.full_name as created_by, l.created_date FROM leads l left join publisher p on l.created_by=p.id left join campaign c on l.modifyed_by=c.id where l.created_date >=? and l.created_date <= ? ";
             if($status != 0){
                 $sql .= " and l.status=".$status;
             }
@@ -21,7 +21,7 @@
                 $sql .= " and l.created_by=".$created;
             }
 
-            $query = $this->db->query($sql);
+            $query = $this->db->query($sql, array($from, $to));
         }
 
         $leads = $query->result();

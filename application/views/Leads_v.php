@@ -3,7 +3,7 @@
         <div class="card-body p-4">
             <h5 class="card-title fw-semibold mb-4">Leads</h5>
             <div class="row">
-                <div class="col-lg-3">
+                <div class="col-lg-2">
                     <div class="mb-4">
                         <label class="form-label fw-semibold">Status</label>
                         <select class="form-select" id="filter_status">
@@ -19,7 +19,7 @@
                     </div>
                 </div>
                 <?php if($_SESSION['role'] == 1){?>
-                <div class="col-lg-3">
+                <div class="col-lg-2">
                     <div class="mb-4">
                         <label class="form-label fw-semibold">Created by</label>
                         <select class="form-select" id="filter_created">
@@ -31,7 +31,19 @@
                     </div>
                 </div>
                 <?php }?>
-                <div class="col-lg-3" style="display:flex;align-items:center">
+                <div class="col-lg-3">
+                    <div class="mb-4">
+                        <label class="form-label fw-semibold">From</label>
+                        <input type="date" class="form-control" id="from_date" value="<?php echo Date('Y-m-d')?>"/>
+                    </div>
+                </div>                
+                <div class="col-lg-3">
+                    <div class="mb-4">
+                        <label class="form-label fw-semibold">To</label>
+                        <input type="date" class="form-control" id="to_date" value="<?php echo Date('Y-m-d')?>"/>
+                    </div>
+                </div>
+                <div class="col-lg-2" style="display:flex;align-items:center">
                     <i class="ti ti-search" style="font-size:30px;cursor:pointer;color:white" id="search_btn"></i>
                 </div>
             </div>
@@ -57,6 +69,11 @@
                             <th class="border-bottom-0 bg-blue">
                                 <h6 class="fw-semibold mb-0 text-center color-white">Created by</h6>
                             </th>
+                            <?php if($_SESSION['role'] == 1){?>
+                            <th class="border-bottom-0 bg-blue">
+                                <h6 class="fw-semibold mb-0 text-center color-white">Modified by</h6>
+                            </th>
+                            <?php }?>
                             <th class="border-bottom-0 bg-blue">
                                 <h6 class="fw-semibold mb-0 text-center color-white">Created date</h6>
                             </th>
@@ -66,7 +83,6 @@
                         </tr>
                     </thead>
                     <tbody id="lead_table">
-                        
                     </tbody>
                 </table>
             </div>
@@ -76,4 +92,5 @@
         <div id="chart-pie-simple"></div>
     </div>
 </div>
+<script>let view = <?php echo $_SESSION['role'];?></script>
 <script src="assets/js/pages/leads.js"></script>
