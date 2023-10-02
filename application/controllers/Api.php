@@ -146,7 +146,7 @@ class Api extends CI_Controller {
             $from = isset($_POST["from"])?$_POST["from"]:'';
             $to = isset($_POST["to"])?$_POST["to"]:'';
 
-            $result = $this->Leads_m->getLeadWithSub($from, $to);
+            $result = $this->Leads_m->getLeadWithSub($publisher_id, $from, $to);
             $temp = [];
             foreach($result as $item){
                 $temp[$item->id][] = $item;

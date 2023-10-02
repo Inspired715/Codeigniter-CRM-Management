@@ -69,14 +69,14 @@
             return true;
     }
 
-    public function getLeadWithSub($from='', $to=''){
+    public function getLeadWithSub($publish_id, $from='', $to=''){
         $query = null;
         if($from != ''){
-            $sql = "select l.*, sl.sub_name, sl.sub_value from leads l left join sub_leads sl on l.id=sl.lead_id where l.created_date >= ? and l.created_date <= ?";
-            $query = $this->db->query($sql, array($from, $to));
+            $sql = "select l.*, sl.sub_name, sl.sub_value from leads l left join sub_leads sl on l.id=sl.lead_id where l.created_date >= ? and l.created_date <= ? and l.created_by = ?";
+            $query = $this->db->query($sql, array($from, $to, $publish_id));
         }else{
-            $sql = "select l.*, sl.sub_name, sl.sub_value from leads l left join sub_leads sl on l.id=sl.lead_id";
-            $query = $this->db->query($sql);
+            $sql = "select l.*, sl.sub_name, sl.sub_value from leads l left join sub_leads sl on l.id=sl.lead_id where l.created_by=?";
+            $query = $this->db->query($sql, array($publish_id));
         }
 
         $leads = $query->result();
