@@ -1,62 +1,52 @@
 "use strict";
 
 $(document).ready(function () {
-    // function generateToken(){
-    //     if($('#full_name').val() == '' || $('#phone_number').val() == '' || $('#token_email').val() == ''){
-    //         Toast.danger('Please input all fields.');
-    //         return;
-    //     }
+    loadData();
 
-    //     $.ajax({
-    //         url: BASE_URL + "createToken",
-    //         method: "POST",
-    //         data: {
-    //             full_name: $('#full_name').val(),
-    //             phone_number:$('#token_phone').val(),
-    //             email:$('#token_email').val()
-    //         },
-    //         success: function (response) {
-    //             let res = JSON.parse(response);
-    //             if(res.status == 200){
-    //                 let modal = $("#crm-modal");
-    //                 modal.hide();
-    //                 location.href = 'token';
-    //             }else{
-    //                 Toast.danger(res.message);
-    //             }
-    //         }
-    //     })
-    // }
+    function onSending(lead_id){
+        $.ajax({
+            url: BASE_URL + "DD",
+            method: "POST",
+            data: {
+              lead_id: lead_id
+            },
+            success: function (response) {
+                let res = JSON.parse(response);
+                if(res.status == 200 && res.data.length > 0){                
+                    
+                }
+                else
+                    Toast.warning('There is no data!');
+            }
+        })
+    }
 
-    // window.generateToken = generateToken
+    window.onDetail = onSending
 
-    // $('#create_token').click(function(){
-    //     let modal = $("#crm-modal");
+    function loadData(){
+        $.ajax({
+            url: BASE_URL + "refreshIntegrationTable",
+            method: "POST",
+            success: function (response) {
+                let res = JSON.parse(response);
+                if(res.status == 200){
+                    let html = "";                    
+                    res.data.forEach((item) => {
+                        html += '<tr>';
+                        html += '<td class="border-bottom-0"><h6 class="fw-semibold mb-0">'+ item.first_name +'</h6></td>';
+                        html += '<td class="border-bottom-0"><h6 class="fw-semibold mb-0">'+ item.last_name +'</h6></td>';
+                        html += '<td class="border-bottom-0"><h6 class="mb-0 fw-semibold text-center">'+ item.phone_number +'</h6></td>';
+                        html += '<td class="border-bottom-0"><h6 class="fw-semibold mb-0">' + item.email + '</h6></td>';
+                        html += '<td class="border-bottom-0"><h6 class="fw-semibold mb-0">' + item.full_name + '</h6></td>';
+                        html += '<td class="border-bottom-0"><div class="text-center"><span class="badge bg-secondary rounded-3 fw-semibold more pointer" onclick="onSending('+item.id+')">Send</span></div></td>';
+                        html += '</tr>';
+                    })
 
-    //     let modalTitle = $("#modal_title");
-    //     modalTitle.html("Create Token");
-
-    //     let modalBody = $("#modal_body");
-    //     let bodyHtml = "";
-    //     bodyHtml += `
-    //         <div class="mb-3 fit-width">
-    //             <label class="form-label">*Full name</label>
-    //             <input type="text" class="form-control" id="full_name"/>
-    //         </div>
-    //         <div class="mb-3 fit-width">
-    //             <label class="form-label">*Email</label>
-    //             <input type="text" class="form-control" id="token_email"/>
-    //         </div>
-    //         <div class="mb-3 fit-width">
-    //             <label class="form-label">*Phone number</label>
-    //             <input type="number" class="form-control" id="token_phone"/>
-    //         </div>
-    //         <div class="mb-3"><button class="btn btn-primary" style="float:right;margin-right:10px;" onclick="window.generateToken()">Generate</button></div>
-    //        `;
-
-    //     modalBody.html(bodyHtml);
-    //     modal.show();
-    // });
+                    $('#integration_table').html(html);
+                }else{
+                    Toast.danger('Error!');
+                }
+            }
+        })
+    }
 });
-
-

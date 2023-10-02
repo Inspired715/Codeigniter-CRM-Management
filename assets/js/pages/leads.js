@@ -166,13 +166,13 @@ $(document).ready(function () {
                                 html += '<span class="badge bg-primary rounded-3 fw-semibold text-center">Not interested</span>';
                                 notCnt++;
                         }
-
+                        html += "</div></td>";
                         html += '<td class="border-bottom-0"><h6 class="mb-0 fw-semibold text-center">'+ item.phone_number +'</h6></td>';
                         html += '<td class="border-bottom-0"><h6 class="fw-semibold mb-0">' + item.email + '</h6></td>';
                         html += '<td class="border-bottom-0"><h6 class="fw-semibold mb-0">' + item.created_by + '</h6></td>';
                         html += '<td class="border-bottom-0"><h6 class="fw-semibold mb-0 text-center">' + item.created_date + '</h6></td>';
                         html += '<td class="border-bottom-0"><div class="text-center"><span class="badge bg-secondary rounded-3 fw-semibold more pointer" onclick="onDetail('+item.id+')">More</span></div></td>';
-                        html += "</div></td>";
+                        html += "</tr>";
                     })
 
                     $('#lead_table').html(html);

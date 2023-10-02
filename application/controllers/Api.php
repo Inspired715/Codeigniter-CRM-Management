@@ -8,7 +8,6 @@ class Api extends CI_Controller {
 
 		$this->load->model("Token_m");
         $this->load->model("Leads_m");
-        $this->load->model("Notification_m");
 	}
     public function api_lead($dates=''){
 		$method = $_SERVER['REQUEST_METHOD'];
@@ -90,7 +89,7 @@ class Api extends CI_Controller {
 
             $leads['first_name']        = $_POST["first_name"];
             $leads['last_name']         = $_POST["last_name"];
-            $leads['status']            = LEAD_STATUS_NOT_INTERESTED;
+            $leads['status']            = LEAD_STATUS_NEW;
             $leads['title']             = $_POST["title"];
             $leads['web_site']          = $_POST["web_site"];
             $leads['phone_number']      = $_POST["phone_number"];

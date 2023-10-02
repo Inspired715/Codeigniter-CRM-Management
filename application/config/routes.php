@@ -61,6 +61,7 @@ $route['createToken'] = 'Token_c/createToken';
 $route['getLeadDetail'] = 'Leads_c/getLeadDetail';
 $route['integration'] = 'Integration_c';
 $route['refreshLeadTable'] = 'Leads_c/refreshLeadTable';
+$route['refreshIntegrationTable'] = 'Integration_c/refreshIntegrationTable';
 
 $route['api/lead'] = 'Api/api_lead';
 $route['api/lead/get_leads'] = 'Api/GetLeads';
