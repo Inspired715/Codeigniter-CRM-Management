@@ -5,10 +5,10 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="mb-4">
-                        <select class="form-select" id="filter_created">
+                        <select class="form-select" id="filter_campaign">
                             <option selected="" value="-1">None</option>
-                            <?php foreach($publishers as $item){?>
-                                <option value="<?php echo $item->id?>"><?php echo $item->full_name?></option>
+                            <?php foreach($params as $item){?>
+                                <option value="<?php echo $item->id?>"><?php echo $item->campaign?></option>
                             <?php }?>
                         </select>
                     </div>

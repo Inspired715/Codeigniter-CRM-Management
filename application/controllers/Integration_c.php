@@ -10,14 +10,53 @@ class Integration_c extends MY_Controller {
 	}
 
    public function index(){
-
-	   	$this->load_view('Integration_v.php', null, "Integration");
+		$campaign = $this->Integration_m->getCampaign();
+	   	$this->load_view('Integration_v.php', $campaign, "Integration");
    }
 
    public function refreshIntegrationTable(){
 		$leads = $this->Integration_m->getTableData();
 
 		echo json_encode(array('status' => 200, 'data' => $leads));
+   }
+
+   public function exportToCampaign(){
+		$lead_id = isset($_POST['lead_id'])?$_POST['lead_id']:'';
+		$campaign = isset($_POST['campaign'])?$_POST['campaign']:'';
+		if($campaign == -1 || $lead_id == '' || $campaign == ''){
+			echo json_encode(array('status' => 400, 'message' => "Please select campaigns correctly."));
+			return;
+		}
+	
+		$lead = $this->Integration_m->getLeadById($lead_id);
+
+		if(count($lead) == 0){
+			echo json_encode(array('status' => 400, 'message' => "Error."));
+			return;
+		}
+
+		$url = ""; $header = []; $data = "";
+		switch($campaign){
+			case 1:
+				$url = "http://pruebas.mercurysystem.com.co/ext_api/guardar_lead_api_magic.php";
+				$headers = ['Content-Type: application/x-www-form-urlencoded'];
+				$data = "token=".urlencode('*#=+UIOYUqwe_23q')."&Name_lead=".$lead[0]->first_name.' '.$lead[0]->last_name."&email=".$lead[0]->email."&phone=".$lead[0]->phone_number."&seamotech_id=".$lead[0]->id;
+				break;
+			default:
+				
+		}
+
+		$result = $this->exec_curl($url, $header, $data);
+		$msg = json_decode($result)[0]->mensaje;
+
+		if($msg == "success"){
+			$this->db->set('modifyed_by', $_SESSION['publisher']);
+			$this->db->where('id', $lead_id);
+			$this->db->update('leads');
+			echo json_encode(array('status' => 200, 'message' => "Success"));
+		}else{
+			echo json_encode(array('status' => 500, 'message' => $msg));
+		}
    }
 
 }

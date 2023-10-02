@@ -5,23 +5,24 @@ $(document).ready(function () {
 
     function onSending(lead_id){
         $.ajax({
-            url: BASE_URL + "DD",
+            url: BASE_URL + "exportToCampaign",
             method: "POST",
             data: {
-              lead_id: lead_id
+              lead_id: lead_id,
+              campaign:$('#filter_campaign').val()
             },
             success: function (response) {
                 let res = JSON.parse(response);
-                if(res.status == 200 && res.data.length > 0){                
-                    
+                if(res.status == 200){
+                    window.location = BASE_URL + 'integration';
+                }else{
+                    Toast.danger(res.message);
                 }
-                else
-                    Toast.warning('There is no data!');
             }
         })
     }
 
-    window.onDetail = onSending
+    window.onSending = onSending
 
     function loadData(){
         $.ajax({
