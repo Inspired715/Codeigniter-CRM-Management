@@ -11,11 +11,29 @@
  Target Server Version : 100424
  File Encoding         : 65001
 
- Date: 29/09/2023 10:43:52
+ Date: 03/10/2023 03:40:38
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for campaign
+-- ----------------------------
+DROP TABLE IF EXISTS `campaign`;
+CREATE TABLE `campaign`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `campaign` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of campaign
+-- ----------------------------
+INSERT INTO `campaign` VALUES (1, 'Rodrigo');
+INSERT INTO `campaign` VALUES (2, 'MX');
+INSERT INTO `campaign` VALUES (3, 'CO');
+INSERT INTO `campaign` VALUES (4, 'ZGB');
 
 -- ----------------------------
 -- Table structure for leads
@@ -39,17 +57,17 @@ CREATE TABLE `leads`  (
   `created_date` date NOT NULL DEFAULT current_timestamp,
   `ftd_date` date NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 21 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 24 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of leads
 -- ----------------------------
-INSERT INTO `leads` VALUES (15, 'kevin', 'Pineda', 1, '', '', '2012556987', '6', NULL, '', '', 'NJ', 'US', '', '2023-09-28', NULL);
-INSERT INTO `leads` VALUES (16, 'Ashraf', 'team', 1, '', '', '2012556988', '6', NULL, '', '', 'NJ', 'US', '', '2023-09-28', NULL);
-INSERT INTO `leads` VALUES (17, 'ADIR', 'TEST', 4, 'CRM lead', 'source', '1212345675', '5', NULL, 'NJ', 'NJ', 'NJ', 'US', 'ADIR_TEST@gmail.com', '2023-09-28', NULL);
-INSERT INTO `leads` VALUES (18, 'ADIR', 'TEST', 3, 'CRM lead', 'source', '1212345611', '5', NULL, 'NJ', 'NJ', 'NJ', 'US', 'ADIR_TEST@gmail.com', '2023-09-28', '2023-09-28');
-INSERT INTO `leads` VALUES (19, 'ADIR', 'TEST', 1, 'CRM lead', 'source', '1212345610', '5', NULL, 'NJ', 'NJ', 'NJ', 'US', 'ADIR_TEST@gmail.com', '2023-09-29', NULL);
-INSERT INTO `leads` VALUES (20, 'Skylar', 'Casey', 3, 'CRM lead', 'TRACKBOX_Source', '1212345678', '5', NULL, 'NJ', 'NJ', 'NJ', 'GB', 'skylarcasey_test@gmail.com', '2023-09-29', '2023-09-29');
+INSERT INTO `leads` VALUES (17, 'ADIR', 'TEST', 4, 'CRM lead', 'source', '511212345675', '2', '1', '', '', 'GA', 'AR', 'ADIR_TEST@gmail.com', '2023-09-28', NULL);
+INSERT INTO `leads` VALUES (18, 'ADIR', 'TEST', 6, 'CRM lead', 'source', '521212345611', '2', '1', '', '', 'LA', 'AR', 'ADIR_TEST@gmail.com', '2023-09-28', '2023-09-28');
+INSERT INTO `leads` VALUES (19, 'ADIR', 'TEST', 4, 'CRM lead', 'source', '541212345610', '2', '1', '', '', 'NJ', 'BR', 'ADIR_TEST@gmail.com', '2023-09-29', NULL);
+INSERT INTO `leads` VALUES (20, 'Skylar', 'Casey', 6, 'CRM lead', 'TRACKBOX_Source', '551212345678', '2', '1', '', '', 'BR', 'BR', 'skylarcasey_test@gmail.com', '2023-09-29', '2023-09-29');
+INSERT INTO `leads` VALUES (22, 'Lucas', 'Harris', 5, '', '', '573336666', '2', '1', '', '', 'CH', 'MX', 'lucas.harris_test@gmail.com', '2023-10-02', '2023-10-02');
+INSERT INTO `leads` VALUES (23, 'Kevin', 'Nakamoto', 6, '', '', '5733558877', '2', '1', '', '', 'MX', 'MX', 'lucas.harris_test@gmail.com', '2023-10-02', NULL);
 
 -- ----------------------------
 -- Table structure for limits
@@ -97,8 +115,8 @@ CREATE TABLE `publisher`  (
 -- ----------------------------
 -- Records of publisher
 -- ----------------------------
-INSERT INTO `publisher` VALUES (5, 'ZGB SL', 'maciej@zgbservices.com', '34690166897', '1023dae71bf18cbd8b93856947b75a0f26bc96bb0be49b29cf922c292a623980', '2023-09-27 06:47:46');
-INSERT INTO `publisher` VALUES (6, 'Kevin', 'mp5840836@gmail.com', '2012557619', 'b4df67f651cf35c623d039a35790d43f38ebd29be983cefc8822de2fd3b9c42a', '2023-09-28 00:20:45');
+INSERT INTO `publisher` VALUES (1, 'Seamotech', 'mp5840836@gmail.com', '2012557619', 'b4df67f651cf35c623d039a35790d43f38ebd29be983cefc8822de2fd3b9c42a', '2023-09-28 00:20:45');
+INSERT INTO `publisher` VALUES (2, 'ZGB SL', 'maciej@zgbservices.com', '34690166897', '1023dae71bf18cbd8b93856947b75a0f26bc96bb0be49b29cf922c292a623980', '2023-09-27 06:47:46');
 
 -- ----------------------------
 -- Table structure for sub_leads
@@ -110,7 +128,7 @@ CREATE TABLE `sub_leads`  (
   `sub_value` varchar(512) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `lead_id` int(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 76 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 79 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sub_leads
@@ -189,6 +207,9 @@ INSERT INTO `sub_leads` VALUES (72, 'Prefix', '44', 19);
 INSERT INTO `sub_leads` VALUES (73, 'Redirect', '2', 19);
 INSERT INTO `sub_leads` VALUES (74, 'Perfix', '44', 20);
 INSERT INTO `sub_leads` VALUES (75, 'Redirect', '2', 20);
+INSERT INTO `sub_leads` VALUES (76, 'Perfix', '52', 21);
+INSERT INTO `sub_leads` VALUES (77, 'Redirect', '2', 21);
+INSERT INTO `sub_leads` VALUES (78, 'MPC_1', 'mpc1', 23);
 
 -- ----------------------------
 -- Table structure for users
@@ -209,7 +230,7 @@ CREATE TABLE `users`  (
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES (1, 'admin', 'Kevin', 'Pineda', 1, '1a61442ae6e5c3d9b1f32742f6e06ba8', 1, 0);
-INSERT INTO `users` VALUES (2, 'ZGB', 'ZGB', 'SL', 1, '28265a520bd1cb2856f1688865c72e75', 2, 5);
+INSERT INTO `users` VALUES (1, 'admin', 'Kevin', 'Pineda', 1, '1a61442ae6e5c3d9b1f32742f6e06ba8', 1, 1);
+INSERT INTO `users` VALUES (2, 'ZGB', 'ZGB', 'SL', 1, '28265a520bd1cb2856f1688865c72e75', 2, 2);
 
 SET FOREIGN_KEY_CHECKS = 1;

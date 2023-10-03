@@ -157,8 +157,15 @@ class Api extends CI_Controller {
         $offset = $res['offset'];
 
         if($method === 'POST'){
+            $offset = 0;
             $from = isset($_POST["from"])?$_POST["from"]:'';
             $to = isset($_POST["to"])?$_POST["to"]:'';
+            
+            if(isset($_POST['offset'])){
+                if(is_numeric($_POST['offset'])){
+                    $offset = (int)$_POST['offset'];
+                }
+            }
 
             $result = $this->Leads_m->getLeadWithSub($publisher_id, $from, $to);
             $temp = [];
@@ -167,7 +174,7 @@ class Api extends CI_Controller {
             }
 
             $finalLeads = [];
-            foreach($temp as $leads){
+            foreach(array_slice($temp, $offset, LIMIT) as $leads){
                 $sub['id'] = $leads[0]->id;
                 $sub['first_name'] = $leads[0]->first_name;
                 $sub['last_name'] = $leads[0]->last_name;
