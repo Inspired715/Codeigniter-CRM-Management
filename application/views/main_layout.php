@@ -64,12 +64,20 @@
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="<?php echo base_url('integration')?>" aria-expanded="false">
                                 <span>
-                                    <i class="ti ti-article"></i>
+                                    <i class="ti ti-list-details"></i>
                                 </span>
                                 <span class="hide-menu">Integration</span>
                             </a>
                         </li>
                         <?php }?>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="<?php echo base_url('coldleades')?>" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-file-text"></i>
+                                </span>
+                                <span class="hide-menu">Cold leads</span>
+                            </a>
+                        </li>
                     </ul>
                 </nav>
             </div>

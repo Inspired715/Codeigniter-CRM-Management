@@ -64,5 +64,7 @@ $route['refreshLeadTable'] = 'Leads_c/refreshLeadTable';
 $route['refreshIntegrationTable'] = 'Integration_c/refreshIntegrationTable';
 $route['exportToCampaign'] = 'Integration_c/exportToCampaign';
 $route['updateFrom'] = 'Integration_c/updateFrom';
+$route['coldleades'] = 'Coldleads_c';
+$route['exportCSV'] = 'Coldleads_c/exportCSV';
 $route['api/lead'] = 'Api/api_lead';
 $route['api/lead/get_leads'] = 'Api/GetLeads';
