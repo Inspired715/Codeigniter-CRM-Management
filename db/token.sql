@@ -11,7 +11,7 @@
  Target Server Version : 100424
  File Encoding         : 65001
 
- Date: 03/10/2023 03:40:38
+ Date: 03/10/2023 05:23:27
 */
 
 SET NAMES utf8mb4;
@@ -68,17 +68,6 @@ INSERT INTO `leads` VALUES (19, 'ADIR', 'TEST', 4, 'CRM lead', 'source', '541212
 INSERT INTO `leads` VALUES (20, 'Skylar', 'Casey', 6, 'CRM lead', 'TRACKBOX_Source', '551212345678', '2', '1', '', '', 'BR', 'BR', 'skylarcasey_test@gmail.com', '2023-09-29', '2023-09-29');
 INSERT INTO `leads` VALUES (22, 'Lucas', 'Harris', 5, '', '', '573336666', '2', '1', '', '', 'CH', 'MX', 'lucas.harris_test@gmail.com', '2023-10-02', '2023-10-02');
 INSERT INTO `leads` VALUES (23, 'Kevin', 'Nakamoto', 6, '', '', '5733558877', '2', '1', '', '', 'MX', 'MX', 'lucas.harris_test@gmail.com', '2023-10-02', NULL);
-
--- ----------------------------
--- Table structure for limits
--- ----------------------------
-DROP TABLE IF EXISTS `limits`;
-CREATE TABLE `limits`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `publisher_id` int(11) NULL DEFAULT NULL,
-  `offset` int(255) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for notification
