@@ -30,7 +30,7 @@
     }
 
     public function getLeadDetail($lid){
-        $sql = "SELECT l.first_name, l.last_name, l.title, l.web_site, l.address, l.city, l.state, l.email, l.country, l.ftd_date, s.* FROM sub_leads s Left Join leads l on s.lead_id=l.id WHERE s.lead_id=?";
+        $sql = "SELECT l.id as lead_id,l.first_name, l.last_name,l.status, l.phone_number, l.title, l.web_site, l.address, l.city, l.state, l.email, l.country, l.ftd_date, l.created_date, s.* FROM sub_leads s Left Join leads l on s.lead_id=l.id WHERE s.lead_id=?";
 
         $query = $this->db->query($sql, array($lid));
 
@@ -82,5 +82,25 @@
         $leads = $query->result();
 
         return $leads;
+    }
+
+    public function updateLeadDetail($items){
+        $this->db->set('first_name', $items['first_name']);
+        $this->db->set('last_name', $items['last_name']);
+        $this->db->set('status', $items['status']);
+        $this->db->set('phone_number', $items['phone']);
+        $this->db->set('email', $items['email']);
+
+        $this->db->where('id', $items['id']);
+        $this->db->update('leads');
+
+        foreach ($items as $key => $value) {
+            if(substr($key, 0, 2) == "s~"){
+                $sub_id = substr($key, 2);
+                $this->db->set('sub_value', $value);
+                $this->db->where('id', $sub_id);
+                $this->db->update('sub_leads');
+            }
+        }
     }
 }

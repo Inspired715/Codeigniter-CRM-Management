@@ -59,6 +59,7 @@ $route['logout'] = 'Login_c/logout';
 $route['token'] = 'Token_c';
 $route['createToken'] = 'Token_c/createToken';
 $route['getLeadDetail'] = 'Leads_c/getLeadDetail';
+$route['updateLeadDetail'] = 'Leads_c/updateLeadDetail';
 $route['integration'] = 'Integration_c';
 $route['refreshLeadTable'] = 'Leads_c/refreshLeadTable';
 $route['refreshIntegrationTable'] = 'Integration_c/refreshIntegrationTable';
@@ -66,5 +67,7 @@ $route['exportToCampaign'] = 'Integration_c/exportToCampaign';
 $route['updateFrom'] = 'Integration_c/updateFrom';
 $route['coldleades'] = 'Coldleads_c';
 $route['exportCSV'] = 'Coldleads_c/exportCSV';
+$route['leads/edit/(:num)'] = 'Leads_c/editLeads/$1';
+
 $route['api/lead'] = 'Api/api_lead';
 $route['api/lead/get_leads'] = 'Api/GetLeads';

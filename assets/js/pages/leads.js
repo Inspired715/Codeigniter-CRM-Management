@@ -44,6 +44,10 @@ $(document).ready(function () {
           window.dispatchEvent(new Event('resize'))
     }
 
+    function onEdit(lead_id){
+        window.location.href = BASE_URL + 'leads/edit/' + lead_id;
+    }
+
     function onDetail(lead_id){
         $.ajax({
             url: BASE_URL + "getLeadDetail",
@@ -113,6 +117,7 @@ $(document).ready(function () {
     }
 
     window.onDetail = onDetail
+    window.onEdit = onEdit
 
     function loadData(){
         $(".waitting-screen").show();
@@ -177,8 +182,11 @@ $(document).ready(function () {
                             html += '<td class="border-bottom-0"><h6 class="fw-semibold mb-0">' + item.campaign + '</h6></td>';
                         }
                         html += '<td class="border-bottom-0"><h6 class="fw-semibold mb-0 text-center">' + item.created_date + '</h6></td>';
-                        html += '<td class="border-bottom-0"><div class="text-center"><span class="badge bg-secondary rounded-3 fw-semibold more pointer" onclick="onDetail('+item.id+')">More</span></div></td>';
-                        html += "</tr>";
+                        html += '<td class="border-bottom-0"><div class="text-center"><i class="ti ti-help pointer" onclick="onDetail('+item.id+')"></i>';
+                        if(view == 1){
+                            html += '<i class="ti ti-edit pointer" onclick="onEdit('+item.id+')"></i>'
+                        }
+                        html += "</div></td></tr>";
                     })
 
                     $('#lead_table').html(html);

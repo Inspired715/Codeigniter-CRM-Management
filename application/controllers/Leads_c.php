@@ -34,4 +34,21 @@ class Leads_c extends MY_Controller {
 
 		echo json_encode(array('status' => 200, 'data' => $leads));
    }
+
+   public function editLeads($lead_id){
+		$res = $this->Leads_m->getLeadDetail($lead_id);
+
+		if(count($res) == 0){
+			$this->load_view('Error.php', null, "404 | Error");
+			return;
+		}
+
+		$this->load_view('Leads_Edit_v.php', $res, "Edit lead");
+   }
+
+   public function updateLeadDetail(){
+		$this->Leads_m->updateLeadDetail($_POST);
+
+		redirect(base_url('leads'));
+   }
 }
