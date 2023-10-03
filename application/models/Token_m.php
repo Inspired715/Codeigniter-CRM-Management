@@ -25,14 +25,14 @@
     }
 
     public function checkToken($key){
-        $sql = "select p.*, ifnull(l.offset, 0) as offet from publisher p left join limits l on p.id=l.publisher_id  where p.token= ?";
+        $sql = "select * from publisher where token= ?";
 
         $query = $this->db->query($sql, array($key));
 
         $tokens = $query->result();
 
         if(count($tokens) == 1)
-            return array('publisher_id' => $tokens[0]->id, 'offset' => $tokens[0]->id);
+            return $tokens[0]->id;
         else
             return 0;
     }
@@ -45,12 +45,5 @@
         $tokens = $query->result();
 
         return count($tokens);
-    }
-
-    public function insertOffset($pid){
-        $data['publisher_id'] = $pid;
-        $data['offset'] = 0;
-        
-        $this->db->insert('limits', $data);
     }
 }

@@ -30,9 +30,7 @@ class Token_c extends MY_Controller {
 				$plain = $email.PRIMARY_KEY.$fullName.$pNumber;
 				$key = hash('sha256', $plain);
 				
-				$publisher_id = $this->Token_m->insertToken($fullName, $email, $pNumber, $key);
-
-				$this->Token_m->insertOffset($publisher_id);
+				$this->Token_m->insertToken($fullName, $email, $pNumber, $key);
 				
 				echo json_encode(array('status' => 200, 'message' => "Generated successfully."));
 			}else{

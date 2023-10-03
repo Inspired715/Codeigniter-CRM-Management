@@ -17,15 +17,12 @@ class Api extends CI_Controller {
             return;
         }
 
-        $res = $this->Token_m->checkToken($_SERVER["HTTP_X_API_KEY"]);
+        $publisher_id = $this->Token_m->checkToken($_SERVER["HTTP_X_API_KEY"]);
 
-        if($res == 0){
+        if($publisher_id == 0){
             echo json_encode(array('status' => 401, 'message' => "Authentification error."));
             return;
         }
-
-        $publisher_id = $res['publisher_id'];
-        $offset = $res['offset'];
         
 		if ($method === 'POST') {
             if(!isset($_POST["phone_number"])){
@@ -146,15 +143,12 @@ class Api extends CI_Controller {
             return;
         }
 
-        $res = $this->Token_m->checkToken($_SERVER["HTTP_X_API_KEY"]);
+        $publisher_id = $this->Token_m->checkToken($_SERVER["HTTP_X_API_KEY"]);
 
-        if($res == 0){
+        if($publisher_id == 0){
             echo json_encode(array('status' => 401, 'message' => "Authentification error."));
             return;
         }
-
-        $publisher_id = $res['publisher_id'];
-        $offset = $res['offset'];
 
         if($method === 'POST'){
             $offset = 0;
