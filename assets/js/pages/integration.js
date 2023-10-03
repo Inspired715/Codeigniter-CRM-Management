@@ -4,6 +4,8 @@ $(document).ready(function () {
     loadData();
 
     function onSending(lead_id){
+        $(".waitting-screen").show();
+
         $.ajax({
             url: BASE_URL + "exportToCampaign",
             method: "POST",
@@ -18,6 +20,8 @@ $(document).ready(function () {
                 }else{
                     Toast.danger(res.message);
                 }
+
+                $(".waitting-screen").hide();
             }
         })
     }
@@ -52,6 +56,7 @@ $(document).ready(function () {
     }
 
     $('#update_btn').click(function(){
+        $(".waitting-screen").show();
         $.ajax({
             url: BASE_URL + "updateFrom",
             method: "POST",
@@ -65,6 +70,8 @@ $(document).ready(function () {
                 }else{
                     Toast.danger(res.message);
                 }
+
+                $(".waitting-screen").hide();
             }
         })
     });

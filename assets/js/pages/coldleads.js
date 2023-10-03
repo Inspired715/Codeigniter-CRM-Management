@@ -2,6 +2,8 @@
 
 $(document).ready(function () {
     function exportToCSV(code){
+        $(".waitting-screen").show();
+
         $.ajax({
             url: BASE_URL + "exportCSV",
             method: "POST",
@@ -23,6 +25,8 @@ $(document).ready(function () {
                 document.body.appendChild(downloadLink);
                 downloadLink.click();
                 document.body.removeChild(downloadLink);
+
+                $(".waitting-screen").hide();
             }
         })
     }

@@ -115,6 +115,7 @@ $(document).ready(function () {
     window.onDetail = onDetail
 
     function loadData(){
+        $(".waitting-screen").show();
         $.ajax({
             url: BASE_URL + "refreshLeadTable",
             method: "POST",
@@ -182,6 +183,8 @@ $(document).ready(function () {
 
                     $('#lead_table').html(html);
                     drawChart(new Array(notCnt, newCnt, followCnt, ftdCnt, wrongCnt, unqCnt, moneyCnt))
+
+                    $(".waitting-screen").hide();
                 }else{
                     Toast.danger('Error!');
                 }

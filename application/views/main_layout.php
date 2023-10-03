@@ -18,6 +18,9 @@
     </script>
 </head>
 <body>
+    <div class="waitting-screen" style="display:none">
+        <div class="loader"></div>
+    </div>
     <div class="sh-toast-container" id="shToastContainerTop"></div>
     <div class="sh-toast-container" id="shToastContainerBottom"></div>
     <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
