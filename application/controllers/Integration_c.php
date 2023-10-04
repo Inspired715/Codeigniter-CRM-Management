@@ -41,7 +41,7 @@ class Integration_c extends MY_Controller {
 			case 1:
 				$url = "http://pruebas.mercurysystem.com.co/ext_api/guardar_lead_api_magic.php";
 				$headers = ['Content-Type: application/x-www-form-urlencoded'];
-				$data = "token=".urlencode('*#=+UIOYUqwe_23q')."&Name_lead=".$lead[0]->first_name.' '.$lead[0]->last_name."&email=".$lead[0]->email."&phone=".$lead[0]->phone_number."&seamotech_id=".$lead[0]->id;
+				$data = "token=".urlencode('*#=+UIOYUqwe_23q')."&Name_lead=".$lead[0]->first_name.' '.$lead[0]->last_name."&email=".$lead[0]->email."&phone=".$lead[0]->prefix.$lead[0]->phone_number."&seamotech_id=".$lead[0]->id;
 				break;
 			default:
 				

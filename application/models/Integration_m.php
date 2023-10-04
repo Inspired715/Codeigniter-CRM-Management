@@ -12,7 +12,7 @@
     }
 
     public function getLeadById($id){
-        $sql = "select * from leads where id=?";
+        $sql = "select l.*, sl.sub_value as prefix from leads l left join sub_leads sl on l.id=sl.lead_id where l.id=? and sl.sub_name='Perfix'";
         $query = $this->db->query($sql, array($id));
         $lead = $query->result();
 
