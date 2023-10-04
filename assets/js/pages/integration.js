@@ -34,10 +34,12 @@ $(document).ready(function () {
             method: "POST",
             success: function (response) {
                 let res = JSON.parse(response);
+                let number = 1;
                 if(res.status == 200){
                     let html = "";                    
                     res.data.forEach((item) => {
                         html += '<tr>';
+                        html += '<td class="border-bottom-0"><h6 class="fw-semibold mb-0 text-center">'+ number +'</h6></td>';
                         html += '<td class="border-bottom-0"><h6 class="fw-semibold mb-0">'+ item.first_name +'</h6></td>';
                         html += '<td class="border-bottom-0"><h6 class="fw-semibold mb-0">'+ item.last_name +'</h6></td>';
                         html += '<td class="border-bottom-0"><h6 class="mb-0 fw-semibold text-center">'+ item.phone_number +'</h6></td>';
@@ -45,6 +47,7 @@ $(document).ready(function () {
                         html += '<td class="border-bottom-0"><h6 class="fw-semibold mb-0">' + item.full_name + '</h6></td>';
                         html += '<td class="border-bottom-0"><div class="text-center"><span class="badge bg-secondary rounded-3 fw-semibold more pointer" onclick="onSending('+item.id+')">Send</span></div></td>';
                         html += '</tr>';
+                        number++;
                     })
 
                     $('#integration_table').html(html);

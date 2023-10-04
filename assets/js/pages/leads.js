@@ -135,9 +135,10 @@ $(document).ready(function () {
                 if(res.status == 200){
                     let html = "";
                     let notCnt=0,newCnt=0,followCnt=0,ftdCnt=0,wrongCnt=0,unqCnt=0,moneyCnt=0;
-                    
+                    let number = 1;
                     res.data.forEach((item) => {
                         html += '<tr>';
+                        html += '<td class="border-bottom-0"><h6 class="fw-semibold mb-0 text-center">'+ number +'</h6></td>';
                         html += '<td class="border-bottom-0"><h6 class="fw-semibold mb-0">'+ item.first_name +'</h6></td>';
                         html += '<td class="border-bottom-0"><h6 class="fw-semibold mb-0">'+ item.last_name +'</h6></td>';
                         html += '<td class="border-bottom-0"><div class="text-center">';
@@ -187,6 +188,8 @@ $(document).ready(function () {
                             html += '<i class="ti ti-edit pointer" onclick="onEdit('+item.id+')"></i>'
                         }
                         html += "</div></td></tr>";
+
+                        number ++;
                     })
 
                     $('#lead_table').html(html);

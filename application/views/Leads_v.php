@@ -51,6 +51,9 @@
                 <table class="table text-nowrap mb-0 align-middle">
                     <thead class="text-dark fs-4">
                         <tr>
+                            <th class="border-bottom-0 bg-blue" style="width:100px;">
+                                <h6 class="fw-semibold mb-0 text-center color-white">No</h6>
+                            </th>
                             <th class="border-bottom-0 bg-blue">
                                 <h6 class="fw-semibold mb-0 text-center color-white">First name</h6>
                             </th>
