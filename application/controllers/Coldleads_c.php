@@ -57,7 +57,7 @@ class Coldleads_c extends MY_Controller {
 					$status = "New";
 					break;
 				case LEAD_STATUS_MONEY:
-					$status = "Money";
+					$status = "Call later";
 					break;
 				default:
 					$status = "New";

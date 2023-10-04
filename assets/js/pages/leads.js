@@ -12,8 +12,8 @@ $(document).ready(function () {
               width: 380,
               type: "pie",
             },
-            colors: ["#13DEB9", "black", "#ffae1f", "#fa896b", "#39b69a", "#6610f2", "#FFAE1F"],
-            labels: ["Not interested", "New", "Follow up", "FTD", "Wrong number", "Unqualified", "Money"],
+            colors: ["#13DEB9", "#999999", "#ffae1f", "#fa896b", "#39b69a", "#6610f2", "#FFAE1F"],
+            labels: ["Not interested", "New", "Follow up", "FTD", "Wrong number", "Unqualified", "Call later"],
             responsive: [{
               breakpoint: 600,
               options: {
@@ -168,7 +168,7 @@ $(document).ready(function () {
                                 newCnt++;
                                 break;
                             case "7":
-                                html += '<span class="badge bg-info rounded-3 fw-semibold text-center">Money</span>';
+                                html += '<span class="badge bg-info rounded-3 fw-semibold text-center">Call later</span>';
                                 moneyCnt++;
                                 break;
                             default:

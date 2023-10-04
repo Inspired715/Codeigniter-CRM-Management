@@ -93,10 +93,5 @@ class Integration_c extends MY_Controller {
 		}
 
 		echo json_encode(array('status' => 200, 'message' => "Success"));
-		// $msg = json_decode($result);
-		// if(count($lead) == 0){
-		// 	echo json_encode(array('status' => 400, 'message' => "Error."));
-		// 	return;
-		// }
    }
 }

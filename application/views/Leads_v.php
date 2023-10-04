@@ -17,7 +17,7 @@
                             <option value="<?php echo LEAD_STATUS_FOLLOW_UP?>">Follow Up</option>
                             <option value="<?php echo LEAD_STATUS_WRONG_NUMBER?>">Wrong Number</option>
                             <option value="<?php echo LEAD_STATUS_UNQUALIFIED?>">Unqualified</option>
-                            <option value="<?php echo LEAD_STATUS_MONEY?>">Money</option>
+                            <option value="<?php echo LEAD_STATUS_MONEY?>">Call later</option>
                             <option value="<?php echo LEAD_STATUS_FTD?>">FTD</option>
                         </select>
                     </div>
