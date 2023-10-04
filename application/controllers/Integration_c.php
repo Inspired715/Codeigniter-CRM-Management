@@ -86,7 +86,7 @@ class Integration_c extends MY_Controller {
 			if($item->seamotech_id != ""){
 				$this->db->set('status', $item->status);
 				if($item->status == LEAD_STATUS_FTD)
-					$this->db->set('ftd_date', $item->ftd_date);
+					$this->db->set('ftd_date', isset($item->ftd_date)?$item->ftd_date:'');
 				$this->db->where('id', $item->seamotech_id);
 				$this->db->update('leads');	
 			}

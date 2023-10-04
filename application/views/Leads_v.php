@@ -79,11 +79,9 @@
                             <th class="border-bottom-0 bg-blue">
                                 <h6 class="fw-semibold mb-0 text-center color-white">Created by</h6>
                             </th>
-                            <?php if($_SESSION['role'] == 1){?>
                             <th class="border-bottom-0 bg-blue">
-                                <h6 class="fw-semibold mb-0 text-center color-white">Modified by</h6>
+                                <h6 class="fw-semibold mb-0 text-center color-white">Sent</h6>
                             </th>
-                            <?php }?>
                             <th class="border-bottom-0 bg-blue">
                                 <h6 class="fw-semibold mb-0 text-center color-white">Created date</h6>
                             </th>
