@@ -1,7 +1,11 @@
 <div class="row">
     <div class="card w-100">
-        <div class="card-body p-4">
+        <div class="card w-100 p-3">
             <h5 class="card-title fw-semibold mb-4">Leads</h5>
+            <div id="chart-pie-simple"></div>
+        </div>
+        <div class="card-body p-4">
+            
             <div class="row">
                 <div class="col-lg-2">
                     <div class="mb-4">
@@ -67,6 +71,9 @@
                                 <h6 class="fw-semibold mb-0 text-center color-white">Phone number</h6>
                             </th>
                             <th class="border-bottom-0 bg-blue">
+                                <h6 class="fw-semibold mb-0 text-center color-white">Country</h6>
+                            </th>
+                            <th class="border-bottom-0 bg-blue">
                                 <h6 class="fw-semibold mb-0 text-center color-white">E-mail</h6>
                             </th>
                             <th class="border-bottom-0 bg-blue">
@@ -90,9 +97,6 @@
                 </table>
             </div>
         </div>
-    </div>
-    <div class="card w-100 p-3">
-        <div id="chart-pie-simple"></div>
     </div>
 </div>
 <script>let view = <?php echo $_SESSION['role'];?></script>

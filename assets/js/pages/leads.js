@@ -177,6 +177,7 @@ $(document).ready(function () {
                         }
                         html += "</div></td>";
                         html += '<td class="border-bottom-0"><h6 class="mb-0 fw-semibold text-center">'+ item.phone_number +'</h6></td>';
+                        html += '<td class="border-bottom-0"><h6 class="fw-semibold mb-0 text-center">' + item.country + '</h6></td>';
                         html += '<td class="border-bottom-0"><h6 class="fw-semibold mb-0">' + item.email + '</h6></td>';
                         html += '<td class="border-bottom-0"><h6 class="fw-semibold mb-0">' + item.created_by + '</h6></td>';
                         if(view == 1){
