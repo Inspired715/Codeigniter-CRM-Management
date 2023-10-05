@@ -65,6 +65,7 @@ $route['refreshLeadTable'] = 'Leads_c/refreshLeadTable';
 $route['refreshIntegrationTable'] = 'Integration_c/refreshIntegrationTable';
 $route['exportToCampaign'] = 'Integration_c/exportToCampaign';
 $route['updateFrom'] = 'Integration_c/updateFrom';
+$route['exportAllToCampaign'] = 'Integration_c/exportAllToCampaign';
 $route['coldleades'] = 'Coldleads_c';
 $route['exportCSV'] = 'Coldleads_c/exportCSV';
 $route['leads/edit/(:num)'] = 'Leads_c/editLeads/$1';

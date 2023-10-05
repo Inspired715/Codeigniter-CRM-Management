@@ -179,10 +179,8 @@ $(document).ready(function () {
                         let campagin = item.campaign;
                         if(campagin.length > 0){
                             if(view != 1){
-                                campagin = "Complete"
+                                campagin = "Success"
                             }
-                        }else{
-                            campagin = "Sending..."
                         }
 
                         html += "</div></td>";

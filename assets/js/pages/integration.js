@@ -78,4 +78,26 @@ $(document).ready(function () {
             }
         })
     });
+
+    $('#export_all_btn').click(function(){
+        $(".waitting-screen").show();
+        $.ajax({
+            url: BASE_URL + "exportAllToCampaign",
+            method: "POST",
+            data: {
+                campaign:$('#filter_campaign').val()
+            },
+            success: function (response) {
+                let res = JSON.parse(response);
+                if(res.status == 200){
+                    loadData();
+                    Toast.success(res.message);
+                }else{
+                    Toast.danger(res.message);
+                }
+
+                $(".waitting-screen").hide();
+            }
+        })
+    });
 });

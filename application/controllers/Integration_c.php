@@ -51,13 +51,62 @@ class Integration_c extends MY_Controller {
 		$msg = json_decode($result)[0]->mensaje;
 
 		if($msg == "success"){
-			$this->db->set('modifyed_by', $_SESSION['publisher']);
+			$this->db->set('modifyed_by', $campaign);
 			$this->db->where('id', $lead_id);
 			$this->db->update('leads');
 			echo json_encode(array('status' => 200, 'message' => "Success"));
 		}else{
 			echo json_encode(array('status' => 500, 'message' => $msg));
 		}
+   }
+
+   public function exportAllToCampaign(){
+		$campaign = isset($_POST['campaign'])?$_POST['campaign']:'';
+
+		if($campaign == -1 || $campaign == ''){
+			echo json_encode(array('status' => 400, 'message' => "Please select campaigns correctly."));
+			return;
+		}
+		
+		$url = ""; $header = []; $data = "";
+		switch($campaign){
+			case 1:
+				$url = "http://pruebas.mercurysystem.com.co/ext_api/guardar_lead_api_magic.php";
+				$headers = ['Content-Type: application/x-www-form-urlencoded'];				
+				break;
+			default:
+				
+		}
+
+		$exportedCount = 0;
+		$totalCount = 0;
+		$offset = 0;
+
+		while(1){
+			$leads = $this->Integration_m->getNotExportedLeads($offset);
+			
+			if(count($leads) == 0)
+				break;
+
+			foreach ($leads as $lead) {
+				$data = "token=".urlencode('*#=+UIOYUqwe_23q')."&Name_lead=".$lead->first_name.' '.$lead->last_name."&email=".$lead->email."&phone=".$lead->prefix.$lead->phone_number."&seamotech_id=".$lead->id;				
+				$result = $this->exec_curl($url, $header, $data);
+				$msg = json_decode($result)[0]->mensaje;
+
+				if($msg == "success"){
+					$this->db->set('modifyed_by', $campaign);
+					$this->db->where('id', $lead->id);
+					$this->db->update('leads');
+					$exportedCount++;
+				}
+
+				$totalCount++;
+			}
+
+			$offset = count($leads);
+		}
+
+		echo json_encode(array('status' => 200, 'message' => "Available total:".$totalCount.", Sent successfully:".$exportedCount));
    }
 
 

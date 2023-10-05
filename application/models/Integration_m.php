@@ -18,4 +18,12 @@
 
         return $lead;
     }
+
+    public function getNotExportedLeads($offset){
+        $sql = "select l.*, sl.sub_value as prefix from leads l left join sub_leads sl on l.id=sl.lead_id where ISNULL(l.modifyed_by) and sl.sub_name='Perfix' limit ?, 100";
+        $query = $this->db->query($sql, array($offset));
+        $lead = $query->result();
+
+        return $lead;
+    }
 }
