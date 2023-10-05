@@ -16,7 +16,7 @@ $(document).ready(function () {
             success: function (response) {
                 let res = JSON.parse(response);
                 if(res.status == 200){
-                    window.location = BASE_URL + 'integration';
+                    loadData();
                 }else{
                     Toast.danger(res.message);
                 }

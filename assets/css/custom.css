@@ -72,13 +72,12 @@ td>h6{
 .waitting-screen{
     width: 100vw;
     height: 100vh;
-    background: transparent;
+    background: #f7f7f75c;
     z-index: 100;
     position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
-    opacity: 0.2;
 }
 .loader {
     border: 16px solid #2a3447;
