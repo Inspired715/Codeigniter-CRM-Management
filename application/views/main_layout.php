@@ -72,7 +72,6 @@
                                 <span class="hide-menu">Integration</span>
                             </a>
                         </li>
-                        <?php }?>
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="<?php echo base_url('coldleades')?>" aria-expanded="false">
                                 <span>
@@ -81,6 +80,7 @@
                                 <span class="hide-menu">Cold leads</span>
                             </a>
                         </li>
+                        <?php }?>
                     </ul>
                 </nav>
             </div>
