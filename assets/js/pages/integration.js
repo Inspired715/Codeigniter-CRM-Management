@@ -13,14 +13,8 @@ $(document).ready(function () {
               lead_id: lead_id,
               campaign:$('#filter_campaign').val()
             },
-            success: function (response) {
-                let res = JSON.parse(response);
-                if(res.status == 200){
-                    loadData();
-                }else{
-                    Toast.danger(res.message);
-                }
-
+            success: function () {
+                loadData();
                 $(".waitting-screen").hide();
             }
         })

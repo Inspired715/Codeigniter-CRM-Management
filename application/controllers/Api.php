@@ -117,18 +117,53 @@ class Api extends CI_Controller {
             $lead_id = $this->Leads_m->insertLeads($leads);
 
             $keys = ['first_name', 'last_name', 'title', 'web_site','phone_number', 'status', 'created_by', 'modifyed_by', 'address', 'city', 'state', 'country', 'email'];
-            
+            $perfix = '';
             $sub_leads = [];
             foreach(array_keys($_POST) as $key){
                 if(!in_array($key, $keys)){
+                    if($key == "Perfix")
+                        $perfix = $_POST[$key];
                     $sub_leads[] = array('sub_name' => $key, 'sub_value' => $_POST[$key], 'lead_id' => $lead_id);
                 }
             }
 
             if(count($sub_leads) > 0)
                 $this->Leads_m->insertSubLeads($sub_leads);
-
-            echo json_encode(array('status' => 200, 'message' => "Successfully imported.", 'lead_id' => $lead_id));
+            //Send to Rodrigo
+            $url = "http://pruebas.mercurysystem.com.co/ext_api/guardar_lead_api_magic.php";
+            $headers = ['Content-Type: application/x-www-form-urlencoded'];
+            $data = "token=".urlencode('*#=+UIOYUqwe_23q')."&Name_lead=".$leads['first_name'].' '.$leads['last_name']."&email=".$leads['email']."&phone=".$perfix.$leads['phone_number']."&seamotech_id=".$lead_id;
+            $result = $this->exec_curl($url, $header, $data);
+            $msg = json_decode($result)[0]->mensaje;
+            
+            switch($msg){
+                case "success":
+                    $this->db->set('modifyed_by', 1);
+                    $this->db->where('id', $lead_id);
+                    $this->db->update('leads');
+                    echo json_encode(array('status' => 200, 'message' => "Successfully imported.", 'lead_id' => $lead_id));
+                    break;
+                case "duplicate":
+                    $this->db->set('modifyed_by', 1);
+                    $this->db->set('status', LEAD_STATUS_DUPLICATE);
+                    $this->db->where('id', $lead_id);
+                    $this->db->update('leads');
+                    echo json_encode(array('status' => 405, 'message' => "Duplicated lead."));
+                    break;
+                case "Incomplete":
+                    $this->db->set('modifyed_by', 1);
+                    $this->db->set('status', LEAD_STATUS_INCOMPLETE);
+                    $this->db->where('id', $lead_id);
+                    $this->db->update('leads');
+                    echo json_encode(array('status' => 405, 'message' => "Incomplete lead."));
+                    break;
+                default:
+                    $this->db->set('modifyed_by', 1);
+                    $this->db->set('status', LEAD_STATUS_INCOMPLETE);
+                    $this->db->where('id', $lead_id);
+                    $this->db->update('leads');
+                    echo json_encode(array('status' => 405, 'message' => "Incomplete lead."));
+            }
 	   	}else {
             echo json_encode(array('status' => 405, 'message' => "GET method is available"));
 		}
@@ -198,6 +233,21 @@ class Api extends CI_Controller {
                     case LEAD_STATUS_WRONG_NUMBER:
                         $sub['status'] = "WRONG NUMBER";
                         break;
+                    case LEAD_STATUS_UNQUALIFIED:
+                            $sub['status'] = "UNQUALIFIED";
+                            break;
+                    case LEAD_STATUS_NEW:
+                        $sub['status'] = "NEW";
+                        break;
+                    case LEAD_STATUS_MONEY:
+                            $sub['status'] = "CALL_LATER";
+                            break;
+                    case LEAD_STATUS_INCOMPLETE:
+                            $sub['status'] = "INCOMPLETE";
+                            break;
+                    case LEAD_STATUS_DUPLICATE:
+                            $sub['status'] = "DUPLICATE";
+                            break;                                                            
                     default:
                         $sub['status'] = "NOT INTERESTED";
                 }

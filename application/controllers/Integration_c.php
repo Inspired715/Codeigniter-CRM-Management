@@ -50,13 +50,33 @@ class Integration_c extends MY_Controller {
 		$result = $this->exec_curl($url, $header, $data);
 		$msg = json_decode($result)[0]->mensaje;
 
-		if($msg == "success"){
-			$this->db->set('modifyed_by', $campaign);
-			$this->db->where('id', $lead_id);
-			$this->db->update('leads');
-			echo json_encode(array('status' => 200, 'message' => "Success"));
-		}else{
-			echo json_encode(array('status' => 500, 'message' => $msg));
+		switch($msg){
+			case "success":
+				$this->db->set('modifyed_by', $campaign);
+				$this->db->where('id', $lead_id);
+				$this->db->update('leads');
+				echo json_encode(array('status' => 200, 'message' => "Successfully imported.", 'lead_id' => $lead_id));
+				break;
+			case "duplicate":
+				$this->db->set('modifyed_by', $campaign);
+				$this->db->set('status', LEAD_STATUS_DUPLICATE);
+				$this->db->where('id', $lead_id);
+				$this->db->update('leads');
+				echo json_encode(array('status' => 405, 'message' => "Duplicated lead."));
+				break;
+			case "Incomplete":
+				$this->db->set('modifyed_by', $campaign);
+				$this->db->set('status', LEAD_STATUS_INCOMPLETE);
+				$this->db->where('id', $lead_id);
+				$this->db->update('leads');
+				echo json_encode(array('status' => 405, 'message' => "Incomplete lead."));
+				break;
+			default:
+				$this->db->set('modifyed_by', $campaign);
+				$this->db->set('status', LEAD_STATUS_INCOMPLETE);
+				$this->db->where('id', $lead_id);
+				$this->db->update('leads');
+				echo json_encode(array('status' => 405, 'message' => "Incomplete lead."));
 		}
    }
 
@@ -93,11 +113,30 @@ class Integration_c extends MY_Controller {
 				$result = $this->exec_curl($url, $header, $data);
 				$msg = json_decode($result)[0]->mensaje;
 
-				if($msg == "success"){
-					$this->db->set('modifyed_by', $campaign);
-					$this->db->where('id', $lead->id);
-					$this->db->update('leads');
-					$exportedCount++;
+				switch($msg){
+					case "success":
+						$this->db->set('modifyed_by', $campaign);
+						$this->db->where('id', $lead->id);
+						$this->db->update('leads');
+						$exportedCount++;
+						break;
+					case "duplicate":
+						$this->db->set('modifyed_by', $campaign);
+						$this->db->set('status', LEAD_STATUS_DUPLICATE);
+						$this->db->where('id', $lead->id);
+						$this->db->update('leads');
+						break;
+					case "Incomplete":
+						$this->db->set('modifyed_by', $campaign);
+						$this->db->set('status', LEAD_STATUS_INCOMPLETE);
+						$this->db->where('id', $lead->id);
+						$this->db->update('leads');
+						break;
+					default:
+						$this->db->set('modifyed_by', $campaign);
+						$this->db->set('status', LEAD_STATUS_INCOMPLETE);
+						$this->db->where('id', $lead->id);
+						$this->db->update('leads');
 				}
 
 				$totalCount++;
@@ -135,7 +174,7 @@ class Integration_c extends MY_Controller {
 			if($item->seamotech_id != ""){
 				$this->db->set('status', $item->status);
 				if($item->status == LEAD_STATUS_FTD)
-					$this->db->set('ftd_date', isset($item->ftd_date)?$item->ftd_date:'');
+					$this->db->set('ftd_date', isset($item->update_date)?$item->update_date:'');
 				$this->db->where('id', $item->seamotech_id);
 				$this->db->update('leads');	
 			}

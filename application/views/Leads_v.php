@@ -19,6 +19,8 @@
                             <option value="<?php echo LEAD_STATUS_UNQUALIFIED?>">Unqualified</option>
                             <option value="<?php echo LEAD_STATUS_MONEY?>">Call later</option>
                             <option value="<?php echo LEAD_STATUS_FTD?>">FTD</option>
+                            <option value="<?php echo LEAD_STATUS_DUPLICATE?>">Duplicated</option>
+                            <option value="<?php echo LEAD_STATUS_INCOMPLETE?>">Incomplete</option>
                         </select>
                     </div>
                 </div>

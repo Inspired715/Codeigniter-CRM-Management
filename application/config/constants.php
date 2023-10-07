@@ -93,6 +93,9 @@ defined('LEAD_STATUS_UNQUALIFIED')      OR define('LEAD_STATUS_UNQUALIFIED', 5);
 defined('LEAD_STATUS_NEW')              OR define('LEAD_STATUS_NEW', 6);
 defined('LEAD_STATUS_MONEY')            OR define('LEAD_STATUS_MONEY', 7);
 
+defined('LEAD_STATUS_INCOMPLETE')            OR define('LEAD_STATUS_INCOMPLETE', 99);
+defined('LEAD_STATUS_DUPLICATE')            OR define('LEAD_STATUS_DUPLICATE', 88);
+
 $countryList = array(
     'AF' => 'Afghanistan',
     'AX' => 'Aland Islands',
