@@ -32,7 +32,7 @@ class Integration_c extends MY_Controller {
 		$lead = $this->Integration_m->getLeadById($lead_id);
 
 		if(count($lead) == 0){
-			echo json_encode(array('status' => 400, 'message' => "Error."));
+			echo json_encode(array('status' => 400, 'message' => "Perfix is not existed."));
 			return;
 		}
 
@@ -40,7 +40,6 @@ class Integration_c extends MY_Controller {
 		switch($campaign){
 			case 1:
 				$url = "http://pruebas.mercurysystem.com.co/ext_api/guardar_lead_api_magic.php";
-				$headers = ['Content-Type: application/x-www-form-urlencoded'];
 				$data = "token=".urlencode('*#=+UIOYUqwe_23q')."&Name_lead=".$lead[0]->first_name.' '.$lead[0]->last_name."&email=".$lead[0]->email."&phone=".$lead[0]->prefix.$lead[0]->phone_number."&seamotech_id=".$lead[0]->id;
 				break;
 			default:
@@ -92,7 +91,6 @@ class Integration_c extends MY_Controller {
 		switch($campaign){
 			case 1:
 				$url = "http://pruebas.mercurysystem.com.co/ext_api/guardar_lead_api_magic.php";
-				$headers = ['Content-Type: application/x-www-form-urlencoded'];				
 				break;
 			default:
 				
@@ -160,7 +158,6 @@ class Integration_c extends MY_Controller {
 		switch($campaign){
 			case 1:
 				$url = "http://pruebas.mercurysystem.com.co/ext_api/leads_magic_status_full.php";
-				$headers = ['Content-Type: application/x-www-form-urlencoded'];
 				$data = "token=".urlencode('*#=+UIOYUqwe_23q');
 				break;
 			default:

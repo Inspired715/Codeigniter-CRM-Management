@@ -13,8 +13,15 @@ $(document).ready(function () {
               lead_id: lead_id,
               campaign:$('#filter_campaign').val()
             },
-            success: function () {
-                loadData();
+            success: function (response) {
+                let res = JSON.parse(response);
+                if(res.status == 200){
+                    Toast.success(res.message);
+                    loadData();
+                }else{
+                    Toast.danger(res.message);
+                }
+
                 $(".waitting-screen").hide();
             }
         })
