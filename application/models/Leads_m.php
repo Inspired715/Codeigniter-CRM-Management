@@ -3,7 +3,7 @@
 
 	class Leads_m extends CI_Model {
 		
-    public function getTableData($from, $to, $status = 0, $created = 0){
+    public function getTableData($from, $to, $status = 0, $created = 0, $country=""){
         $sql = ""; $query = NULL;
         if($_SESSION['publisher'] != 1){
             if($status != 0){
@@ -11,6 +11,11 @@
             }else{
                 $sql = "SELECT ifnull(c.campaign, '') as campaign, l.id, l.first_name, l.last_name, l.status,  l.country, l.phone_number, l.email, p.full_name as created_by, l.created_date FROM leads l left join publisher p on l.created_by=p.id left join campaign c on l.modifyed_by=c.id where l.created_by=?  and l.created_date >= ? and l.created_date <= ?";
             }
+
+            if($country != ""){
+                $sql .= " and l.country='".$country."'";
+            }
+
             $query = $this->db->query($sql, array($_SESSION['publisher'], $from, $to));
         }else{
             $sql = "SELECT ifnull(c.campaign, '') as campaign, l.id, l.first_name, l.last_name, l.status, l.phone_number,  l.country, l.email, p.full_name as created_by, l.created_date FROM leads l left join publisher p on l.created_by=p.id left join campaign c on l.modifyed_by=c.id where l.created_date >=? and l.created_date <= ? ";
@@ -20,7 +25,9 @@
             if($created != 0){
                 $sql .= " and l.created_by=".$created;
             }
-
+            if($country != ""){
+                $sql .= " and l.country='".$country."'";
+            }
             $query = $this->db->query($sql, array($from, $to));
         }
 

@@ -128,7 +128,8 @@ $(document).ready(function () {
               status: $('#filter_status').val(),
               createdBy: $('#filter_created').val(),
               from_date: $('#from_date').val(),
-              to_date: $('#to_date').val()
+              to_date: $('#to_date').val(),
+              country: $('#filter_country').val(),
             },
             success: function (response) {
                 let res = JSON.parse(response);

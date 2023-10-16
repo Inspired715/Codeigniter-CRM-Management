@@ -37,19 +37,29 @@
                     </div>
                 </div>
                 <?php }?>
-                <div class="col-lg-3">
+                <div class="col-lg-2">
+                    <div class="mb-4">
+                        <label class="form-label fw-semibold">Country</label>
+                        <select class="form-select" id="filter_country">
+                            <option selected="" value="">All</option>
+                            <option value="MX">Mexico</option>
+                            <option value="CO">Colombia</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-2" style="width:165px;">
                     <div class="mb-4">
                         <label class="form-label fw-semibold">From</label>
                         <input type="date" class="form-control" id="from_date" value="<?php echo Date('Y-m-d')?>"/>
                     </div>
                 </div>                
-                <div class="col-lg-3">
+                <div class="col-lg-2"  style="width:165px;">
                     <div class="mb-4">
                         <label class="form-label fw-semibold">To</label>
                         <input type="date" class="form-control" id="to_date" value="<?php echo Date('Y-m-d')?>"/>
                     </div>
                 </div>
-                <div class="col-lg-2" style="display:flex;align-items:center">
+                <div class="col-lg-1" style="display:flex;align-items:center">
                     <i class="ti ti-search" style="font-size:30px;cursor:pointer;color:white" id="search_btn"></i>
                 </div>
             </div>

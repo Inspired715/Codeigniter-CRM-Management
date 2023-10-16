@@ -29,8 +29,9 @@ class Leads_c extends MY_Controller {
 
 		$from = isset($_POST['from_date']) ? $_POST['from_date'] : '';
 		$to = isset($_POST['to_date']) ? $_POST['to_date'] : '';
+		$country = isset($_POST['country']) ? $_POST['country'] : '';
 
-		$leads = $this->Leads_m->getTableData($from, $to, $status, $createdBy);
+		$leads = $this->Leads_m->getTableData($from, $to, $status, $createdBy, $country);
 
 		echo json_encode(array('status' => 200, 'data' => $leads));
    }
