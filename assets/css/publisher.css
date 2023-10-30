@@ -1,7 +1,12 @@
-html, body{
-	font-family: Poppins;
-}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@400;500;600;700;800&display=swap');
 
+.family-pop{
+	font-family: "Poppins";
+}
+.family-lato{
+	font-family: "Lato";
+}
 .section-banner{
 	max-width: 1440px;
 	padding: 24px 40px;
