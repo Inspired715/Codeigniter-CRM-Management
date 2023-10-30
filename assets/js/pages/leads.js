@@ -12,8 +12,8 @@ $(document).ready(function () {
               width: 380,
               type: "pie",
             },
-            colors: ["#13DEB9", "#999999", "#ffae1f", "#39b69a", "#6610f2", "#FFAE1F", "#9EAE1F"],
-            labels: ["Not interested", "New", "Follow up", "Wrong number", "Unqualified", "Call later", "Incomplete"],
+            colors: ["#13DEB9", "#999999", "#ffae1f", "#39b69a", "#6610f2", "#FFAE1F", "#9EAE1F", "#5EAE1F"],
+            labels: ["Not interested", "New", "Follow up", "Wrong number", "Unqualified", "Call later", "Incomplete", "FTD"],
             responsive: [{
               breakpoint: 600,
               options: {
@@ -135,7 +135,7 @@ $(document).ready(function () {
                 let res = JSON.parse(response);
                 if(res.status == 200){
                     let html = "";
-                    let notCnt=0,newCnt=0,followCnt=0,wrongCnt=0,unqCnt=0,moneyCnt=0,incompCnt=0;
+                    let notCnt=0,newCnt=0,followCnt=0,wrongCnt=0,unqCnt=0,moneyCnt=0,incompCnt=0, ftdCnt=0;
                     let number = 1;
                     res.data.forEach((item) => {
                         html += '<tr>';
@@ -154,6 +154,7 @@ $(document).ready(function () {
                                 break;
                             case "3":
                                 html += '<span class="badge bg-danger rounded-3 fw-semibold text-center">Ftd</span>';
+                                ftdCnt++;
                                 break;
                             case "4":
                                 html += '<span class="badge bg-dark rounded-3 fw-semibold text-center">Wrong number</span>';
@@ -207,7 +208,7 @@ $(document).ready(function () {
                     })
 
                     $('#lead_table').html(html);
-                    drawChart(new Array(notCnt, newCnt, followCnt, wrongCnt, unqCnt, moneyCnt, incompCnt))
+                    drawChart(new Array(notCnt, newCnt, followCnt, wrongCnt, unqCnt, moneyCnt, incompCnt, ftdCnt))
                     $('#total_count').html('Total: ' + (number-1));
                     $(".waitting-screen").hide();
                 }else{

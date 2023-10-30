@@ -2,6 +2,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="website visitor tracking, leads, trade online, venturyfx, buy crypto, web visitors, crm">
+    <meta name="description" content="Seamotech - Managing leads. submit to hubspot, contected to several brokers and publishers">
     <title><?php echo $title?></title>
     <link rel="shortcut icon" type="image/png" href="<?php echo base_url('assets/img/favicon.png')?>" />
     <link rel="stylesheet" href="<?php echo base_url('assets/css/sh_toaster.css')?>" />
