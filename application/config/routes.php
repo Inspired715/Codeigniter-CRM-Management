@@ -72,3 +72,5 @@ $route['leads/edit/(:num)'] = 'Leads_c/editLeads/$1';
 
 $route['api/lead'] = 'Api/api_lead';
 $route['api/lead/get_leads'] = 'Api/GetLeads';
+
+$route['publishers/(:any)'] = 'Landing_c/publishers/$1';

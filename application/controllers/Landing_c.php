@@ -7,8 +7,11 @@ class Landing_c extends CI_Controller {
 		parent::__construct();
 	}
 
-   public function index(){
+   	public function index(){
         $this->load->view('Landing_v');
 	}
 
+	public function publishers($uuid){
+		$this->load->view('Publishers_v', array('title' => 'Landing'));	
+	}
 }

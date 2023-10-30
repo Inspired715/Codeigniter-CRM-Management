@@ -1,0 +1,153 @@
+html, body{
+	font-family: Poppins;
+}
+
+.section-banner{
+	max-width: 1440px;
+	padding: 24px 40px;
+	background-color: #1F1F1F;
+	margin-left: auto;
+	margin-right: auto;
+}
+.section-about{
+	max-width: 1440px;
+	padding: 80px 150px;
+	background-color: #1F1F1F;
+	margin-left: auto;
+	margin-right: auto;
+	gap: 40px;
+}
+.section-profit{
+	max-width: 1440px;
+	padding: 80px 150px 0px 150px;
+	background: #242424;
+	margin-left: auto;
+	margin-right: auto;
+}
+.section-footer{
+	background: #1F1F1F;
+	max-width: 1440px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 80px 150px;
+}
+.btn-sign{
+	border-radius: 4px;
+	background: #FFD84E;
+	color: #1F1F1F;
+	font-size: 18px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 28px;
+	border:0;
+	padding: 16px 24px;
+}
+.flex{
+	display: flex;
+}
+.justify-between{
+	display: flex;
+	justify-content: space-between;
+}
+.items-center{
+	display: flex;
+	align-items: center;
+}
+.justify-center{
+	display: flex;
+	justify-content: center;
+	gap:24px;
+}
+.justify-evenly{
+	display: flex;
+	justify-content: space-evenly;
+}
+.items-start{
+	display: flex;
+	align-items: start;
+}
+.flex-col{
+	display: flex;
+	flex-direction: column;
+}
+.banner-left{
+	width: 560px;
+	padding: 40px 0px;
+	gap: 46px;
+}
+.banner-right{
+	width: 560px;
+	padding: 40px;
+	gap: 28px;
+	border-radius: 4px;
+	background: #242424;
+}
+.font-48{
+	font-size: 48px;
+}
+.font-18{
+	font-size: 18px;
+}
+.font-32{
+	font-size: 32px;
+}
+.font-40{
+	font-size: 40px;	
+}
+.font-24{
+	font-size: 24px;	
+}
+.weight-600{
+	font-weight: 600;
+} 
+.line-155{
+	line-height: 155%;
+}
+.weight-500{
+	font-weight: 500;
+}
+.weight-700{
+	font-weight: 700;
+}
+.weight-400{
+	font-weight: 400;
+}
+.line-120{
+	line-height: 120%;
+}
+.line-150{
+	line-height: 150%;
+}
+.color-white{
+	color:white;
+}
+.color-grey{
+	color: #A1A1A1;
+}
+.input-lead{
+	height: 60px;
+    border: 1px solid #DBDEE7;
+    width: 100%;
+    border-radius: 4px;
+    background: transparent;
+    padding: 15px;
+    color: white;
+}
+.btn-submit{
+	border-radius: 4px;
+	background: #FFD84E;	
+	border: none;
+	height: 60px;
+}
+.text-center{
+	text-align: center;
+}
+.card-investor{
+	padding:16px; 
+	gap: 12px;
+	border: 1px solid #646464;
+	width: 100%;
+}
+.mb-15{
+	margin-bottom: 15px;
+}
