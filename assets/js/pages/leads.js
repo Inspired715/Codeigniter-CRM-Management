@@ -135,7 +135,7 @@ $(document).ready(function () {
                 let res = JSON.parse(response);
                 if(res.status == 200){
                     let html = "";
-                    let notCnt=0,newCnt=0,followCnt=0,wrongCnt=0,unqCnt=0,moneyCnt=0,incompCnt=0, ftdCnt=0;
+                    let notCnt=0,newCnt=0,followCnt=0,wrongCnt=0,unqCnt=0,moneyCnt=0,incompCnt=0, ftdCnt=0, dupCnt=0;
                     let number = 1;
                     res.data.forEach((item) => {
                         html += '<tr>';
@@ -174,6 +174,7 @@ $(document).ready(function () {
                                 break;
                             case "88":
                                 html += '<span class="badge bg-dark rounded-3 fw-semibold text-center">Duplicate</span>';
+                                dupCnt++;
                                 break;
                             case "99":
                                 html += '<span class="badge bg-dark rounded-3 fw-semibold text-center">Incomplete</span>';
@@ -209,7 +210,7 @@ $(document).ready(function () {
 
                     $('#lead_table').html(html);
                     drawChart(new Array(notCnt, newCnt, followCnt, wrongCnt, unqCnt, moneyCnt, incompCnt, ftdCnt))
-                    $('#total_count').html('Total: ' + (number-1));
+                    $('#total_count').html('Total: ' + (number-1-incompCnt-dupCnt));
                     $(".waitting-screen").hide();
                 }else{
                     Toast.danger('Error!');
