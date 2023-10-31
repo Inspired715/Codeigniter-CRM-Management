@@ -38,7 +38,7 @@ $(document).ready(function () {
           },
           
           xaxis: {
-            categories: ["FTD", "Not interested", "New", "Follow up", "Wrong number", "Unqualified", "Call later", "Incomplete", "Duplicated"],
+            categories: ["FTD", "Not interested", "New", "Wrong number", "Unqualified", "Call later", "Duplicated"],
             position: 'top',
             axisBorder: {
               show: true
@@ -259,7 +259,7 @@ $(document).ready(function () {
                     })
 
                     $('#lead_table').html(html);
-                    drawChart(new Array(ftdCnt, notCnt, newCnt, followCnt, wrongCnt, unqCnt, moneyCnt, incompCnt, dupCnt), number-1, number-incompCnt-dupCnt-1)
+                    drawChart(new Array(ftdCnt, notCnt, newCnt, wrongCnt, unqCnt, moneyCnt, dupCnt), number-1, number-incompCnt-dupCnt-1)
                     $(".waitting-screen").hide();
                 }else{
                     Toast.danger('Error!');
