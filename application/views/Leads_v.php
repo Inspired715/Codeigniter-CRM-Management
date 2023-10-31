@@ -1,14 +1,8 @@
 <div class="row">
     <div class="card w-100">
-        <div class="card w-100 p-3">
+        <div class="card w-100 p-3 mt-3">
             <h5 class="card-title fw-semibold mb-4">Leads</h5>
-            <div style="display:flex;justify-content:space-around">
-                <div id="chart-pie-simple"></div>
-                <div class="welcome-bg-img text-end">
-                    <img src="<?php echo base_url('assets/img/welcome-bg.svg')?>" alt="" class="img-fluid">
-                    <h1 style="color:#54ff78" id='total_count'></h1>
-                </div>
-            </div>
+            <div id="chart-pie-simple"></div>
         </div>
         <div class="card-body p-4">
             

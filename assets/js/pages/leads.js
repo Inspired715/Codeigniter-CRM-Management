@@ -3,39 +3,89 @@
 $(document).ready(function () {
     loadData();
 
-    function drawChart(series){
+    function drawChart(series, total, real){
         var chart_pie_simple = null;
-
-        var options_simple = {
-            series: series,
+        var options = {
+            series: [{
+            name: 'Count',
+            data: series
+          }],
             chart: {
-              width: 380,
-              type: "pie",
-            },
-            colors: ["#13DEB9", "#999999", "#ffae1f", "#39b69a", "#6610f2", "#FFAE1F", "#9EAE1F", "#5EAE1F"],
-            labels: ["Not interested", "New", "Follow up", "Wrong number", "Unqualified", "Call later", "Incomplete", "FTD"],
-            responsive: [{
-              breakpoint: 600,
-              options: {
-                chart: {
-                  width: 300,
-                },
-                legend: {
-                  position: "bottom",
-                },
+            height: 350,
+            type: 'bar',
+          },
+          plotOptions: {
+            bar: {
+              borderRadius: 10,
+              dataLabels: {
+                position: 'center', // top, center, bottom
               },
-            }, ],
-            legend: {
-              labels: {
-                colors: ["#a1aab2"],
-              },
+            }
+          },
+          dataLabels: {
+            enabled: true,
+            formatter: function (val) {
+              if(total == 0)
+                return '0 %';
+              else
+                return Math.round(val / total * 100) + " %";
             },
+            offsetY: -20,
+            style: {
+              fontSize: '12px',
+              colors: ["white"]
+            }
+          },
+          
+          xaxis: {
+            categories: ["FTD", "Not interested", "New", "Follow up", "Wrong number", "Unqualified", "Call later", "Incomplete", "Duplicated"],
+            position: 'top',
+            axisBorder: {
+              show: true
+            },
+            axisTicks: {
+              show: true
+            },
+            tooltip: {
+              enabled: true,
+            },
+            labels: {
+                style: {
+                    colors: '#5d87ff' // Specify your desired font color here
+                }
+            }
+          },
+          yaxis: {
+            axisBorder: {
+              show: false
+            },
+            axisTicks: {
+              show: false,
+            },
+            labels: {
+              show: false,
+              formatter: function (val) {
+                return val;
+              }
+            }
+          
+          },
+          title: {
+            text: 'Total: ' + total + ', Success:' + real,
+            floating: true,
+            offsetY: 325,
+            align: 'center',
+            style: {
+              color: '#5d87ff',
+              fontSize:'20px'
+            }
+          }
           };
         
           if(chart_pie_simple == null){
             chart_pie_simple = new ApexCharts(
                 document.querySelector("#chart-pie-simple"),
-                options_simple
+                options
               );
           }
 
@@ -209,8 +259,7 @@ $(document).ready(function () {
                     })
 
                     $('#lead_table').html(html);
-                    drawChart(new Array(notCnt, newCnt, followCnt, wrongCnt, unqCnt, moneyCnt, incompCnt, ftdCnt))
-                    $('#total_count').html('Total: ' + (number-1-incompCnt-dupCnt));
+                    drawChart(new Array(ftdCnt, notCnt, newCnt, followCnt, wrongCnt, unqCnt, moneyCnt, incompCnt, dupCnt), number-1, number-incompCnt-dupCnt-1)
                     $(".waitting-screen").hide();
                 }else{
                     Toast.danger('Error!');
