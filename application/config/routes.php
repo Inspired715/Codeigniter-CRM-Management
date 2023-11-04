@@ -68,6 +68,8 @@ $route['updateFrom'] = 'Integration_c/updateFrom';
 $route['exportAllToCampaign'] = 'Integration_c/exportAllToCampaign';
 $route['coldleades'] = 'Coldleads_c';
 $route['exportCSV'] = 'Coldleads_c/exportCSV';
+$route['sendMail'] = 'Landing_c/sendMail';
+
 $route['leads/edit/(:num)'] = 'Leads_c/editLeads/$1';
 
 $route['api/lead'] = 'Api/api_lead';

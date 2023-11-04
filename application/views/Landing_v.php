@@ -230,7 +230,7 @@
       <div class="container" data-aos="fade-up">
         <div class="row" data-aos="fade-up" data-aos-delay="100">
           <div class="col-lg-9">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+            <form action="<?php echo base_url('sendMail')?>" method="post" role="form" class="php-email-form">
               <h1 class="mb-5">Contact Us</h1>
               <div class="row">
                 <div class="form-group">

@@ -14,4 +14,28 @@ class Landing_c extends CI_Controller {
 	public function publishers($uuid){
 		$this->load->view('Publishers_v', array('title' => 'Landing'));	
 	}
+
+	public function sendMail(){
+		$name = isset($_POST['name'])?$_POST['name']:'';
+		$email = isset($_POST['email'])?$_POST['email']:'';
+		$message = isset($_POST['message'])?$_POST['message']:'';
+
+		$to = "dev@seamotech.com";
+	
+		$template = "This message from ".$email."(".$name.")";
+		$template .= "
+		Message:".$message;
+
+		$this->email->subject('Request from seamotech');
+
+		$this->email->message($template);  
+		$this->email->from($email);
+		$this->email->to($to);
+		try {
+			$this->email->send();
+			echo json_encode(array('status' => 'success'));
+		} catch (\Throwable $th) {
+			echo json_encode(array('status' => 'error')); 
+		}
+	}
 }
