@@ -230,7 +230,7 @@
       <div class="container" data-aos="fade-up">
         <div class="row" data-aos="fade-up" data-aos-delay="100">
           <div class="col-lg-9">
-            <form action="<?php echo base_url('sendMail')?>" method="post" role="form" class="php-email-form">
+            <form method="post" role="form" class="php-email-form" id="contact_form">
               <h1 class="mb-5">Contact Us</h1>
               <div class="row">
                 <div class="form-group">
@@ -347,6 +347,7 @@
       class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="<?php echo base_url('assets/vendor/aos/aos.js')?>"></script>
   <script src="<?php echo base_url('assets/vendor/bootstrap/js/bootstrap.bundle.min.js')?>"></script>
   <script src="<?php echo base_url('assets/vendor/swiper/swiper-bundle.min.js')?>"></script>

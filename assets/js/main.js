@@ -293,3 +293,21 @@ function _open_service(evt, cityName) {
 }
 
 document.getElementById("defaultOpen").click();
+
+$("#contact_form").submit(function(){
+	$.ajax({
+	    url: "sendMail",
+	    method: "POST",
+	    data: $('#contact_form').serialize(),
+	    success: function (response) {
+	      var res = JSON.parse(response);
+		  if(res.status == "success"){
+			  alert("Email sent successfully.");
+		  }else{
+			  alert('Oh no')
+		  }
+	    }
+	});
+
+	event.preventDefault();
+});
