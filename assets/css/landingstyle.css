@@ -687,69 +687,24 @@ section {
   z-index: 2;
 }
 
-.testimonials .testimonials-carousel,
-.testimonials .testimonials-slider {
-  overflow: hidden;
+.testimonials .testimonials-slider .ventury{
+  width:158px;
+  height: 33px;
 }
-
-.testimonials .testimonial-item {
-  text-align: center;
-  color: #fff;
+.testimonials .testimonials-slider .simsem{
+  width:125px;
 }
-
-.testimonials .testimonial-item .testimonial-img {
-  width: 100px;
-  border-radius: 50%;
-  border: 6px solid rgba(255, 255, 255, 0.15);
-  margin: 0 auto;
+.testimonials .testimonials-slider .pm{
+  width:100px;
 }
-
-.testimonials .testimonial-item h3 {
-  font-size: 20px;
-  font-weight: bold;
-  margin: 10px 0 5px 0;
-  color: #fff;
+.testimonials .testimonials-slider p{
+  color: white;
 }
-
-.testimonials .testimonial-item .quote-icon-left,
-.testimonials .testimonial-item .quote-icon-right {
-  color: rgba(255, 255, 255, 0.4);
-  font-size: 26px;
-}
-
-.testimonials .testimonial-item .quote-icon-left {
-  display: inline-block;
-  left: -5px;
-  position: relative;
-}
-
-.testimonials .testimonial-item .quote-icon-right {
-  display: inline-block;
-  right: -5px;
-  position: relative;
-  top: 10px;
-}
-
-.testimonials .testimonial-item p {
-  font-style: italic;
-  margin: 0 auto 15px auto;
-  color: #fff;
-}
-
-.testimonials .swiper-pagination {
-  margin-top: 20px;
-  position: relative ;
-}
-
-.testimonials .swiper-pagination .swiper-pagination-bullet {
-  width: 12px;
-  height: 12px;
-  background-color: rgba(255, 255, 255, 0.5);
-  opacity: 1;
-}
-
-.testimonials .swiper-pagination .swiper-pagination-bullet-active {
-  background-color: #106eea;
+.testimonials .testimonials-slider .description{
+  color:white;
+  font-size: 1.5vw;
+  font-weight: 900;
+  line-height: 3vw;
 }
 
 /*--------------------------------------------------------------
@@ -846,6 +801,12 @@ section {
     float: none;
     text-align: center;
     padding: 2px 0;
+  }
+  .testimonials .testimonials-slider .description{
+    color:white;
+    font-size: 4vw;
+    font-weight: 900;
+    line-height: 8vw;
   }
 }
 

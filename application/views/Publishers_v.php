@@ -5,13 +5,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?php echo $title; ?></title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url('assets/img/favicon.png')?>" rel="icon">
+    <link href="<?php echo base_url('assets/vendor/bootstrap/css/bootstrap.min.css')?>" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/publisher.css')?>" />
 </head>
 
 <body>
     <div class="section-banner flex-col justify-evenly"
-        style="background:url('<?php echo base_url("assets/img/pg-primary.jpg")?>');height: 795px;">
+        style="background:url('<?php echo base_url("assets/img/publisher/pg-primary.jpg")?>');height: 795px;">
         <div class="justify-between items-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="128" height="24" viewBox="0 0 128 24" fill="none">
                 <path
@@ -271,7 +272,7 @@
                     da web, computador e<br> dispositivos móveis.</p>
             </div>
             <div
-                style="background:url('<?php echo base_url('assets/img/mockup.png')?>') no-repeat;background-size: contain; width: 664px; height: 456px;">
+                style="background:url('<?php echo base_url('assets/img/publisher/mockup.png')?>') no-repeat;background-size: contain; width: 664px; height: 456px;">
             </div>
         </div>
         <div class="flex-col items-start" style="gap:40px; width: 100%;">
@@ -303,34 +304,34 @@
                 condições<br> personalizadas:</p>
             <div class="flex-col justify-center items-start" style="gap:16px">
                 <div class="items-center" style="gap:8px">
-                    <img src="<?php echo base_url('assets/img/check.jpg')?>" style="width: 27px;" />
+                    <img src="<?php echo base_url('assets/img/publisher/check.jpg')?>" style="width: 27px;" />
                     <p class="font-18 weight-400 line-150 color-white family-lato" style="margin:0px">Investimento
                         mínimo de -R$1500.</p>
                 </div>
                 <div class="items-center" style="gap:8px">
-                    <img src="<?php echo base_url('assets/img/check.jpg')?>" style="width: 27px;" />
+                    <img src="<?php echo base_url('assets/img/publisher/check.jpg')?>" style="width: 27px;" />
                     <p class="font-18 weight-400 line-150 color-white family-lato" style="margin:0px">24 horas, 5 dias
                         por semana.</p>
                 </div>
                 <div class="items-center" style="gap:8px">
-                    <img src="<?php echo base_url('assets/img/check.jpg')?>" style="width: 27px;" />
+                    <img src="<?php echo base_url('assets/img/publisher/check.jpg')?>" style="width: 27px;" />
                     <p class="font-18 weight-400 line-150 color-white family-lato" style="margin:0px">Sem taxas surpresa
                         e comissão fixa.</p>
                 </div>
                 <div class="items-center" style="gap:8px">
-                    <img src="<?php echo base_url('assets/img/check.jpg')?>" style="width: 27px;" />
+                    <img src="<?php echo base_url('assets/img/publisher/check.jpg')?>" style="width: 27px;" />
                     <p class="font-18 weight-400 line-150 color-white family-lato" style="margin:0px">Sinais alinhados
                         aos seus objetivos.</p>
                 </div>
                 <div class="items-center" style="gap:8px">
-                    <img src="<?php echo base_url('assets/img/check.jpg')?>" style="width: 27px;" />
+                    <img src="<?php echo base_url('assets/img/publisher/check.jpg')?>" style="width: 27px;" />
                     <p class="font-18 weight-400 line-150 color-white family-lato" style="margin:0px">Retirada rápida e
                         facilidade de depósito.</p>
                 </div>
             </div>
             <button class="btn-submit font-18 weight-600 line-155 family-pop" style="width: 154px;">Comece já!</button>
         </div>
-        <img src="<?php echo base_url('assets/img/profit.png')?>" style="width:527px" />
+        <img src="<?php echo base_url('assets/img/publisher/profit.png')?>" style="width:527px" />
     </div>
     <div class="section-footer flex-col items-start" style="gap:40px;">
         <div class="justify-between items-start" style="width:100%">
