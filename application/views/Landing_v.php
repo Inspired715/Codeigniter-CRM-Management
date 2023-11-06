@@ -37,7 +37,7 @@
       <h1>Empowering <br>Your Business</h1>
       <h2>Tech Solutions, Service Beyond Excellence</h2>
       <div class="d-flex">
-        <a href="#about" class="btn-get-started scrollto">LEARN MORE</a>
+        <a href="#featured-services" class="btn-get-started scrollto">LEARN MORE</a>
       </div>
     </div>
   </section>
