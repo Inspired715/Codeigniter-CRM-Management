@@ -33,7 +33,7 @@
     </div>
   </header>
   <section id="hero" class="d-flex align-items-center">
-    <div class="container" data-aos="zoom-out" data-aos-delay="100">
+    <div class="container">
       <h1>Empowering <br>Your Business</h1>
       <h2>Tech Solutions, Service Beyond Excellence</h2>
       <div class="d-flex">
@@ -43,32 +43,32 @@
   </section>
   <main id="main">
     <section id="featured-services" class="featured-services">
-      <div class="container" data-aos="fade-up">
+      <div class="container">
         <div class="row banner-title">
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0 p-1">
-            <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+            <div class="icon-box">
               <h4 class="title">BRANDING AND MARKETING</h4>
             </div>
           </div>
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0 p-1">
-            <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+            <div class="icon-box">
               <h4 class="title">SOCIAL MEDIA MANAGEMENT</h4>
             </div>
           </div>
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0 p-1">
-            <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+            <div class="icon-box">
               <h4 class="title">WEB & MOBILE DEVELOPMENT</h4>
             </div>
           </div>
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0 p-1">
-            <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+            <div class="icon-box">
               <h4 class="title">CRM AND API INTEGRATION</h4>
             </div>
           </div>
         </div>
-        <div class="container" data-aos="fade-up">
+        <div class="container">
           <div class="row">
-            <div class="col-lg-6 pt-4 pt-lg-0 about-left" data-aos="fade-up" data-aos-delay="100">
+            <div class="col-lg-6 pt-4 pt-lg-0 about-left">
               <h1>About Us</h1>
               <p>
                 At Seamo Tech we are dedicated to transforming your business's online presence.
@@ -81,7 +81,7 @@
                 We take pride in our transparency, competitive prices, and commitment to high-quality delivery.
               </p>
             </div>
-            <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
+            <div class="col-lg-6">
               <img src="<?php echo base_url('assets/img/about.png')?>" class="img-fluid" alt="">
             </div>
           </div>
@@ -90,14 +90,14 @@
     </section>
     <!-- ======= Services Section ======= -->
     <section id="services" class="services">
-      <div class="container" data-aos="fade-up">
+      <div class="container">
         <div class="row section-title">
           <div class="col-lg-10 col-md-12">
             <div class="row">
-              <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+              <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
                 <h1>Services <span>We Offer</span></h1>
               </div>
-              <div class="col-lg-8 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+              <div class="col-lg-8 col-md-6 d-flex align-items-stretch">
                 <p class="d-flex align-items-center">We're dedicated to helping you unlock digital excellence and elevate your brand to new heights. Our
                   comprehensive range of services covers everything you need to succeed in the digital landscape.</p>
               </div>
@@ -119,7 +119,7 @@
             <div id="web" class="tabcontent">
               <h1 class="text-center mb-5">Web Development</h1>
               <div class="row">
-                <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
                   <div class="d-flex flex-column" style="gap:30px;">
                     <h4>Full Stack Development</h4>
                     <div class="d-flex flex-column">
@@ -130,12 +130,10 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in"
-                  data-aos-delay="200">
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
                   <img src="<?php echo base_url('assets/img/services/web-dev.png')?>" style="width: 100%;" alt="web development png">
                 </div>
-                <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in"
-                  data-aos-delay="300">
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
                   <div class="d-flex flex-column" style="gap:30px;">
                     <h4>Dynamic WordPress + PHP Websites</h4>
                     <div class="d-flex flex-column">
@@ -145,12 +143,12 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="100">
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
                   <div class="icon-box">
                     <img src="<?php echo base_url('assets/img/services/monitor.png')?>" style="width: 100%;" alt="web development monitor png">
                   </div>
                 </div>
-                <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="200">
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
                   <div class="d-flex flex-column" style="gap:30px;">
                     <h4>Design and Prototyping (Figma)</h4>
                     <div class="d-flex flex-column">
@@ -160,19 +158,19 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="300">
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
                   <div class="icon-box">
                     <img src="<?php echo base_url('assets/img/services/handle.png')?>" style="width: 100%;" alt="web handling png">
                   </div>
                 </div>
               </div>
               <div class="row">
-                <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="300">
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
                 </div>
-                <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="300">
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
                   <button class="btn-web-dev">View Web Development Services</button>
                 </div>
-                <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="300">
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
                 </div>
               </div>
             </div>
@@ -226,8 +224,8 @@
     </section><!-- End Services Section -->
     <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact">
-      <div class="container" data-aos="fade-up">
-        <div class="row" data-aos="fade-up" data-aos-delay="100">
+      <div class="container">
+        <div class="row">
           <div class="col-lg-9">
             <form method="post" role="form" class="php-email-form" id="contact_form">
               <h1 class="mb-5">Contact Us</h1>
@@ -252,6 +250,10 @@
               <p>hello@seamotech.com</p>
             </div>
             <div>
+              <h6>Address</h6>
+              <p>Paju 250603 Tartu, Estonia</p>
+            </div>
+            <div>
               <h6>Socials</h6>
               <div class="d-flex" style="gap:25px">
                 <img src="<?php echo base_url('assets/img/socials/facebook.svg')?>" alt="facebook icon">
@@ -267,7 +269,7 @@
   <footer id="footer">
     <div class="footer-top">
       <div class="testimonials">
-        <div class="container" data-aos="fade-up">
+        <div class="container">
           <div class="testimonials-slider">
             <div class="row">
               <div class="col-sm-12 col-md-3 d-flex flex-column justify-content-center" style="gap:10px">
@@ -356,7 +358,7 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-3 col-md-6">
-            <h1 class="logo"><a href="index.html">SEAMO<span>TECH</span></a></h1>
+            <h1 class="logo"><a href="<?php echo base_url('/')?>">SEAMO<span>TECH</span></a></h1>
           </div>
           <div class="col-lg-3 col-md-6 footer-links">
             <ul>
