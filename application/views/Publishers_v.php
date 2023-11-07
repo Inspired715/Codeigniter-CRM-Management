@@ -7,7 +7,9 @@
     <title><?php echo $title; ?></title>
     <link href="<?php echo base_url('assets/img/favicon.png')?>" rel="icon">
     <link href="<?php echo base_url('assets/vendor/bootstrap/css/bootstrap.min.css')?>" rel="stylesheet">
+    <link rel="stylesheet" href="<?php echo base_url('assets/css/intlInputPhone.css')?>" />
     <link rel="stylesheet" href="<?php echo base_url('assets/css/publisher.css')?>" />
+    
     <script>
         var BASE_URL = '<?php echo base_url()?>';
     </script>
@@ -48,7 +50,7 @@
                         <input class="input-lead" placeholder="Nombre*" name="first" required/>
                         <input class="input-lead" placeholder="Apellido*" name="last" required/>
                         <input class="input-lead" type="email" placeholder="E-mail*" name="email" required/>
-                        <input class="input-lead" placeholder="Número de telefone*" name="phone" required/>
+                        <div class="input-phone" ></div>                        
                     </div>
                     <div class="g-recaptcha" data-sitekey="<?php echo SITE_KEY?>"></div> 
                     <button class="btn-submit font-18 weight-600 line-155 family-pop" style="width: 100%;">Comece
@@ -190,6 +192,7 @@
     </div>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="<?php echo base_url('assets/js/intlInputPhone.min.js')?>"></script>
 <script src="https://www.google.com/recaptcha/api.js" async defer></script> 
 <script src="<?php echo base_url('assets/js/pages/publisher.js')?>"></script>
 </html>
