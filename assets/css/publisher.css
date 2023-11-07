@@ -7,34 +7,35 @@
 .family-lato{
 	font-family: "Lato";
 }
+#header.fixed-top{
+	position: sticky;
+	top:0px;
+	background-color: #2b2b2b;
+}
+section{
+	max-width: 1440px;
+	width:100%;
+	padding:2vw 4vw;
+}
+.bg-black-p{
+	background-color: #1F1F1F;
+}
+.bg-grey-p{
+	background-color: #242424;
+}
 .section-banner{
-	max-width: 1440px;
-	padding: 24px 40px;
+	padding: 0.5vw 1vw;
 	background-color: #1F1F1F;
 	margin-left: auto;
 	margin-right: auto;
+	margin-top:-92px;
+	background:url('../img/publisher/pg-primary.jpg');
+	height: 100%;
 }
-.section-about{
-	max-width: 1440px;
-	padding: 80px 150px;
-	background-color: #1F1F1F;
-	margin-left: auto;
-	margin-right: auto;
-	gap: 40px;
-}
+
 .section-profit{
-	max-width: 1440px;
-	padding: 80px 150px 0px 150px;
-	background: #242424;
-	margin-left: auto;
-	margin-right: auto;
-}
-.section-footer{
-	background: #1F1F1F;
-	max-width: 1440px;
-	margin-left: auto;
-	margin-right: auto;
-	padding: 80px 150px;
+	max-width: 570px;
+	width: 100%;
 }
 .btn-sign{
 	border-radius: 4px;
@@ -47,43 +48,18 @@
 	border:0;
 	padding: 16px 24px;
 }
-.flex{
-	display: flex;
-}
-.justify-between{
-	display: flex;
-	justify-content: space-between;
-}
-.items-center{
-	display: flex;
-	align-items: center;
-}
-.justify-center{
-	display: flex;
-	justify-content: center;
-	gap:24px;
-}
-.justify-evenly{
-	display: flex;
-	justify-content: space-evenly;
-}
-.items-start{
-	display: flex;
-	align-items: start;
-}
-.flex-col{
-	display: flex;
-	flex-direction: column;
-}
+
 .banner-left{
-	width: 560px;
+	max-width: 560px;
+	width: 100%;
 	padding: 40px 0px;
 	gap: 46px;
 }
 .banner-right{
-	width: 560px;
+	max-width: 560px;
 	padding: 40px;
 	gap: 28px;
+	width: 100%;
 	border-radius: 4px;
 	background: #242424;
 }
@@ -144,15 +120,21 @@
 	border: none;
 	height: 60px;
 }
-.text-center{
-	text-align: center;
-}
+
 .card-investor{
-	padding:16px; 
 	gap: 12px;
 	border: 1px solid #646464;
-	width: 100%;
+	padding: 10px;
 }
-.mb-15{
-	margin-bottom: 15px;
+
+@media(max-width:600px){
+	.font-48{
+		font-size: 6vw;
+	}
+	.font-32 {
+		font-size: 5vw;
+	}
+	.font-40 {
+		font-size: 5.7vw;
+	}
 }
