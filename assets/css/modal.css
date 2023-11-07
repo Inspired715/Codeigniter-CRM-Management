@@ -56,7 +56,7 @@
   
   .modal-header, .modal-header > h3 {
     padding: 2px 16px;
-    background-color: #698ef5;
+    background-color: #0D2E61;
     color: white!important;
   }
   
@@ -64,7 +64,7 @@
   
   .modal-footer, .modal-footer > h3 {
     padding: 2px 16px;
-    background-color: #698ef5!important;
+    background-color: #0D2E61!important;
     color: white !important;
     border-radius: 0 !important;
   }

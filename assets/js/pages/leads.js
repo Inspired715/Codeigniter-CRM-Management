@@ -51,7 +51,7 @@ $(document).ready(function () {
             },
             labels: {
                 style: {
-                    colors: '#5d87ff' // Specify your desired font color here
+                    colors: '#0D2E61' // Specify your desired font color here
                 }
             }
           },
@@ -76,7 +76,7 @@ $(document).ready(function () {
             offsetY: 325,
             align: 'center',
             style: {
-              color: '#5d87ff',
+              color: '#0D2E61',
               fontSize:'20px'
             }
           }
