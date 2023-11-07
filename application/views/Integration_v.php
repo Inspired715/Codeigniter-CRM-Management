@@ -28,7 +28,7 @@
                     </div>
                 </div>
                 <div class="col-lg-3" style="display:flex;align-items:center">
-                    <i class="ti ti-reload" style="font-size:30px;cursor:pointer;" id="update_btn"></i>
+                    <i class="ti ti-reload" style="font-size:30px;cursor:pointer;color:white" id="update_btn"></i>
                 </div>
             </div>
             <div class="table-responsive">
