@@ -344,3 +344,6 @@ $countryList = array(
     'ZM' => 'Zambia',
     'ZW' => 'Zimbabwe'
 );
+
+define('SITE_KEY', '6LcYQwMpAAAAACAI4YxAX2R5iC-dG8QM_yrXF4yM');
+define('SECURITY_KEY', '6LcYQwMpAAAAAN3uRSnbw0qFyAAuWSRuyLgfMBIj');

@@ -38,4 +38,19 @@ class Landing_c extends CI_Controller {
 			echo json_encode(array('status' => 'error')); 
 		}
 	}
+
+	public function sendLead(){
+		$recaptcha = isset($_POST['g-recaptcha-response'])?$_POST['g-recaptcha-response']:'';
+		$url = 'https://www.google.com/recaptcha/api/siteverify?secret='. SECURITY_KEY . '&response=' . $recaptcha;
+
+		
+		$response = file_get_contents($url);
+		$response = json_decode($response);
+
+		if ($response->success == true) { 
+			echo json_encode(array('status' => 'success'));
+		} else { 
+			echo json_encode(array('status' => 'error'));
+		} 
+	}
 }

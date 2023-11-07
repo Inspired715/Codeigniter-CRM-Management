@@ -106,12 +106,12 @@ section{
 	color: #A1A1A1;
 }
 .input-lead{
-	height: 60px;
+	height: 40px;
     border: 1px solid #DBDEE7;
     width: 100%;
     border-radius: 4px;
     background: transparent;
-    padding: 15px;
+    padding: 12px;
     color: white;
 }
 .btn-submit{

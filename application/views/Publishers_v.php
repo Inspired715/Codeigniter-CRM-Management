@@ -8,6 +8,9 @@
     <link href="<?php echo base_url('assets/img/favicon.png')?>" rel="icon">
     <link href="<?php echo base_url('assets/vendor/bootstrap/css/bootstrap.min.css')?>" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/publisher.css')?>" />
+    <script>
+        var BASE_URL = '<?php echo base_url()?>';
+    </script>
 </head>
 
 <body>
@@ -38,19 +41,21 @@
                 </div>
             </div>
             <div class="col-sm-12 col-md-6">
-                <div class="col-sm-12 col-md-6 d-flex banner-right align-items-start flex-column">
+                <form class="col-sm-12 col-md-6 d-flex banner-right align-items-start flex-column" method="post" id="submit_lead">
                     <p class="font-32 weight-700 line-120 color-white family-pop">Inscreva-se e obtenha uma<br> conta de
                         demonstração</p>
                     <div class="d-flex flex-column align-items-start" style="gap:16px;width: 100%;">
-                        <input class="input-lead" placeholder="Name*" />
-                        <input class="input-lead" placeholder="E-mail*" />
-                        <input class="input-lead" placeholder="Número de telefone*" />
+                        <input class="input-lead" placeholder="Nombre*" name="first" required/>
+                        <input class="input-lead" placeholder="Apellido*" name="last" required/>
+                        <input class="input-lead" type="email" placeholder="E-mail*" name="email" required/>
+                        <input class="input-lead" placeholder="Número de telefone*" name="phone" required/>
                     </div>
+                    <div class="g-recaptcha" data-sitekey="<?php echo SITE_KEY?>"></div> 
                     <button class="btn-submit font-18 weight-600 line-155 family-pop" style="width: 100%;">Comece
                         já!</button>
                     <p class="font-18 weight-400 line-150 color-grey family-lato">Execute negociações em tempo real com mais
                         de 200<br> instrumentos nos 5 principais mercados.</p>
-                </div>
+                </form>
             </div>
         </section>
     </div>
@@ -184,31 +189,7 @@
         </section>
     </div>
 </body>
-<script>
-    const select = (el, all = false) => {
-        el = el.trim()
-        if (all) {
-        return [...document.querySelectorAll(el)]
-        } else {
-        return document.querySelector(el)
-        }
-    }
-    const onscroll = (el, listener) => {
-        el.addEventListener('scroll', listener)
-    }
-    let selectHeader = select('#header')
-        if (selectHeader) {
-            let headerOffset = selectHeader.offsetTop
-            let nextElement = selectHeader.nextElementSibling
-            const headerFixed = () => {
-            if ((headerOffset - window.scrollY) < 0) {
-                selectHeader.classList.add('fixed-top')
-            } else {
-                selectHeader.classList.remove('fixed-top')
-            }
-            }
-            window.addEventListener('load', headerFixed)
-            onscroll(document, headerFixed)
-        }
-</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script> 
+<script src="<?php echo base_url('assets/js/pages/publisher.js')?>"></script>
 </html>
