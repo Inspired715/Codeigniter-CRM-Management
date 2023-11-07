@@ -99,7 +99,7 @@
                         </li>
                     </ul>
                     <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
-                        <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end" style="padding-right:23px; background:#2a3447">
+                        <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end" style="background:#f9f9f9">
                             <div class="btn btn-primary" id="logout_btn" style="border-radius:0">Logout(<?php echo $_SESSION['uname']?>)</div>
                         </ul>
                     </div>
