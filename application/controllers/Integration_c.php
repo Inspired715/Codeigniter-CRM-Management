@@ -158,6 +158,7 @@ class Integration_c extends MY_Controller {
 		switch($campaign){
 			case 1:
 				$url = "http://pruebas.mercurysystem.com.co/ext_api/leads_magic_status_full.php";
+				$headers = ['Content-Type: application/x-www-form-urlencoded'];
 				$data = "token=".urlencode('*#=+UIOYUqwe_23q');
 				break;
 			default:
