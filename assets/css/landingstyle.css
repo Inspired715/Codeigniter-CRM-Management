@@ -391,6 +391,7 @@ h1 {
 
 #hero .container {
   position: relative;
+  margin-top:78px;
 }
 
 #hero h1 {
@@ -449,6 +450,12 @@ h1 {
   #hero .btn-get-started {
     font-size: 13px;
   }
+  #featured-services{
+    margin-top:0px;
+  }
+  .featured-services .banner-title{
+    display: none;
+  }
 }
 
 @media (max-width: 558px) {
@@ -466,7 +473,7 @@ h1 {
   #hero .btn-get-started {
     font-size: 13px;
     padding: 5px 10px;
-    font-size: 2vw;
+    font-size: 3vw;
   }
 }
 /*--------------------------------------------------------------
