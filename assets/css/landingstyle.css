@@ -383,7 +383,7 @@ h1 {
 #hero {
   width: 100%;
   margin-top: -86px;
-  height: 100vh;
+  height: 45vw;
   background: url("../img/hero-bg.png") top left;
   background-size: cover;
   position: relative;
@@ -432,10 +432,9 @@ h1 {
 }
 
 @media (max-width: 768px) {
-  #hero {
-    height: 100vh;
+  #hero{
+    height:60vw;
   }
-
   #hero h1 {
     font-size: 28px;
     line-height: 36px;
@@ -452,12 +451,24 @@ h1 {
   }
 }
 
-@media (max-height: 500px) {
-  #hero {
-    height: 120vh;
+@media (max-width: 558px) {
+  #hero h1 {
+    font-size: 4vw;
+    line-height: 6vw;
+  }
+
+  #hero h2 {
+    font-size: 3vw;
+    line-height: 3vw;
+    margin-bottom: 3vw;
+  }
+
+  #hero .btn-get-started {
+    font-size: 13px;
+    padding: 5px 10px;
+    font-size: 2vw;
   }
 }
-
 /*--------------------------------------------------------------
 # Sections General
 --------------------------------------------------------------*/
