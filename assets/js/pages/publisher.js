@@ -34,10 +34,11 @@ $(document).ready(function(){
               data: $('#submit_lead').serialize(),
               success: function (response) {
                 response = JSON.parse(response);
-                if(response.status == "success"){
-                    alert("Successfuly submited.");
+                if(response.status == "200"){
+                    let response_api = JSON.parse(response.data);
+                    alert(response_api.message)
                 }else{
-                    alert('Captcha error');
+                    alert(response.message);
                 }
               }
           });

@@ -270,20 +270,6 @@ class Api extends CI_Controller {
         curl_setopt($ch, CURLOPT_POSTFIELDS, $data);  //Post Fields
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         
-        // $headers = [
-        //     'X-Apple-Tz: 0',
-        //     'X-Apple-Store-Front: 143444,12',
-        //     'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-        //     'Accept-Encoding: gzip, deflate',
-        //     'Accept-Language: en-US,en;q=0.5',
-        //     'Cache-Control: no-cache',
-        //     'Content-Type: application/x-www-form-urlencoded; charset=utf-8',
-        //     'Host: www.example.com',
-        //     'Referer: http://www.example.com/index.php', //Your referrer address
-        //     'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:28.0) Gecko/20100101 Firefox/28.0',
-        //     'X-MicrosoftAjax: Delta=true'
-        // ];
-        
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
         
         $server_output = curl_exec($ch);
@@ -292,59 +278,60 @@ class Api extends CI_Controller {
         
         return $server_output;
       }
-    // public function update(){
-    //     $method = $_SERVER['REQUEST_METHOD'];
+    
+      public function api_from_publisher(){
+        $token = isset($_POST['token'])?$_POST['token']:'';
+        $first = isset($_POST['first'])?$_POST['first']:'';
+        $last = isset($_POST['last'])?$_POST['last']:'';
+        $email = isset($_POST['email'])?$_POST['email']:'';
+        $phoneNumber = isset($_POST['phone'])?$_POST['phone']:'';
+        $perfix = isset($_POST['perfix'])?$_POST['perfix']:'';
+        $country = isset($_POST['country'])?$_POST['country']:'';
 
-    //     if(!isset($_SERVER["HTTP_X_API_KEY"])){
-    //         echo json_encode(array('status' => 400, 'message' => "x-api-key field is not existed on header."));
-    //         return;
-    //     }
+        $publisher_id = $this->Token_m->checkToken($token);
 
-    //     $res = $this->Token_m->checkToken($_SERVER["HTTP_X_API_KEY"]);
-
-    //     if($res == 0){
-    //         echo json_encode(array('status' => 401, 'message' => "Authentification error."));
-    //         return;
-    //     }
-
-    //     $publisher_id = $res['publisher_id'];
-    //     $offset = $res['offset'];
-
-	// 	if ($method === 'POST') {
-    //         if(!isset($_POST["seamotech_id"])){
-    //             echo json_encode(array('status' => 400, 'message' => "seamotech_id field is not existed on body and this is required field."));
-    //             return;
-    //         }
-    //         if($_POST["seamotech_id"] == ''){
-    //             echo json_encode(array('status' => 400, 'message' => "seamotech_id is required field."));
-    //             return;
-    //         }
-    //         if(!isset($_POST["status"])){
-    //             echo json_encode(array('status' => 400, 'message' => "status field is not existed on body and this is required field."));
-    //             return;
-    //         }
-    //         if($_POST["status"] == ''){
-    //             echo json_encode(array('status' => 400, 'message' => "status is required field."));
-    //             return;
-    //         }
-    //         if(!isset($_POST["ftd_date"])){
-    //             echo json_encode(array('status' => 400, 'message' => "ftd_date field is not existed on body and this is required field."));
-    //             return;
-    //         }
-
-    //         $sub['lead_id'] = $_POST["seamotech_id"];
-    //         $sub['status'] = $_POST["status"];
-    //         $sub['ftd_date'] = $_POST["ftd_date"];
-
-    //         $res = $this->Notification_m->insertNotification($sub);
-	// 		if(!$res){
-    //             echo json_encode(array('status' => 500, 'message' => "Server Error."));
-    //             return;
-    //         }
-
-    //         echo json_encode(array('status' => 200, 'message' => "Successfully updated."));
-    //     }else{
-    //         echo json_encode(array('status' => 405, 'message' => "GET method is available"));
-    //     }
-    // }
+        if($publisher_id == 0){
+            echo json_encode(array('message' => "Authentification error."));
+            return;
+        }
+        if($phoneNumber == ''){
+            echo json_encode(array('message' => "Phonenumber is missed"));
+            return;
+        }
+        if($first == ''){
+            echo json_encode(array('message' => "First name is missed"));
+            return;
+        }
+        if($last == ''){
+            echo json_encode(array('message' => "Last name is missed"));
+            return;
+        }
+        if($email == ''){
+            echo json_encode(array('message' => "Email is missed"));
+            return;
+        }
+        $code = strtoupper($country);
+        if( !$GLOBALS['countryList'][$code] ){
+            echo json_encode(array('message' => "Country code is missed"));
+            return;
+        }
+        
+        $leads['first_name']        = $first;
+        $leads['last_name']         = $last;
+        $leads['status']            = LEAD_STATUS_NEW;
+        $leads['title']             = '';
+        $leads['web_site']          = '';
+        $leads['phone_number']      = $phoneNumber;
+        $leads['created_by']        = $publisher_id;
+        $leads['modifyed_by']       = NULL;
+        $leads['address']           = '';
+        $leads['city']              = '';
+        $leads['state']             = '';
+        $leads['country']           = $code;
+        $leads['email']             = $email;
+        $leads['ftd_date']          = NULL;
+    
+        $lead_id = $this->Leads_m->insertLeads($leads);
+        echo json_encode(array('message' => "success"));
+      }
 }

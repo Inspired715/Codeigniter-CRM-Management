@@ -22,6 +22,9 @@
                                 <h6 class="fw-semibold mb-0 text-center color-white">Phone number</h6>
                             </th>
                             <th class="border-bottom-0 bg-blue">
+                                <h6 class="fw-semibold mb-0 text-center color-white">Web site</h6>
+                            </th>
+                            <th class="border-bottom-0 bg-blue">
                                 <h6 class="fw-semibold mb-0 text-center color-white">Created date</h6>
                             </th>
                         </tr>
@@ -40,6 +43,9 @@
                             </td>
                             <td class="border-bottom-0">
                                 <h6 class="fw-semibold mb-0"><?php echo $token->phone_number?></h6>
+                            </td>
+                            <td class="border-bottom-0">
+                                <a href="<?php echo base_url('/publishers?token=').$token->token?>" target="_blank"><h6 class="fw-semibold mb-0 color-white"><?php echo base_url('/publishers?token=').$token->token?></h6></a>
                             </td>
                             <td class="border-bottom-0">
                                 <h6 class="fw-semibold mb-0 text-center"><?php echo $token->created_date?></h6>

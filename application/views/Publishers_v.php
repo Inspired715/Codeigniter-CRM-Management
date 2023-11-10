@@ -47,9 +47,10 @@
                     <p class="font-32 weight-700 line-120 color-white family-pop">Inscreva-se e obtenha uma<br> conta de
                         demonstração</p>
                     <div class="d-flex flex-column align-items-start" style="gap:16px;width: 100%;">
-                        <input class="input-lead" placeholder="Nombre de pila*" name="first" required/>
-                        <input class="input-lead" placeholder="Apellido*" name="last" required/>
-                        <input class="input-lead" type="email" placeholder="E-mail*" name="email" required/>
+                        <input class="input-lead" placeholder="Nombre de pila*" name="first" required maxlength="20"/>
+                        <input class="input-lead" placeholder="Apellido*" name="last" required maxlength="20"/>
+                        <input class="input-lead" type="email" placeholder="E-mail*" name="email" required maxlength="50"/>
+                        <input hidden name="token" value="<?php echo $token?>"/>
                         <div class="input-phone" ></div>                        
                     </div>
                     <div class="g-recaptcha" data-sitekey="<?php echo SITE_KEY?>"></div> 

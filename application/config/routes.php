@@ -70,9 +70,10 @@ $route['coldleades'] = 'Coldleads_c';
 $route['exportCSV'] = 'Coldleads_c/exportCSV';
 $route['sendMail'] = 'Landing_c/sendMail';
 $route['sendLead'] = 'Landing_c/sendLead';
+$route['api/publisher'] = 'Api/api_from_publisher';
 $route['leads/edit/(:num)'] = 'Leads_c/editLeads/$1';
 
 $route['api/lead'] = 'Api/api_lead';
 $route['api/lead/get_leads'] = 'Api/GetLeads';
 
-$route['publishers/(:any)'] = 'Landing_c/publishers/$1';
+$route['publishers'] = 'Landing_c/publishers';

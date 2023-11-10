@@ -11,8 +11,10 @@ class Landing_c extends CI_Controller {
         $this->load->view('Landing_v');
 	}
 
-	public function publishers($uuid){
-		$this->load->view('Publishers_v', array('title' => 'Landing'));	
+	public function publishers(){
+		$token = isset($_GET['token'])?$_GET['token']:'';
+
+		$this->load->view('Publishers_v', array('title' => 'Landing', 'token' => $token));	
 	}
 
 	public function sendMail(){
@@ -43,14 +45,46 @@ class Landing_c extends CI_Controller {
 		$recaptcha = isset($_POST['g-recaptcha-response'])?$_POST['g-recaptcha-response']:'';
 		$url = 'https://www.google.com/recaptcha/api/siteverify?secret='. SECURITY_KEY . '&response=' . $recaptcha;
 
-		
 		$response = file_get_contents($url);
 		$response = json_decode($response);
 
-		if ($response->success == true) { 
-			echo json_encode(array('status' => 'success'));
+		if (true) { 
+			$token = isset($_POST['token'])?$_POST['token']:'';
+			$first = isset($_POST['first'])?$_POST['first']:'';
+			$last = isset($_POST['last'])?$_POST['last']:'';
+			$email = isset($_POST['email'])?$_POST['email']:'';
+			$phoneNumber = isset($_POST['phoneNumber'])?$_POST['phoneNumber']:'';
+			$carrierCode = isset($_POST['carrierCode'])?$_POST['carrierCode']:'';
+			$defaultCountry = isset($_POST['defaultCountry'])?$_POST['defaultCountry']:'';
+
+			if($token == '' || $first == '' || $last == '' || $email == '' || $phoneNumber == '' || $carrierCode == ''){
+				echo json_encode(array('status' => '301', 'message' => "Invalid parameters"));
+				return;
+			}
+
+			$url = "https://seamotech.com/api/publisher";
+            $data = "token=".$token."&first=".$first."&last=".$last."&phone=".$phoneNumber."&perfix=".$carrierCode."&email=".$email."&country=".$defaultCountry;
+            $result = $this->api_exec_curl($url, [], $data);
+
+			echo json_encode(array('status' => '200', 'data'=> $result));
 		} else { 
-			echo json_encode(array('status' => 'error'));
+			echo json_encode(array('status' => '204', 'message' => "Captcha error"));
 		} 
 	}
+
+	public function api_exec_curl($url, $headers, $data){
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);  //Post Fields
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        
+        $server_output = curl_exec($ch);
+        
+        curl_close ($ch);
+        
+        return $server_output;
+    }
 }
