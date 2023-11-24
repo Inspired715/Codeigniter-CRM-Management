@@ -177,8 +177,10 @@ $(document).ready(function () {
       "serverSide":false,
       "ordering": false,
       "autoWidth": false,
+      "scrollCollapse": true,
+      "scrollY": '450px',
       "columns": [
-        { "data": "first_name", 'width':'200px'},
+        { "data": "first_name"},
         { "data": "last_name"},
         { "data": "status",
           render(data, type, row, meta){
@@ -216,7 +218,16 @@ $(document).ready(function () {
           }
         },
         { "data": "phone_number"},
-        { "data": "country"},
+        { "data": "country", 
+          render(data, type, row,meta){
+            switch(data){
+              case "MX":
+                return '<img src="' + BASE_URL + 'assets/img/flags/mexico.png' + '" alt="Mexico flag" style="width:35px">';
+              case "CO":
+                return '<img src="' + BASE_URL + 'assets/img/flags/colombia.png' + '" alt="Colombia flag" style="width:35px">';
+            }
+          }
+        },
         { "data": "email"},
         { "data": "created_by"},
         { "data": "campaign",
