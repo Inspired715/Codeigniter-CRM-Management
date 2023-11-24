@@ -60,54 +60,50 @@
                     </div>
                 </div>
                 <div class="col-lg-1" style="display:flex;align-items:center">
-                    <i class="ti ti-search" style="font-size:30px;cursor:pointer;color:white" id="search_btn"></i>
+                    <i class="ti ti-search color-white" style="font-size:30px;cursor:pointer;" id="search_btn"></i>
                 </div>
             </div>
             <div class="table-responsive">
-                <table class="table text-nowrap mb-0 align-middle">
-                    <thead class="text-dark fs-4">
+                <table id="lead_table">
+                    <thead>
                         <tr>
-                            <th class="border-bottom-0 bg-blue" style="width:100px;">
-                                <h6 class="fw-semibold mb-0 text-center color-white">No</h6>
+                            <th class="border-bottom-0">
+                                <h6 class="fw-semibold mb-0 text-center color-white" style="width:130px">First name</h6>
                             </th>
-                            <th class="border-bottom-0 bg-blue">
-                                <h6 class="fw-semibold mb-0 text-center color-white">First name</h6>
+                            <th class="border-bottom-0">
+                                <h6 class="fw-semibold mb-0 text-center color-white" style="width:130px">Last name</h6>
                             </th>
-                            <th class="border-bottom-0 bg-blue">
-                                <h6 class="fw-semibold mb-0 text-center color-white">Last name</h6>
+                            <th class="border-bottom-0">
+                                <h6 class="fw-semibold mb-0 text-center color-white" style="width:130px">Status</h6>
                             </th>
-                            <th class="border-bottom-0 bg-blue">
-                                <h6 class="fw-semibold mb-0 text-center color-white">Status</h6>
+                            <th class="border-bottom-0">
+                                <h6 class="fw-semibold mb-0 text-center color-white" style="width:130px">Phone</h6>
                             </th>
-                            <th class="border-bottom-0 bg-blue">
-                                <h6 class="fw-semibold mb-0 text-center color-white">Phone number</h6>
-                            </th>
-                            <th class="border-bottom-0 bg-blue">
+                            <th class="border-bottom-0">
                                 <h6 class="fw-semibold mb-0 text-center color-white">Country</h6>
                             </th>
-                            <th class="border-bottom-0 bg-blue">
+                            <th class="border-bottom-0">
                                 <h6 class="fw-semibold mb-0 text-center color-white">E-mail</h6>
                             </th>
-                            <th class="border-bottom-0 bg-blue">
-                                <h6 class="fw-semibold mb-0 text-center color-white">Created by</h6>
+                            <th class="border-bottom-0">
+                                <h6 class="fw-semibold mb-0 text-center color-white" style="width:80px">Created by</h6>
                             </th>
-                            <th class="border-bottom-0 bg-blue">
+                            <th class="border-bottom-0">
                                 <h6 class="fw-semibold mb-0 text-center color-white">Sent</h6>
                             </th>
-                            <th class="border-bottom-0 bg-blue">
-                                <h6 class="fw-semibold mb-0 text-center color-white">Created date</h6>
+                            <th class="border-bottom-0">
+                                <h6 class="fw-semibold mb-0 text-center color-white" style="width:100px">Date</h6>
                             </th>
-                            <th class="border-bottom-0 bg-blue">
+                            <th class="border-bottom-0">
                                 <h6 class="fw-semibold mb-0 text-center color-white">Action</h6>
                             </th>
                         </tr>
                     </thead>
-                    <tbody id="lead_table">
-                    </tbody>
                 </table>
             </div>
         </div>
     </div>
 </div>
+
 <script>let view = <?php echo $_SESSION['role'];?></script>
 <script src="assets/js/pages/leads.js"></script>

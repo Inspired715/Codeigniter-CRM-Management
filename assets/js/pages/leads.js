@@ -1,8 +1,6 @@
 "use strict";
 
 $(document).ready(function () {
-    loadData();
-
     function drawChart(series, total, real){
         var chart_pie_simple = null;
         var options = {
@@ -169,106 +167,134 @@ $(document).ready(function () {
     window.onDetail = onDetail
     window.onEdit = onEdit
 
-    function loadData(){
-        $(".waitting-screen").show();
-        $.ajax({
-            url: BASE_URL + "refreshLeadTable",
-            method: "POST",
-            data: {
-              status: $('#filter_status').val(),
-              createdBy: $('#filter_created').val(),
-              from_date: $('#from_date').val(),
-              to_date: $('#to_date').val(),
-              country: $('#filter_country').val(),
-            },
-            success: function (response) {
-                let res = JSON.parse(response);
-                if(res.status == 200){
-                    let html = "";
-                    let notCnt=0,newCnt=0,followCnt=0,wrongCnt=0,unqCnt=0,moneyCnt=0,incompCnt=0, ftdCnt=0, dupCnt=0;
-                    let number = 1;
-                    res.data.forEach((item) => {
-                        html += '<tr>';
-                        html += '<td class="border-bottom-0"><h6 class="fw-semibold mb-0 text-center">'+ number +'</h6></td>';
-                        html += '<td class="border-bottom-0"><h6 class="fw-semibold mb-0">'+ item.first_name +'</h6></td>';
-                        html += '<td class="border-bottom-0"><h6 class="fw-semibold mb-0">'+ item.last_name +'</h6></td>';
-                        html += '<td class="border-bottom-0"><div class="text-center">';
-                        switch(item.status){
-                            case "1":
-                                html += '<span class="badge bg-primary rounded-3 fw-semibold text-center">Not interested</span>';
-                                notCnt ++;
-                                break;
-                            case "2":
-                                html += '<span class="badge bg-success rounded-3 fw-semibold text-center">Follow up</span>';
-                                followCnt++;
-                                break;
-                            case "3":
-                                html += '<span class="badge bg-danger rounded-3 fw-semibold text-center">Ftd</span>';
-                                ftdCnt++;
-                                break;
-                            case "4":
-                                html += '<span class="badge bg-dark rounded-3 fw-semibold text-center">Wrong number</span>';
-                                wrongCnt++;
-                                break;
-                            case "5":
-                                html += '<span class="badge bg-warning rounded-3 fw-semibold text-center">Unqualified</span>';
-                                unqCnt++;
-                                break;
-                            case "6":
-                                html += '<span class="badge bg-secondary rounded-3 fw-semibold text-center">New</span>';
-                                newCnt++;
-                                break;
-                            case "7":
-                                html += '<span class="badge bg-info rounded-3 fw-semibold text-center">Call later</span>';
-                                moneyCnt++;
-                                break;
-                            case "88":
-                                html += '<span class="badge bg-dark rounded-3 fw-semibold text-center">Duplicate</span>';
-                                dupCnt++;
-                                break;
-                            case "99":
-                                html += '<span class="badge bg-dark rounded-3 fw-semibold text-center">Incomplete</span>';
-                                incompCnt++;
-                                break;
-                            default:
-                                html += '<span class="badge bg-primary rounded-3 fw-semibold text-center">Not interested</span>';
-                                notCnt++;
-                        }
+    $('#search_btn').click(function(){
+        dataTable.ajax.reload();
+    });
 
-                        let campagin = item.campaign;
-                        if(campagin.length > 0){
-                            if(view != 1){
-                                campagin = "Success"
-                            }
-                        }
-
-                        html += "</div></td>";
-                        html += '<td class="border-bottom-0"><h6 class="mb-0 fw-semibold text-center">'+ item.phone_number +'</h6></td>';
-                        html += '<td class="border-bottom-0"><h6 class="fw-semibold mb-0 text-center">' + item.country + '</h6></td>';
-                        html += '<td class="border-bottom-0"><h6 class="fw-semibold mb-0">' + item.email + '</h6></td>';
-                        html += '<td class="border-bottom-0"><h6 class="fw-semibold mb-0">' + item.created_by + '</h6></td>';
-                        html += '<td class="border-bottom-0"><h6 class="fw-semibold mb-0">' + campagin + '</h6></td>';
-                        html += '<td class="border-bottom-0"><h6 class="fw-semibold mb-0 text-center">' + item.created_date + '</h6></td>';
-                        html += '<td class="border-bottom-0"><div class="text-center"><i class="ti ti-help pointer" onclick="onDetail('+item.id+')"></i>';
-                        if(view == 1){
-                            html += '<i class="ti ti-edit pointer" onclick="onEdit('+item.id+')"></i>'
-                        }
-                        html += "</div></td></tr>";
-
-                        number ++;
-                    })
-
-                    $('#lead_table').html(html);
-                    drawChart(new Array(ftdCnt, notCnt, newCnt, wrongCnt, unqCnt, moneyCnt, dupCnt), number-1, number-incompCnt-dupCnt-1)
-                    $(".waitting-screen").hide();
-                }else{
-                    Toast.danger('Error!');
+    var dataTable = $('#lead_table').DataTable({
+      "paging":true,
+      "processing":true,
+      "serverSide":false,
+      "ordering": false,
+      "autoWidth": false,
+      "columns": [
+        { "data": "first_name", 'width':'200px'},
+        { "data": "last_name"},
+        { "data": "status",
+          render(data, type, row, meta){
+            switch(data){
+              case "1":
+                  return '<span class="badge bg-primary rounded-3 fw-semibold text-center">Not interested</span>';
+                  break;
+              case "2":
+                  return '<span class="badge bg-success rounded-3 fw-semibold text-center">Follow up</span>';
+                  break;
+              case "3":
+                  return '<span class="badge bg-danger rounded-3 fw-semibold text-center">Ftd</span>';
+                  break;
+              case "4":
+                  return '<span class="badge bg-dark rounded-3 fw-semibold text-center">Wrong number</span>';
+                  break;
+              case "5":
+                  return '<span class="badge bg-warning rounded-3 fw-semibold text-center">Unqualified</span>';
+                  break;
+              case "6":
+                  return '<span class="badge bg-secondary rounded-3 fw-semibold text-center">New</span>';
+                  break;
+              case "7":
+                  return '<span class="badge bg-info rounded-3 fw-semibold text-center">Call later</span>';
+                  break;
+              case "88":
+                  return '<span class="badge bg-dark rounded-3 fw-semibold text-center">Duplicate</span>';
+                  break;
+              case "99":
+                  return '<span class="badge bg-dark rounded-3 fw-semibold text-center">Incomplete</span>';
+                  break;
+              default:
+                  return '<span class="badge bg-primary rounded-3 fw-semibold text-center">Not interested</span>';
+            }
+          }
+        },
+        { "data": "phone_number"},
+        { "data": "country"},
+        { "data": "email"},
+        { "data": "created_by"},
+        { "data": "campaign",
+          render(data, type, row, meta){
+            let campagin = data;
+            if(campagin.length > 0){
+                if(view != 1){
+                    campagin = "Success"
                 }
             }
-        })
-    }
+            return campagin;
+          }
+        },
+        { "data": "created_date"},
+        { "data": "id", 
+          render(data, type, row,meta){
+            let html = '';
+            html = '<div class="text-center"><i class="ti ti-help pointer" onclick="onDetail('+data+')"></i>';
+            if(view == 1){
+                html += '<i class="ti ti-edit pointer" onclick="onEdit('+data+')"></i>'
+            }
+            html += "</div>";
+            return html;
+          }
+        }
+      ],
+      "ajax":{
+          url: BASE_URL + "refreshLeadTable",
+          type:"POST",
+          "data": function ( d ) {
+              d.status = $('#filter_status').val();
+              d.createdBy = $('#filter_created').val();
+              d.from_date = $('#from_date').val();
+              d.to_date = $('#to_date').val();
+              d.country = $('#filter_country').val();
+          }
+      },
+      "drawCallback": function(settings, json) {
+        let notCnt=0,newCnt=0,followCnt=0,wrongCnt=0,unqCnt=0,moneyCnt=0,incompCnt=0, ftdCnt=0, dupCnt=0,number=0;
+        let aoData = settings.aoData;
+        aoData.forEach(data => {
+          let item = data._aData;
+          switch(item.status){
+            case "1":
+                notCnt ++;
+                break;
+            case "2":
+                followCnt++;
+                break;
+            case "3":
+                ftdCnt++;
+                break;
+            case "4":
+                wrongCnt++;
+                break;
+            case "5":
+                unqCnt++;
+                break;
+            case "6":
+                newCnt++;
+                break;
+            case "7":
+                moneyCnt++;
+                break;
+            case "88":
+                dupCnt++;
+                break;
+            case "99":
+                incompCnt++;
+                break;
+            default:
+                notCnt++;
+          }
 
-    $('#search_btn').click(function(){
-        loadData();
-    });
+          number ++;
+        })
+        
+        drawChart(new Array(ftdCnt, notCnt, newCnt, wrongCnt, unqCnt, moneyCnt, dupCnt), number, number-incompCnt-dupCnt)
+    }
+   });
 });

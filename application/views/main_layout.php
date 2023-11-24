@@ -6,6 +6,7 @@
     <meta name="description" content="Seamotech - Managing leads. submit to hubspot, contected to several brokers and publishers">
     <title><?php echo $title?></title>
     <link rel="shortcut icon" type="image/png" href="<?php echo base_url('assets/img/favicon.png')?>" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/sh_toaster.css')?>" />
     <link rel="stylesheet" href="<?php echo base_url('assets/css/simplebar.css')?>" />
     <link rel="stylesheet" href="<?php echo base_url('assets/css/tabler-icons.css')?>" />
@@ -15,6 +16,7 @@
     <script src="<?php echo base_url('assets/js/jquery.min.js')?>"></script>
     <script src="<?php echo base_url('assets/js/sh_toaster.js')?>"></script>
     <script src="<?php echo base_url('assets/js/apexcharts.min.js')?>"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     <script>
         var BASE_URL = '<?php echo base_url()?>';
     </script>
