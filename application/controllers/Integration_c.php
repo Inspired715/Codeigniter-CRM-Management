@@ -5,7 +5,7 @@ class Integration_c extends MY_Controller {
 
 	public function __construct(){
 		parent::__construct();
-
+		$this->load->library('curlclass');
 		$this->load->model("Integration_m");
 		$this->load->model("Common_m");
 	}
@@ -46,7 +46,7 @@ class Integration_c extends MY_Controller {
 				
 		}
 
-		$result = $this->exec_curl($url, $header, $data);
+		$result = $this->curlclass->exec_curl($url, $header, $data);
 		$msg = json_decode($result)[0]->mensaje;
 
 		switch($msg){
@@ -108,7 +108,7 @@ class Integration_c extends MY_Controller {
 
 			foreach ($leads as $lead) {
 				$data = "token=".urlencode('*#=+UIOYUqwe_23q')."&Name_lead=".$lead->first_name.' '.$lead->last_name."&email=".$lead->email."&phone=".$lead->prefix.$lead->phone_number."&seamotech_id=".$lead->id;				
-				$result = $this->exec_curl($url, $header, $data);
+				$result = $this->curlclass->exec_curl($url, $header, $data);
 				$msg = json_decode($result)[0]->mensaje;
 
 				switch($msg){
@@ -165,7 +165,7 @@ class Integration_c extends MY_Controller {
 				
 		}
 		
-		$result = $this->exec_curl($url, $header, $data);
+		$result = $this->curlclass->exec_curl($url, $header, $data);
 		$result = json_decode($result);
 
 		forEach($result as $item){

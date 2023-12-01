@@ -5,6 +5,7 @@ class Landing_c extends CI_Controller {
 
 	public function __construct(){
 		parent::__construct();
+		$this->load->library('curlclass');
 	}
 
    	public function index(){
@@ -48,7 +49,7 @@ class Landing_c extends CI_Controller {
 		$response = file_get_contents($url);
 		$response = json_decode($response);
 
-		if (true) { 
+		if ($response) { 
 			$token = isset($_POST['token'])?$_POST['token']:'';
 			$first = isset($_POST['first'])?$_POST['first']:'';
 			$last = isset($_POST['last'])?$_POST['last']:'';
@@ -64,27 +65,11 @@ class Landing_c extends CI_Controller {
 
 			$url = "https://seamotech.com/api/publisher";
             $data = "token=".$token."&first=".$first."&last=".$last."&phone=".$phoneNumber."&perfix=".$carrierCode."&email=".$email."&country=".$defaultCountry;
-            $result = $this->api_exec_curl($url, [], $data);
+            $result = $this->curlclass->exec_curl($url, [], $data);
 
 			echo json_encode(array('status' => '200', 'data'=> $result));
 		} else { 
 			echo json_encode(array('status' => '204', 'message' => "Captcha error"));
 		} 
 	}
-
-	public function api_exec_curl($url, $headers, $data){
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);  //Post Fields
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        
-        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-        
-        $server_output = curl_exec($ch);
-        
-        curl_close ($ch);
-        
-        return $server_output;
-    }
 }

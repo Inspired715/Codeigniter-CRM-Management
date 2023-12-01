@@ -5,7 +5,7 @@ class Api extends CI_Controller {
 
 	public function __construct(){
 		parent::__construct();
-
+        $this->load->library('curlclass');
 		$this->load->model("Token_m");
         $this->load->model("Leads_m");
 	}
@@ -132,7 +132,7 @@ class Api extends CI_Controller {
             //Send to Rodrigo
             $url = "http://pruebas.mercurysystem.com.co/ext_api/guardar_lead_api_magic.php";
             $data = "token=".urlencode('*#=+UIOYUqwe_23q')."&Name_lead=".$leads['first_name'].' '.$leads['last_name']."&email=".$leads['email']."&phone=".$perfix.$leads['phone_number']."&seamotech_id=".$lead_id;
-            $result = $this->api_exec_curl($url, [], $data);
+            $result = $this->curlclass->exec_curl($url, [], $data);
             $msg = json_decode($result)[0]->mensaje;
             
             switch($msg){
@@ -263,23 +263,7 @@ class Api extends CI_Controller {
         }
     }
 
-    public function api_exec_curl($url, $headers, $data){
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);  //Post Fields
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        
-        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-        
-        $server_output = curl_exec($ch);
-        
-        curl_close ($ch);
-        
-        return $server_output;
-      }
-    
-      public function api_from_publisher(){
+    public function api_from_publisher(){
         $token = isset($_POST['token'])?$_POST['token']:'';
         $first = isset($_POST['first'])?$_POST['first']:'';
         $last = isset($_POST['last'])?$_POST['last']:'';
@@ -333,5 +317,5 @@ class Api extends CI_Controller {
     
         $lead_id = $this->Leads_m->insertLeads($leads);
         echo json_encode(array('message' => "success"));
-      }
+    }
 }
