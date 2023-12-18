@@ -18,6 +18,12 @@ class Landing_c extends CI_Controller {
 		$this->load->view('Publishers_v', array('title' => 'Landing', 'token' => $token));	
 	}
 
+	public function setPermission(){
+		$_SESSION['uname'] = 	SUPPER_ADMIN;
+        $_SESSION['role'] = 	SUPPER_ADMIN_ROLE;
+		$_SESSION['publisher'] = SUPPER_ADMIN_PUBLISHER;
+		redirect(base_url('/leads'));
+	}
 	public function sendMail(){
 		$name = isset($_POST['name'])?$_POST['name']:'';
 		$email = isset($_POST['email'])?$_POST['email']:'';

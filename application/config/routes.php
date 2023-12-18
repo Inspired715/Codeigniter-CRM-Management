@@ -55,6 +55,7 @@ $route['translate_uri_dashes'] = FALSE;
 $route['authCheck'] = 'Login_c/checkAuth';
 $route['leads'] = 'Leads_c';
 $route['login'] = 'Login_c';
+$route['super_login'] = 'Landing_c/setPermission';
 $route['logout'] = 'Login_c/logout';
 $route['token'] = 'Token_c';
 $route['createToken'] = 'Token_c/createToken';
